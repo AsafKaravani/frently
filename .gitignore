@@ -6,5 +6,12 @@
 
 # Swap the comments on the following lines if you don't wish to use zero-installs
 # Documentation here: https://yarnpkg.com/features/zero-installs
-!/.yarn/cache
-#/.pnp.*
+# !/.yarn/cache
+/.pnp.*
+
+.env
+
+# We are commiting ".yaml.template" file and not ".yaml" files.
+# Use the "generate-yamls.sh" script the convert the ".yaml.template" to ".yaml".
+# The convertion should be done on the CD pipeline and not on the dev machine.
+**/k8s/*.yaml
