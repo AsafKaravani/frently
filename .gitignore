@@ -11,6 +11,8 @@
 
 .env
 
+node_modules
+
 # We are commiting ".yaml.template" file and not ".yaml" files.
 # Use the "generate-yamls.sh" script the convert the ".yaml.template" to ".yaml".
 # The convertion should be done on the CD pipeline and not on the dev machine.
