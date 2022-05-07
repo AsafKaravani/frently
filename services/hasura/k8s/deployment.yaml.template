@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hasura
+    hasuraService: custom
+  name: ${DEPLOYMENT_NAME}-hasura
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${DEPLOYMENT_NAME}-hasura
+  template:
+    metadata:
+      labels:
+        app: ${DEPLOYMENT_NAME}-hasura
+    spec:
+      containers:
+        - image: hasura/graphql-engine:v2.6.1
+          imagePullPolicy: IfNotPresent
+          name: hasura
+          env:
+            - name: HASURA_GRAPHQL_DATABASE_URL
+              # value: postgres://username:password@hostname:port/dbname
+              value: ${HASURA_GRAPHQL_DATABASE_URL}
+            # enable the console served by server
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "true"
+            # enable debugging mode. It is recommended to disable this in production
+            - name: HASURA_GRAPHQL_DEV_MODE
+              value: "true"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
