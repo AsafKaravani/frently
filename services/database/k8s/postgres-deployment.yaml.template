@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${DEPLOYMENT_NAME}-postgres
+spec:
+  selector:
+    matchLabels:
+      app: ${DEPLOYMENT_NAME}-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ${DEPLOYMENT_NAME}-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:10.4
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: ${DEPLOYMENT_NAME}-postgres-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+          resources:
+            limits:
+              memory: 4Gi
+              cpu: "1"
+            requests:
+              memory: 2Gi
+              cpu: "0.5"
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: ${DEPLOYMENT_NAME}-postgres-pv-claim
