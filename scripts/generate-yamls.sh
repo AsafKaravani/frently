@@ -9,7 +9,9 @@ echo
 for yaml_template in $(find ../ -name "*.yaml.template" -type f); do
     echo "Processing \"$yaml_template\"..."
     
-    for env_variable in $(cat "$yaml_template" | grep -o '\{[^}]*\}' ); do
+    for match in $(cat "$yaml_template" | grep -o '\{[^}]*\}' ); do
+        env_variable=${match//"{"/}
+        env_variable=${env_variable//"}"/}
         echo var: \"$env_variable\" replaced.
     done
     

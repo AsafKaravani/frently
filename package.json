@@ -10,6 +10,6 @@
   "scripts": {
     "get-kube-service-user-token": "kubectl describe secret test-user",
     "set-kube-cluster": "sh scripts/kubectl-login-to-cluster.sh",
-    "generate-yamls": "sh scripts/generate-yamls.sh"
+    "generate-yamls": "bash scripts/generate-yamls.sh"
   }
 }
