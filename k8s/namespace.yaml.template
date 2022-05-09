@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: ${DEPLOYMENT_NAME}
+  name: ${FRENTLY_DEPLOYMENT_NAME}
   labels:
-    name: ${DEPLOYMENT_NAME}
+    name: ${FRENTLY_DEPLOYMENT_NAME}

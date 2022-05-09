@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${DEPLOYMENT_NAME}-postgres
+  name: ${FRENTLY_DEPLOYMENT_NAME}-postgres
   labels:
-    app: ${DEPLOYMENT_NAME}-postgres
+    app: ${FRENTLY_DEPLOYMENT_NAME}-postgres
 spec:
   type: LoadBalancer
   ports:
     - port: 5432
   selector:
-    app: ${DEPLOYMENT_NAME}-postgres
+    app: ${FRENTLY_DEPLOYMENT_NAME}-postgres

@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ${DEPLOYMENT_NAME}-postgres-config
+  name: ${FRENTLY_DEPLOYMENT_NAME}-postgres-config
   labels:
     app: postgres
 data:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: postgresadmin
-  POSTGRES_PASSWORD: ${DATABASE_PASSWORD_BASE64}
+  POSTGRES_PASSWORD: ${FRENTLY_DATABASE_PASSWORD_BASE64}

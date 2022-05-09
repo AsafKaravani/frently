@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: ${DEPLOYMENT_NAME}-hasura
-  name: ${DEPLOYMENT_NAME}-hasura
+    app: ${FRENTLY_DEPLOYMENT_NAME}-hasura
+  name: ${FRENTLY_DEPLOYMENT_NAME}-hasura
 spec:
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
   selector:
-    app: ${DEPLOYMENT_NAME}-hasura
+    app: ${FRENTLY_DEPLOYMENT_NAME}-hasura
   type: LoadBalancer

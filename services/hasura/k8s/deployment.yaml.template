@@ -4,25 +4,25 @@ metadata:
   labels:
     app: hasura
     hasuraService: custom
-  name: ${DEPLOYMENT_NAME}-hasura
+  name: ${FRENTLY_DEPLOYMENT_NAME}-hasura
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${DEPLOYMENT_NAME}-hasura
+      app: ${FRENTLY_DEPLOYMENT_NAME}-hasura
   template:
     metadata:
       labels:
-        app: ${DEPLOYMENT_NAME}-hasura
+        app: ${FRENTLY_DEPLOYMENT_NAME}-hasura
     spec:
       containers:
         - image: hasura/graphql-engine:v2.6.1
           imagePullPolicy: IfNotPresent
           name: hasura
           env:
-            - name: HASURA_GRAPHQL_DATABASE_URL
+            - name: HASURA_GRAPHQL_FRENTLY_DATABASE_URL
               # value: postgres://username:password@hostname:port/dbname
-              value: ${DATABASE_URL}
+              value: ${FRENTLY_DATABASE_URL}
             # enable the console served by server
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
               value: "true"

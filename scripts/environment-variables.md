@@ -16,5 +16,5 @@ KUBE_CLUSTER_URL = "https://kubernetes.default"
 
 ```bash
 # This will used as namespace and a prefix for all the resources.
-DEPLOYMENT_NAME = "DEVELOPMENT"
+FRENTLY_DEPLOYMENT_NAME = "DEVELOPMENT"
 ```
