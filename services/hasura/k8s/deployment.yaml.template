@@ -22,7 +22,7 @@ spec:
           env:
             - name: HASURA_GRAPHQL_DATABASE_URL
               # value: postgres://username:password@hostname:port/dbname
-              value: ${HASURA_GRAPHQL_DATABASE_URL}
+              value: ${DATABASE_URL}
             # enable the console served by server
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
               value: "true"
