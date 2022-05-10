@@ -11,48 +11,113 @@ datasource db {
 }
 
 model Profile {
-  id         Int              @id @default(autoincrement())
-  auth       String           @unique
-  name       String
+  // Fields
+  auth String @unique
+  name String
+
+  // Relations
   roles      RolesOfProfile[]
   businesses BusinessWorker[]
-  createdAt  DateTime         @default(now())
-  updatedAt  DateTime         @updatedAt
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Role {
-  id             Int              @id @default(autoincrement())
-  title          String
+  // Fields
+  title String
+
+  // Relations
   RolesOfProfile RolesOfProfile[]
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model RolesOfProfile {
-  id        Int      @id @default(autoincrement())
+  // Relations
   Profile   Profile? @relation(fields: [profileId], references: [id])
   profileId Int?
   Role      Role?    @relation(fields: [roleId], references: [id])
   roleId    Int?
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model City {
+  // Fields
+  name        String
+  stateId     Int
+  stateCode   String
+  countryId   Int
+  countryCode String
+  latitude    Decimal
+  longitude   Decimal
+  flag        Int
+  wikiDataId  String
+
+  // Relations
+  Business Business[]
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Business {
-  id        Int              @id @default(autoincrement())
-  name      String
-  workers   BusinessWorker[]
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
+  // Fields
+  name  String
+  email String?
+  phone String
+
+  // Relations
+  city               City                 @relation(fields: [cityId], references: [id])
+  cityId             Int
+  workers            BusinessWorker[]
+  BusinessCategories BusinessCategory[]
+  CategoryFieldValue CategoryFieldValue[]
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BusinessCategory {
+  // Relations
+  Business   Business? @relation(fields: [businessId], references: [id])
+  businessId Int?
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
 }
 
 model BusinessWorker {
-  id         Int       @id @default(autoincrement())
-  duty       Duty
+  // Fields
+  duty Duty
+
+  // Relations
   Profile    Profile?  @relation(fields: [profileId], references: [id])
   profileId  Int?
   Business   Business? @relation(fields: [businessId], references: [id])
   businessId Int?
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
 }
 
 enum Duty {
@@ -62,18 +127,54 @@ enum Duty {
 }
 
 model Category {
-  id   Int    @id @default(autoincrement())
+  // Fields
   name String
+
+  // Relations
+  fields             CategoryField[]
+  BusinessCategories BusinessCategory[]
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model CategoryField {
-  id      Int       @id @default(autoincrement())
-  type    FieldType
-  options String[]
+  // Fields
+  type     FieldType
+  required Boolean
+  options  String[]
+
+  // Relations
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+
+  CategoryFieldValue CategoryFieldValue[]
+  // Auto Generated
+  id                 Int                  @id @default(autoincrement())
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
 }
 
 enum FieldType {
   TEXT
   NUMBER
   SELECT
+}
+
+model CategoryFieldValue {
+  // Fields
+  value String
+
+  // Relations
+  CategoryField   CategoryField @relation(fields: [categoryFieldId], references: [id])
+  categoryFieldId Int
+  Business        Business      @relation(fields: [businessId], references: [id])
+  businessId      Int
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
