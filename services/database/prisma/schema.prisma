@@ -86,9 +86,10 @@ model Business {
   CategoryFieldValue CategoryFieldValue[]
 
   // Auto Generated
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Product   Product[]
 }
 
 model BusinessCategory {
@@ -133,6 +134,8 @@ model Category {
   // Relations
   fields             CategoryField[]
   BusinessCategories BusinessCategory[]
+  ProductCategories  ProductCategory[]
+
 
   // Auto Generated
   id        Int      @id @default(autoincrement())
@@ -172,6 +175,38 @@ model CategoryFieldValue {
   categoryFieldId Int
   Business        Business      @relation(fields: [businessId], references: [id])
   businessId      Int
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  // Fields
+  name         String
+  price        Int
+  quota        Int
+  mainImageUrl String
+  Images       String[]
+
+  // Relations
+  Business          Business          @relation(fields: [businessId], references: [id])
+  businessId        Int
+  ProductCategories ProductCategory[]
+
+  // Auto Generated
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductCategory {
+  // Relations
+  Product    Product?  @relation(fields: [productId], references: [id])
+  productId  Int?
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
 
   // Auto Generated
   id        Int      @id @default(autoincrement())
