@@ -188,7 +188,7 @@ model Product {
   price        Int
   quota        Int
   mainImageUrl String
-  Images       String[]
+  ImagesUrls   String[]
 
   // Relations
   Business          Business          @relation(fields: [businessId], references: [id])
