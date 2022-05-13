@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Shell } from './features/layout/shell';
+import { Shell } from './core/layout/shell';
+import { AppRoutes } from './core/navigation/app-routes';
 
 function App() {
     return (
         <>
-            <Shell/>
+            <AppRoutes />
         </>
     );
 }
