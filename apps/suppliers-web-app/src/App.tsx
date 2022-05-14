@@ -1,4 +1,5 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { RecoilRoot } from 'recoil';
 import './App.css';
 import { AppRoutes } from './core/navigation/app-routes';
 
@@ -20,9 +21,11 @@ let theme = createTheme({
 function App() {
     return (
         <>
-            <ThemeProvider theme={theme}>
-                <AppRoutes />
-            </ThemeProvider>
+            <RecoilRoot>
+                <ThemeProvider theme={theme}>
+                    <AppRoutes />
+                </ThemeProvider>
+            </RecoilRoot>
         </>
     );
 }
