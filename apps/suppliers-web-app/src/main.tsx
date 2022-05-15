@@ -11,7 +11,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <App />
     </React.StrictMode>
 );
-
-declare module '@mui/styles/defaultTheme' {
-    interface DefaultTheme extends Theme {}
-}
