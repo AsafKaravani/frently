@@ -1,6 +1,7 @@
 import { Box, Button, IconButton, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useSetRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 import { atom_pageName } from '../../core/navigation/page-name.state';
 import { useEffect } from 'react';
 import { useOnInit } from '../../utils/hooks/index';
@@ -20,6 +21,7 @@ const onSubmit = async (values) => {
 
 export function HomePage() {
     const s_setPageName = useSetRecoilState(atom_pageName);
+    const navigate = useNavigate();
 
     useOnInit(() => {
         s_setPageName('בית');
@@ -27,11 +29,24 @@ export function HomePage() {
 
     return (
         <Root className={classes.root}>
-            <Box sx={{ flex: 1 }}></Box>
+            <Box
+                sx={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    display: 'flex',
+                }}
+            >
+                <img
+                    src="../../../src/assets/imgs/business-3d-girl-with-coffee-1.png"
+                    width="71%"
+                />
+            </Box>
             <Button
                 sx={{ fontSize: 16, fontWeight: 600 }}
                 variant="outlined"
                 className={classes.newBusinessBtn}
+                onClick={() => navigate('/edit-business')}
             >
                 <i className="fa-solid fa-plus me" />
                 הוסף עסק
@@ -61,7 +76,7 @@ export function HomePage() {
                                 component="input"
                                 type="text"
                                 placeholder="שם העסק"
-                                autocomplete="off"
+                                autoComplete="off"
                             />
                             <IconButton
                                 aria-label="submit"
