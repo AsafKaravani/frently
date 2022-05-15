@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Outlet } from 'react-router-dom';
 import { Header } from './header';
+import { useWindowSize } from '../../utils/hooks/index';
 
 export function Shell() {
     return (
@@ -22,17 +23,21 @@ const classes = {
     content: `${PREFIX}-content`,
 };
 
-const Root = styled('div')(({ theme }) => ({
-    [`&.${classes.root}`]: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        background: theme.palette.background.default,
-    },
-    [`& .${classes.header}`]: {},
-    [`& .${classes.content}`]: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}));
+const Root = styled('div')(({ theme }) => {
+    const windowSize = useWindowSize();
+
+    return {
+        [`&.${classes.root}`]: {
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: windowSize.height,
+            background: theme.palette.background.default,
+        },
+        [`& .${classes.header}`]: {},
+        [`& .${classes.content}`]: {
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+        },
+    };
+});

@@ -37,14 +37,13 @@ export function HomePage() {
                 הוסף עסק
             </Button>
             <Typography
-                sx={{ marginBlockStart: 2, marginBlockEnd: 2, opacity: 0.6 }}
+                sx={{ marginBlockStart: 2, marginBlockEnd: 2, opacity: 0.3 }}
             >
                 או חפש עסק קיים
             </Typography>
-            <Box>
+            <Box sx={{ width: '100%', height: 55 }}>
                 <Form
                     onSubmit={onSubmit}
-                    initialValues={{ stooge: 'larry', employed: false }}
                     render={({
                         handleSubmit,
                         form,
@@ -61,7 +60,8 @@ export function HomePage() {
                                 name="firstName"
                                 component="input"
                                 type="text"
-                                placeholder="חפש עסק"
+                                placeholder="שם העסק"
+                                autocomplete="off"
                             />
                             <IconButton
                                 aria-label="submit"
@@ -105,19 +105,12 @@ const Root = styled('div')(
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: 'solid 1px',
                 width: '200px',
                 height: '100px',
                 borderRadius: 10,
                 cursor: 'pointer',
-            },
-
-            [`& .${classes.searchInput}`]: {
-                width: '100%',
+                background: 'white',
                 border: 'none',
-                background: theme.palette.background.default,
-                paddingInlineStart: 10,
-                borderRadius: 5,
             },
 
             [`& .${classes.searchForm}`]: {
@@ -126,6 +119,16 @@ const Root = styled('div')(
                 width: '100%',
                 padding: 10,
                 paddingInlineEnd: 5,
+                height: '100%',
+            },
+
+            [`& .${classes.searchInput}`]: {
+                width: '100%',
+                border: 'none',
+                background: theme.palette.background.default,
+                paddingInlineStart: 10,
+                borderRadius: 5,
+                outline: 'none',
             },
         } as StyleSheetMap)
 );
