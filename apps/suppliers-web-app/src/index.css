@@ -8,8 +8,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body * {
-    font-family: 'Heebo';
+:not(i) {
+    font-family: 'Heebo' !important;
 }
 
 code {
