@@ -2,6 +2,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { RecoilRoot } from 'recoil';
 import './App.css';
 import { AppRoutes } from './core/navigation/app-routes';
+import { StateDebugObserver } from './core/state-debugger';
 
 let theme = createTheme({
     direction: 'rtl',

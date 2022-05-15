@@ -1,4 +1,4 @@
-import { styled } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 import { Outlet } from 'react-router-dom';
 import { Header } from './header';
 
@@ -32,5 +32,7 @@ const Root = styled('div')(({ theme }) => ({
     [`& .${classes.header}`]: {},
     [`& .${classes.content}`]: {
         flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
     },
 }));
