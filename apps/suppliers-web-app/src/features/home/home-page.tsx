@@ -60,12 +60,7 @@ export function HomePage() {
                     display: 'flex',
                 }}
             >
-                {[
-                    lastBusinessesQuery.data?.Business[0],
-                    lastBusinessesQuery.data?.Business[0],
-                    lastBusinessesQuery.data?.Business[0],
-                    lastBusinessesQuery.data?.Business[0],
-                ].map((business) => (
+                {lastBusinessesQuery.data?.Business.map((business) => (
                     <Button
                         variant="text"
                         className={classes.lastBusinessesContainer}
