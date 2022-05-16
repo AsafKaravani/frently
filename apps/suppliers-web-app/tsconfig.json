@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+        "baseUrl": "./",
+    "paths": {
+        "@generated/*": [ "generated/*" ],
+        "@assets/*": [ "src/assets/*" ],
+        "@core/*": [ "src/core/*" ],
+        "@features/*": [ "src/features/*" ],
+        "@utils/*": [ "src/utils/*" ],
+        "@services/*": [ "src/services/*" ],
+    },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],

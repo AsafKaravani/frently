@@ -24,3 +24,7 @@ i.ms {
 i.me {
   margin-inline-end: 5px;
 }
+
+*::-webkit-scrollbar {
+  display: none;
+}

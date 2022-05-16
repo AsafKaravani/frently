@@ -1,19 +1,12 @@
-import { Box, Button, IconButton, Typography } from '@mui/material';
+import { Box, Button, Chip, IconButton, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
-import { atom_pageName } from '../../core/navigation/page-name.state';
-import { useEffect } from 'react';
-import { useOnInit } from '../../utils/hooks/index';
-import { StyledOptions } from '@emotion/styled';
-import { StyleSheetMap } from '../../utils/types/index';
-import {
-    Interpolation,
-    MUIStyledCommonProps,
-    MuiStyledOptions,
-    Theme,
-} from '@mui/system';
+import { atom_pageName } from '@core/navigation/page-name.state';
+import { useOnInit } from '@utils/hooks';
+import { StyleSheetMap } from '@utils/types';
 import { Form, Field } from 'react-final-form';
+import { useTypedQuery_lastBusiness } from './gql-hooks';
 
 const onSubmit = async (values) => {
     window.alert(JSON.stringify(values, 0, 2));
@@ -22,6 +15,7 @@ const onSubmit = async (values) => {
 export function HomePage() {
     const s_setPageName = useSetRecoilState(atom_pageName);
     const navigate = useNavigate();
+    const lastBusinessesQuery = useTypedQuery_lastBusiness(5);
 
     useOnInit(() => {
         s_setPageName('בית');
@@ -51,11 +45,64 @@ export function HomePage() {
                 <i className="fa-solid fa-plus me" />
                 הוסף עסק
             </Button>
+
             <Typography
                 sx={{ marginBlockStart: 2, marginBlockEnd: 2, opacity: 0.3 }}
             >
                 או חפש עסק קיים
             </Typography>
+
+            <Box
+                sx={{
+                    marginBlockEnd: 2,
+                    width: '100%',
+                    overflow: 'scroll',
+                    display: 'flex',
+                }}
+            >
+                {[
+                    lastBusinessesQuery.data?.Business[0],
+                    lastBusinessesQuery.data?.Business[0],
+                    lastBusinessesQuery.data?.Business[0],
+                    lastBusinessesQuery.data?.Business[0],
+                ].map((business) => (
+                    <Button
+                        variant="text"
+                        className={classes.lastBusinessesContainer}
+                    >
+                        <Chip
+                            label={
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'flex-end',
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            fontSize: '1em',
+                                        }}
+                                    >
+                                        {business?.name}
+                                    </Typography>
+                                    <Typography
+                                        sx={{
+                                            fontSize: '0.8em',
+                                            marginInlineStart: 0.5,
+                                            color: '#0000004d',
+                                        }}
+                                    >
+                                        {business?.City.name}
+                                    </Typography>
+                                </Box>
+                            }
+                            color="primary"
+                            sx={{ background: 'white', border: 'none' }}
+                            variant="outlined"
+                        />
+                    </Button>
+                ))}
+            </Box>
             <Box sx={{ width: '100%', height: 55 }}>
                 <Form
                     onSubmit={onSubmit}
@@ -102,6 +149,7 @@ const classes = {
     newBusinessBtn: `${PREFIX}-new-business-btn`,
     searchInput: `${PREFIX}-search-input`,
     searchForm: `${PREFIX}-search-form`,
+    lastBusinessesContainer: `${PREFIX}-last-businesses-container`,
 };
 
 const Root = styled('div')(
@@ -144,6 +192,19 @@ const Root = styled('div')(
                 paddingInlineStart: 10,
                 borderRadius: 5,
                 outline: 'none',
+            },
+
+            [`& .${classes.lastBusinessesContainer}`]: {
+                padding: 0,
+                borderRadius: 100,
+                marginInlineStart: 10,
+                flex: 'none',
+                scrollbarWidth: 'none',
+                scrollbarGutter: 0,
+            },
+
+            [`& .${classes.lastBusinessesContainer}::-webkit-scrollbar`]: {
+                display: 'none',
             },
         } as StyleSheetMap)
 );
