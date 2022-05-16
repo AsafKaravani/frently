@@ -1,7 +1,7 @@
 import { order_by } from '@generated/zeus';
-import { useTypedQuery } from '@generated/zeus/apollo';
-export const useTypedQuery_lastBusiness = (limit: number) =>
-    useTypedQuery({
+import { useTypedSubscription } from '@generated/zeus/apollo';
+export const useTypedSubsciption_lastBusiness = (limit: number) =>
+    useTypedSubscription({
         Business: [
             {
                 order_by: [
@@ -12,6 +12,7 @@ export const useTypedQuery_lastBusiness = (limit: number) =>
                 limit: limit,
             },
             {
+                id: true,
                 name: true,
                 City: {
                     name: true,

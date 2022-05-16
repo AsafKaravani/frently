@@ -9,7 +9,7 @@
         "zeus": "zeus $VITE_FRENTLY_GRAPHQL_ENDPOINT ./generated --apollo --ts"
     },
     "dependencies": {
-        "@apollo/client": "^3.6.2",
+        "@apollo/client": "3.2.9",
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
         "@mui/icons-material": "^5.6.2",
@@ -18,12 +18,14 @@
         "@mui/system": "^5.7.0",
         "aws-sdk": "^2.1133.0",
         "final-form": "^4.20.7",
+        "graphql-ws": "^5.8.2",
         "graphql-zeus": "^5.0.2",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-final-form": "^6.5.9",
         "react-router-dom": "6",
         "recoil": "^0.7.3-alpha.2",
+        "subscriptions-transport-ws": "^0.11.0",
         "vite-tsconfig-paths": "^3.4.1"
     },
     "devDependencies": {

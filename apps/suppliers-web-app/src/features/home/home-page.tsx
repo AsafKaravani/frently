@@ -1,4 +1,11 @@
-import { Box, Button, Chip, IconButton, Typography } from '@mui/material';
+import {
+    Box,
+    Button,
+    Chip,
+    CircularProgress,
+    IconButton,
+    Typography,
+} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +13,8 @@ import { atom_pageName } from '@core/navigation/page-name.state';
 import { useOnInit } from '@utils/hooks';
 import { StyleSheetMap } from '@utils/types';
 import { Form, Field } from 'react-final-form';
-import { useTypedQuery_lastBusiness } from './gql-hooks';
+import { useTypedSubsciption_lastBusiness } from './gql-hooks';
+import { useState } from 'react';
 
 const onSubmit = async (values) => {
     window.alert(JSON.stringify(values, 0, 2));
@@ -15,10 +23,13 @@ const onSubmit = async (values) => {
 export function HomePage() {
     const s_setPageName = useSetRecoilState(atom_pageName);
     const navigate = useNavigate();
-    const lastBusinessesQuery = useTypedQuery_lastBusiness(5);
+    const lastBusinessesSubscription = useTypedSubsciption_lastBusiness(5);
+
+    const [, forceUpdate] = useState({});
 
     useOnInit(() => {
         s_setPageName('בית');
+        forceUpdate({});
     });
 
     return (
@@ -58,45 +69,53 @@ export function HomePage() {
                     width: '100%',
                     overflow: 'scroll',
                     display: 'flex',
+                    justifyContent: 'center',
                 }}
             >
-                {lastBusinessesQuery.data?.Business.map((business) => (
-                    <Button
-                        variant="text"
-                        className={classes.lastBusinessesContainer}
-                    >
-                        <Chip
-                            label={
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: '1em',
-                                        }}
-                                    >
-                                        {business?.name}
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '0.8em',
-                                            marginInlineStart: 0.5,
-                                            color: '#0000004d',
-                                        }}
-                                    >
-                                        {business?.City.name}
-                                    </Typography>
-                                </Box>
-                            }
-                            color="primary"
-                            sx={{ background: 'white', border: 'none' }}
-                            variant="outlined"
-                        />
-                    </Button>
-                ))}
+                {lastBusinessesSubscription.loading && (
+                    <CircularProgress className={classes.loading} />
+                )}
+                {!lastBusinessesSubscription.loading &&
+                    lastBusinessesSubscription.data?.Business.map(
+                        (business) => (
+                            <Button
+                                key={business.id}
+                                variant="text"
+                                className={classes.businessBtn}
+                            >
+                                <Chip
+                                    label={
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                alignItems: 'flex-end',
+                                            }}
+                                        >
+                                            <Typography
+                                                sx={{
+                                                    fontSize: '1em',
+                                                }}
+                                            >
+                                                {business?.name}
+                                            </Typography>
+                                            <Typography
+                                                sx={{
+                                                    fontSize: '0.8em',
+                                                    marginInlineStart: 0.5,
+                                                    color: '#0000004d',
+                                                }}
+                                            >
+                                                {business?.City.name}
+                                            </Typography>
+                                        </Box>
+                                    }
+                                    color="primary"
+                                    sx={{ background: 'white', border: 'none' }}
+                                    variant="outlined"
+                                />
+                            </Button>
+                        )
+                    )}
             </Box>
             <Box sx={{ width: '100%', height: 55 }}>
                 <Form
@@ -144,7 +163,8 @@ const classes = {
     newBusinessBtn: `${PREFIX}-new-business-btn`,
     searchInput: `${PREFIX}-search-input`,
     searchForm: `${PREFIX}-search-form`,
-    lastBusinessesContainer: `${PREFIX}-last-businesses-container`,
+    businessBtn: `${PREFIX}-businesses-btn`,
+    loading: `${PREFIX}-loading`,
 };
 
 const Root = styled('div')(
@@ -189,7 +209,7 @@ const Root = styled('div')(
                 outline: 'none',
             },
 
-            [`& .${classes.lastBusinessesContainer}`]: {
+            [`& .${classes.businessBtn}`]: {
                 padding: 0,
                 borderRadius: 100,
                 marginInlineStart: 10,
@@ -198,8 +218,12 @@ const Root = styled('div')(
                 scrollbarGutter: 0,
             },
 
-            [`& .${classes.lastBusinessesContainer}::-webkit-scrollbar`]: {
+            [`& .${classes.businessBtn}::-webkit-scrollbar`]: {
                 display: 'none',
+            },
+            [`& .${classes.loading}`]: {
+                width: '20px !important',
+                height: '20px !important',
             },
         } as StyleSheetMap)
 );
