@@ -56,3 +56,13 @@ html[dir='rtl'] *[inputmode='numeric'] {
     direction: ltr;
     text-align: right;
 }
+
+html[dir='rtl'] .MuiSelect-icon {
+    left: 7px !important;
+    right: auto;
+}
+
+html[dir='rtl'] .MuiSelect-select {
+    padding-left: 32px !important;
+    padding-right: 14px !important;
+}

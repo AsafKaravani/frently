@@ -75,10 +75,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-    // const [, forceRerender] = useState({});
-    // useOnInit(() => {
-    //     forceRerender({});
-    // });
     return (
         <>
             <ApolloProvider client={client}>

@@ -14,8 +14,19 @@ import {
     TextFieldProps,
     InputLabel,
     Input,
+    Button,
+    Select,
+    MenuItem,
+    CircularProgress,
 } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
+
 import { PhoneNumberMask } from '@utils/components/phone-number-mask';
+import { useTypedQuery } from '../../../generated/zeus/apollo';
+import {
+    useTypedMutation_insertBusiness,
+    useTypedQuery_getCities,
+} from './gql-hooks';
 
 const formControlStyle: TextFieldProps = {
     variant: 'outlined',
@@ -32,9 +43,36 @@ export function EditBusinessPage() {
     const [businessForm, setBusinessFormField, handleBusinessFormFieldChange] =
         useFormHandler<GraphQLTypes['Business_insert_input']>({});
 
+    const [
+        insertBusiness,
+        {
+            data: dataInsertBusiness,
+            loading: loadingInsertBusiness,
+            error: errorInsertBusiness,
+        },
+    ] = useTypedMutation_insertBusiness(businessForm);
+    console.log(
+        'useTypedMutation_insertBusiness',
+        dataInsertBusiness,
+        loadingInsertBusiness,
+        errorInsertBusiness
+    );
+
+    const {
+        loading: loadingCities,
+        error: errorCities,
+        data: dataCities,
+    } = useTypedQuery_getCities();
+
+    const upsertBusiness: React.FormEventHandler<HTMLFormElement> = (event) => {
+        console.log(businessForm);
+        insertBusiness();
+        event.preventDefault();
+    };
+
     return (
         <Root className={classes.root}>
-            <form dir="rtl">
+            <form dir="rtl" onSubmit={upsertBusiness}>
                 <Typography variant="caption" sx={{ marginBlockEnd: 2 }}>
                     שימו לב למלא את הפרטים הבסיסיים ורק לאחר מכן תוכלו להוסיף
                     מוצרים או קטגוריות לעסק.
@@ -45,6 +83,8 @@ export function EditBusinessPage() {
                             id="name"
                             label="שם העסק"
                             {...formControlStyle}
+                            onChange={handleBusinessFormFieldChange}
+                            name="name"
                         />
                     </FormControl>
                     <FormControl>
@@ -52,6 +92,8 @@ export function EditBusinessPage() {
                             id="outlined-basic"
                             label="אימייל"
                             {...formControlStyle}
+                            onChange={handleBusinessFormFieldChange}
+                            name="email"
                         />
                     </FormControl>
                     <FormControl variant="standard">
@@ -67,6 +109,41 @@ export function EditBusinessPage() {
                             }}
                         />
                     </FormControl>
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">
+                            {loadingCities ? (
+                                <CircularProgress
+                                    sx={{
+                                        width: '20px !important',
+                                        height: '20px !important',
+                                    }}
+                                />
+                            ) : (
+                                'עיר'
+                            )}
+                        </InputLabel>
+                        <Select
+                            {...formControlStyle}
+                            value={businessForm.cityId || ''}
+                            label="עיר"
+                            name="cityId"
+                            onChange={handleBusinessFormFieldChange as any}
+                        >
+                            {dataCities?.City.map((city) => (
+                                <MenuItem key={city.id} value={city.id}>
+                                    {city.name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <LoadingButton
+                        variant="contained"
+                        type="submit"
+                        disableElevation
+                        loading={loadingInsertBusiness}
+                    >
+                        שמור
+                    </LoadingButton>
                 </FormGroup>
             </form>
         </Root>
