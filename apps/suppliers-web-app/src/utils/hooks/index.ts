@@ -29,3 +29,29 @@ export function useWindowSize() {
     }, []); // Empty array ensures that effect is only run on mount
     return windowSize;
 }
+
+export function useFormHandler<T = Record<string, any>>(initialState: T) {
+    const [state, setState] = useState(initialState);
+
+    const handleFieldChange: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    const setStateKey = (key: string, value: string | number | boolean) => {
+        setState({
+            ...state,
+            [key]: value,
+        });
+    };
+
+    return [state, setStateKey, handleFieldChange] as [
+        typeof state,
+        typeof setStateKey,
+        typeof handleFieldChange
+    ];
+}

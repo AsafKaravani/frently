@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { atom_pageName } from '../navigation/page-name.state';
+import { StyleSheetMap } from '@utils/types/index';
 
 export function Header() {
     const s_pageName = useRecoilValue(atom_pageName);
@@ -15,7 +16,7 @@ export function Header() {
     return (
         <Root className={classes.root}>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
+                <AppBar position="static" className={classes.appBar}>
                     <Toolbar>
                         <IconButton
                             size="large"
@@ -43,8 +44,17 @@ export function Header() {
 const PREFIX = 'Header';
 const classes = {
     root: `${PREFIX}-root`,
+    appBar: `${PREFIX}-app-bar`,
 };
 
-const Root = styled('div')(({ theme }) => ({
-    [`&.${classes.root}`]: {},
-}));
+const Root = styled('div')(
+    ({ theme }) =>
+        ({
+            [`&.${classes.root}`]: {},
+            [`& .${classes.appBar}`]: {
+                backgroundColor: 'white',
+                color: theme.palette.primary.main,
+                boxShadow: 'none',
+            },
+        } as StyleSheetMap)
+);

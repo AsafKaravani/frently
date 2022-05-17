@@ -6,11 +6,9 @@ import {
     HttpLink,
 } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
-import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 
-import { createClient } from 'graphql-ws';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { RecoilRoot } from 'recoil';
 import './App.css';
@@ -18,8 +16,6 @@ import { AppRoutes } from './core/navigation/app-routes';
 const env = import.meta.env;
 
 import { StateDebugObserver } from './core/state-debugger';
-import { useState } from 'react';
-import { useOnInit } from './utils/hooks/index';
 
 let theme = createTheme({
     direction: 'rtl',
@@ -28,7 +24,7 @@ let theme = createTheme({
             main: '#0052cc',
         },
         secondary: {
-            main: '#edf2ff',
+            main: '#B8B2F2',
         },
         background: {
             default: '#edf2ff',

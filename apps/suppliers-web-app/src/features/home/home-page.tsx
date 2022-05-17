@@ -16,8 +16,10 @@ import { Form, Field } from 'react-final-form';
 import { useTypedSubsciption_lastBusiness } from './gql-hooks';
 import { useState } from 'react';
 
-const onSubmit = async (values) => {
-    window.alert(JSON.stringify(values, 0, 2));
+const onSubmit = async (values: any) => {
+    console.log('====================================');
+    console.log(values);
+    console.log('====================================');
 };
 
 export function HomePage() {
@@ -60,7 +62,7 @@ export function HomePage() {
             <Typography
                 sx={{ marginBlockStart: 2, marginBlockEnd: 2, opacity: 0.3 }}
             >
-                או חפש עסק קיים
+                עסקים שנוספו לאחרונה
             </Typography>
 
             <Box
@@ -69,7 +71,9 @@ export function HomePage() {
                     width: '100%',
                     overflow: 'scroll',
                     display: 'flex',
-                    justifyContent: 'center',
+                    justifyContent: lastBusinessesSubscription.loading
+                        ? 'center'
+                        : 'flex-start',
                 }}
             >
                 {lastBusinessesSubscription.loading && (

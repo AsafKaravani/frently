@@ -2886,6 +2886,13 @@ eslint-plugin-react@latest:
   languageName: node
   linkType: hard
 
+"imask@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "imask@npm:6.4.2"
+  checksum: a713aec87f23b1b095aa3a515311222346211dc544bfcae25d4a0aa3bca9a8c13a3269985d8b913cd9af013b733cdae7f81278988d04a9a34b173744b081c0e9
+  languageName: node
+  linkType: hard
+
 "import-fresh@npm:^3.0.0, import-fresh@npm:^3.1.0, import-fresh@npm:^3.2.1":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
@@ -3937,6 +3944,18 @@ eslint-plugin-react@latest:
   languageName: node
   linkType: hard
 
+"react-imask@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "react-imask@npm:6.4.2"
+  dependencies:
+    imask: ^6.4.2
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=0.14.0"
+  checksum: be31fca7780ca5592b59b44ca3789124ebd2c35903711eb85c1668f069e3d1c9bc2f332dd69e2a2d97513f63a75e4565c4c6310dcb1005d9c7585ae60b9f44a3
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -4473,6 +4492,7 @@ eslint-plugin-react@latest:
     react: ^18.0.0
     react-dom: ^18.0.0
     react-final-form: ^6.5.9
+    react-imask: ^6.4.2
     react-router-dom: 6
     recoil: ^0.7.3-alpha.2
     subscriptions-transport-ws: ^0.11.0

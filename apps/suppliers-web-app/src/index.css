@@ -1,11 +1,11 @@
 body {
-  margin: 0;
-  font-family: 'Heebo' ,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  font-family: 'Heebo', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    font-family: 'Heebo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 :not(i) {
@@ -13,18 +13,46 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
 }
 
 i.ms {
-  margin-inline-start: 5px;
+    margin-inline-start: 5px;
 }
 
 i.me {
-  margin-inline-end: 5px;
+    margin-inline-end: 5px;
 }
 
 *::-webkit-scrollbar {
-  display: none;
+    display: none;
+}
+
+.MuiTypography-caption {
+    opacity: 0.6;
+}
+
+html[dir='rtl'] .MuiInputLabel-formControl {
+    right: 0;
+    width: min-content;
+    transform-origin: right;
+    transform: translate(-14px, 16px) scale(1);
+    text-align: right;
+}
+html[dir='rtl'] .MuiOutlinedInput-notchedOutline {
+    text-align: right;
+}
+
+html[dir='rtl'] .MuiInputLabel-formControl.MuiInputLabel-shrink {
+    transform: translate(-14px, -11px) scale(0.75);
+}
+
+.MuiTypography-caption {
+    display: block;
+}
+
+html[dir='rtl'] *[inputmode='numeric'] {
+    direction: ltr;
+    text-align: right;
 }
