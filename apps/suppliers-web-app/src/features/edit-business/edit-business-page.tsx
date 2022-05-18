@@ -27,6 +27,7 @@ import {
     useTypedMutation_insertBusiness,
     useTypedQuery_getCities,
 } from './gql-hooks';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const formControlStyle: TextFieldProps = {
     variant: 'outlined',
@@ -40,6 +41,9 @@ export function EditBusinessPage() {
         s_setPageName('עמוד עסק');
     });
 
+    const [searchParams, setSearchParams] = useSearchParams();
+    const businessIdToEdit = searchParams.get('businessId');
+    
     const { enqueueSnackbar } = useSnackbar();
 
     const [businessForm, setBusinessFormField, handleBusinessFormFieldChange] =
@@ -54,14 +58,11 @@ export function EditBusinessPage() {
         },
     ] = useTypedMutation_insertBusiness(businessForm, {
         onCompleted: (data => {
-            enqueueSnackbar('saved', {variant: 'success'})
-            console.log(data);
-            
+            enqueueSnackbar('עסק נוסף בהצלחה.', {variant: 'success'});
+            setSearchParams({businessId: data.insert_Business_one?.id});
         }),
-        onError: (err => {
-            enqueueSnackbar('failed', {variant: 'error'})
-            console.log(err);
-        })
+        onError: err => enqueueSnackbar('הוספת עסק נכשלה.', {variant: 'error'})
+
     });
     console.log(
         'useTypedMutation_insertBusiness',
@@ -77,8 +78,11 @@ export function EditBusinessPage() {
     } = useTypedQuery_getCities();
 
     const upsertBusiness: React.FormEventHandler<HTMLFormElement> = (event) => {
-        console.log(businessForm);
-        insertBusiness();
+        if (businessIdToEdit) {
+            enqueueSnackbar('ערוך עסק')
+        } else {
+            insertBusiness();
+        }
         event.preventDefault();
     };
 
@@ -154,7 +158,7 @@ export function EditBusinessPage() {
                         disableElevation
                         loading={loadingInsertBusiness}
                     >
-                        שמור
+                        {businessIdToEdit ? 'עדכן' : 'שמור'}
                     </LoadingButton>
                 </FormGroup>
             </form>
