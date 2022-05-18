@@ -58,7 +58,9 @@ const errorLink = onError((error) => {
 });
 
 const client = new ApolloClient({
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+        addTypename: false,
+    }),
     link: errorLink.concat(
         split(
             // split based on operation type

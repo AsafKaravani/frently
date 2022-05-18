@@ -49,9 +49,10 @@ export function useFormHandler<T = Record<string, any>>(initialState: T) {
         });
     };
 
-    return [state, setStateKey, handleFieldChange] as [
+    return [state, setStateKey, handleFieldChange, setState] as [
         typeof state,
         typeof setStateKey,
-        typeof handleFieldChange
+        typeof handleFieldChange,
+        typeof setState
     ];
 }

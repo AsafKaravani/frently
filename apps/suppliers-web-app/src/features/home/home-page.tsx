@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useSetRecoilState } from 'recoil';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 import { atom_pageName } from '@core/navigation/page-name.state';
 import { useOnInit } from '@utils/hooks';
 import { StyleSheetMap } from '@utils/types';
@@ -86,6 +86,14 @@ export function HomePage() {
                                 key={business.id}
                                 variant="text"
                                 className={classes.businessBtn}
+                                onClick={() =>
+                                    navigate({
+                                        pathname: 'edit-business',
+                                        search: createSearchParams({
+                                            businessId: business.id.toString(),
+                                        }).toString(),
+                                    })
+                                }
                             >
                                 <Chip
                                     label={
@@ -228,6 +236,7 @@ const Root = styled('div')(
             [`& .${classes.loading}`]: {
                 width: '20px !important',
                 height: '20px !important',
+                marginBlockEnd: '12px',
             },
         } as StyleSheetMap)
 );

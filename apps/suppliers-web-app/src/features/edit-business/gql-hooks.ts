@@ -3,26 +3,54 @@ import { GraphQLTypes } from '@generated/zeus/index';
 import { useTypedQuery } from '@generated/zeus/apollo';
 import { order_by } from '@generated/zeus';
 export const useTypedMutation_insertBusiness = (
-    business: GraphQLTypes['Business_insert_input'], options?: Parameters<typeof useTypedMutation>[1]
+    business: GraphQLTypes['Business_insert_input'],
+    options?: Parameters<typeof useTypedMutation>[1]
 ) =>
-    useTypedMutation({
-        insert_Business_one: [
-            {
-                object: {
-                    ...business,
-                    updatedAt: new Date().toISOString(),
-                    phone: business.phone?.replace(/\D/g, ''),
+    useTypedMutation(
+        {
+            insert_Business_one: [
+                {
+                    object: {
+                        ...business,
+                        updatedAt: new Date().toISOString(),
+                        phone: business.phone?.replace(/\D/g, ''),
+                    },
                 },
-            },
-            {
-                id: true,
-                name: true,
-                City: {
+                {
+                    id: true,
+                    name: true,
+                    City: {
+                        name: true,
+                    },
+                },
+            ],
+        },
+        options as any
+    );
+
+export const useTypedMutation_updateBusiness = (
+    business: GraphQLTypes['Business_set_input'],
+    options?: Parameters<typeof useTypedMutation>[1]
+) =>
+    useTypedMutation(
+        {
+            update_Business_by_pk: [
+                {
+                    pk_columns: { id: business.id as number },
+                    _set: {
+                        ...business,
+                        updatedAt: new Date().toISOString(),
+                        phone: business.phone?.replace(/\D/g, ''),
+                    },
+                },
+                {
+                    id: true,
                     name: true,
                 },
-            },
-        ],
-    }, options as any);
+            ],
+        },
+        options as any
+    );
 
 export const useTypedQuery_getCities = () =>
     useTypedQuery({
@@ -38,5 +66,13 @@ export const useTypedQuery_getCities = () =>
                 id: true,
                 name: true,
             },
+        ],
+    });
+
+export const useTypedQuery_getBusiness = (businessId: number) =>
+    useTypedQuery({
+        Business_by_pk: [
+            { id: businessId },
+            { name: true, email: true, phone: true, cityId: true, id: true },
         ],
     });

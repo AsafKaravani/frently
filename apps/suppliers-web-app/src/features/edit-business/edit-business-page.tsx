@@ -3,7 +3,7 @@ import { useSetRecoilState } from 'recoil';
 import { StyleSheetMap } from '@utils/types';
 import { atom_pageName } from '@core/navigation/page-name.state';
 import { useOnInit } from '@utils/hooks';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GraphQLTypes } from '@generated/zeus/index';
 import { useFormHandler } from '../../utils/hooks/index';
 import {
@@ -28,6 +28,10 @@ import {
     useTypedQuery_getCities,
 } from './gql-hooks';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import {
+    useTypedQuery_getBusiness,
+    useTypedMutation_updateBusiness,
+} from './gql-hooks';
 
 const formControlStyle: TextFieldProps = {
     variant: 'outlined',
@@ -43,11 +47,29 @@ export function EditBusinessPage() {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const businessIdToEdit = searchParams.get('businessId');
-    
+    const isEditMode = !!businessIdToEdit;
+    const {
+        loading: loadingBusiness,
+        error: errorBusiness,
+        data: dataBusiness,
+    } = useTypedQuery_getBusiness(Number.parseInt(businessIdToEdit || '-1'));
+    console.log('dataBusiness', dataBusiness);
+
     const { enqueueSnackbar } = useSnackbar();
 
-    const [businessForm, setBusinessFormField, handleBusinessFormFieldChange] =
-        useFormHandler<GraphQLTypes['Business_insert_input']>({});
+    const [
+        businessForm,
+        setBusinessFormField,
+        handleBusinessFormFieldChange,
+        setFormValues,
+    ] = useFormHandler<GraphQLTypes['Business_insert_input']>(
+        dataBusiness?.Business_by_pk || {}
+    );
+
+    useEffect(
+        () => setFormValues(dataBusiness?.Business_by_pk || {}),
+        [dataBusiness]
+    );
 
     const [
         insertBusiness,
@@ -57,19 +79,33 @@ export function EditBusinessPage() {
             error: errorInsertBusiness,
         },
     ] = useTypedMutation_insertBusiness(businessForm, {
-        onCompleted: (data => {
-            enqueueSnackbar('עסק נוסף בהצלחה.', {variant: 'success'});
-            setSearchParams({businessId: data.insert_Business_one?.id});
-        }),
-        onError: err => enqueueSnackbar('הוספת עסק נכשלה.', {variant: 'error'})
-
+        onCompleted: (data) => {
+            enqueueSnackbar('עסק נוסף בהצלחה.', { variant: 'success' });
+            setSearchParams({
+                businessId: data.insert_Business_one?.id,
+            } as any);
+        },
+        onError: (err) =>
+            enqueueSnackbar('הוספת עסק נכשלה.', { variant: 'error' }),
     });
-    console.log(
-        'useTypedMutation_insertBusiness',
-        dataInsertBusiness,
-        loadingInsertBusiness,
-        errorInsertBusiness
-    );
+
+    const [
+        updateBusiness,
+        {
+            data: dataUpdateBusiness,
+            loading: loadingUpdateBusiness,
+            error: errorUpdateBusiness,
+        },
+    ] = useTypedMutation_updateBusiness(businessForm, {
+        onCompleted: (data) => {
+            enqueueSnackbar('עסק עודכן בהצלחה.', { variant: 'success' });
+            setSearchParams({
+                businessId: data.update_Business_by_pk?.id,
+            } as any);
+        },
+        onError: (err) =>
+            enqueueSnackbar('עדכון עסק נכשל.', { variant: 'error' }),
+    });
 
     const {
         loading: loadingCities,
@@ -78,8 +114,8 @@ export function EditBusinessPage() {
     } = useTypedQuery_getCities();
 
     const upsertBusiness: React.FormEventHandler<HTMLFormElement> = (event) => {
-        if (businessIdToEdit) {
-            enqueueSnackbar('ערוך עסק')
+        if (isEditMode) {
+            updateBusiness();
         } else {
             insertBusiness();
         }
@@ -99,6 +135,8 @@ export function EditBusinessPage() {
                             id="name"
                             label="שם העסק"
                             {...formControlStyle}
+                            defaultValue={isEditMode ? ' ' : ''}
+                            value={businessForm.name}
                             onChange={handleBusinessFormFieldChange}
                             name="name"
                         />
@@ -108,6 +146,8 @@ export function EditBusinessPage() {
                             id="outlined-basic"
                             label="אימייל"
                             {...formControlStyle}
+                            defaultValue={isEditMode ? ' ' : ''}
+                            value={businessForm.email}
                             onChange={handleBusinessFormFieldChange}
                             name="email"
                         />
