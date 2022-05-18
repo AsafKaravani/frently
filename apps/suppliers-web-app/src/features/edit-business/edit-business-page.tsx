@@ -20,7 +20,7 @@ import {
     CircularProgress,
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
-
+import { VariantType, useSnackbar } from 'notistack';
 import { PhoneNumberMask } from '@utils/components/phone-number-mask';
 import { useTypedQuery } from '../../../generated/zeus/apollo';
 import {
@@ -40,6 +40,8 @@ export function EditBusinessPage() {
         s_setPageName('עמוד עסק');
     });
 
+    const { enqueueSnackbar } = useSnackbar();
+
     const [businessForm, setBusinessFormField, handleBusinessFormFieldChange] =
         useFormHandler<GraphQLTypes['Business_insert_input']>({});
 
@@ -50,7 +52,17 @@ export function EditBusinessPage() {
             loading: loadingInsertBusiness,
             error: errorInsertBusiness,
         },
-    ] = useTypedMutation_insertBusiness(businessForm);
+    ] = useTypedMutation_insertBusiness(businessForm, {
+        onCompleted: (data => {
+            enqueueSnackbar('saved', {variant: 'success'})
+            console.log(data);
+            
+        }),
+        onError: (err => {
+            enqueueSnackbar('failed', {variant: 'error'})
+            console.log(err);
+        })
+    });
     console.log(
         'useTypedMutation_insertBusiness',
         dataInsertBusiness,

@@ -16,6 +16,7 @@ import { AppRoutes } from './core/navigation/app-routes';
 const env = import.meta.env;
 
 import { StateDebugObserver } from './core/state-debugger';
+import { SnackbarProvider } from 'notistack';
 
 let theme = createTheme({
     direction: 'rtl',
@@ -79,10 +80,12 @@ function App() {
         <>
             <ApolloProvider client={client}>
                 <RecoilRoot>
-                    <StateDebugObserver />
-                    <ThemeProvider theme={theme}>
-                        <AppRoutes />
-                    </ThemeProvider>
+                    {/* <StateDebugObserver /> */}
+                    <SnackbarProvider>
+                        <ThemeProvider theme={theme}>
+                            <AppRoutes />
+                        </ThemeProvider>
+                    </SnackbarProvider>
                 </RecoilRoot>
             </ApolloProvider>
         </>

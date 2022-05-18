@@ -3,7 +3,7 @@ import { GraphQLTypes } from '@generated/zeus/index';
 import { useTypedQuery } from '@generated/zeus/apollo';
 import { order_by } from '@generated/zeus';
 export const useTypedMutation_insertBusiness = (
-    business: GraphQLTypes['Business_insert_input']
+    business: GraphQLTypes['Business_insert_input'], options?: Parameters<typeof useTypedMutation>[1]
 ) =>
     useTypedMutation({
         insert_Business_one: [
@@ -22,7 +22,7 @@ export const useTypedMutation_insertBusiness = (
                 },
             },
         ],
-    });
+    }, options as any);
 
 export const useTypedQuery_getCities = () =>
     useTypedQuery({
