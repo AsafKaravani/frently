@@ -20,7 +20,7 @@ spec:
           imagePullPolicy: IfNotPresent
           name: hasura
           env:
-            - name: HASURA_GRAPHQL_FRENTLY_DATABASE_URL
+            - name: HASURA_GRAPHQL_DATABASE_URL
               # value: postgres://username:password@hostname:port/dbname
               value: ${FRENTLY_DATABASE_URL}
             # enable the console served by server
