@@ -1,7 +1,9 @@
 import { styled } from '@mui/material/styles';
 import { StyleSheetMap } from '../src/utils/types/index';
 
-export function Comp() {
+type CompProps = {};
+
+export function Comp(props: CompProps) {
     return <Root className={classes.root}></Root>;
 }
 

@@ -572,6 +572,18 @@ CategoryFieldValues_aggregate?: [{	/** distinct select on columns */
 	where?: ValueTypes["CategoryFieldValue_bool_exp"] | undefined | null},ValueTypes["CategoryFieldValue_aggregate"]],
 	/** An object relationship */
 	City?:ValueTypes["City"],
+Products?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["Product_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["Product_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["Product_bool_exp"] | undefined | null},ValueTypes["Product"]],
+Products_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["Product_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["Product_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["Product_bool_exp"] | undefined | null},ValueTypes["Product_aggregate"]],
 	cityId?:boolean | `@${string}`,
 	createdAt?:boolean | `@${string}`,
 	email?:boolean | `@${string}`,
@@ -1165,6 +1177,7 @@ count?: [{	columns?: Array<ValueTypes["Business_select_column"]> | undefined | n
 	BusinessWorkers?: ValueTypes["BusinessWorker_bool_exp"] | undefined | null,
 	CategoryFieldValues?: ValueTypes["CategoryFieldValue_bool_exp"] | undefined | null,
 	City?: ValueTypes["City_bool_exp"] | undefined | null,
+	Products?: ValueTypes["Product_bool_exp"] | undefined | null,
 	_and?: Array<ValueTypes["Business_bool_exp"]> | undefined | null,
 	_not?: ValueTypes["Business_bool_exp"] | undefined | null,
 	_or?: Array<ValueTypes["Business_bool_exp"]> | undefined | null,
@@ -1189,6 +1202,7 @@ count?: [{	columns?: Array<ValueTypes["Business_select_column"]> | undefined | n
 	BusinessWorkers?: ValueTypes["BusinessWorker_arr_rel_insert_input"] | undefined | null,
 	CategoryFieldValues?: ValueTypes["CategoryFieldValue_arr_rel_insert_input"] | undefined | null,
 	City?: ValueTypes["City_obj_rel_insert_input"] | undefined | null,
+	Products?: ValueTypes["Product_arr_rel_insert_input"] | undefined | null,
 	cityId?: number | undefined | null,
 	createdAt?: ValueTypes["timestamp"] | undefined | null,
 	email?: string | undefined | null,
@@ -1265,6 +1279,7 @@ count?: [{	columns?: Array<ValueTypes["Business_select_column"]> | undefined | n
 	BusinessWorkers_aggregate?: ValueTypes["BusinessWorker_aggregate_order_by"] | undefined | null,
 	CategoryFieldValues_aggregate?: ValueTypes["CategoryFieldValue_aggregate_order_by"] | undefined | null,
 	City?: ValueTypes["City_order_by"] | undefined | null,
+	Products_aggregate?: ValueTypes["Product_aggregate_order_by"] | undefined | null,
 	cityId?: ValueTypes["order_by"] | undefined | null,
 	createdAt?: ValueTypes["order_by"] | undefined | null,
 	email?: ValueTypes["order_by"] | undefined | null,
@@ -1394,6 +1409,18 @@ CategoryFields_aggregate?: [{	/** distinct select on columns */
 	offset?: number | undefined | null,	/** sort the rows by one or more columns */
 	order_by?: Array<ValueTypes["CategoryField_order_by"]> | undefined | null,	/** filter the rows returned */
 	where?: ValueTypes["CategoryField_bool_exp"] | undefined | null},ValueTypes["CategoryField_aggregate"]],
+ProductCategories?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory"]],
+ProductCategories_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory_aggregate"]],
 	createdAt?:boolean | `@${string}`,
 	id?:boolean | `@${string}`,
 	name?:boolean | `@${string}`,
@@ -1974,6 +2001,7 @@ count?: [{	columns?: Array<ValueTypes["Category_select_column"]> | undefined | n
 ["Category_bool_exp"]: {
 	BusinessCategories?: ValueTypes["BusinessCategory_bool_exp"] | undefined | null,
 	CategoryFields?: ValueTypes["CategoryField_bool_exp"] | undefined | null,
+	ProductCategories?: ValueTypes["ProductCategory_bool_exp"] | undefined | null,
 	_and?: Array<ValueTypes["Category_bool_exp"]> | undefined | null,
 	_not?: ValueTypes["Category_bool_exp"] | undefined | null,
 	_or?: Array<ValueTypes["Category_bool_exp"]> | undefined | null,
@@ -1992,6 +2020,7 @@ count?: [{	columns?: Array<ValueTypes["Category_select_column"]> | undefined | n
 ["Category_insert_input"]: {
 	BusinessCategories?: ValueTypes["BusinessCategory_arr_rel_insert_input"] | undefined | null,
 	CategoryFields?: ValueTypes["CategoryField_arr_rel_insert_input"] | undefined | null,
+	ProductCategories?: ValueTypes["ProductCategory_arr_rel_insert_input"] | undefined | null,
 	createdAt?: ValueTypes["timestamp"] | undefined | null,
 	id?: number | undefined | null,
 	name?: string | undefined | null,
@@ -2037,6 +2066,7 @@ count?: [{	columns?: Array<ValueTypes["Category_select_column"]> | undefined | n
 ["Category_order_by"]: {
 	BusinessCategories_aggregate?: ValueTypes["BusinessCategory_aggregate_order_by"] | undefined | null,
 	CategoryFields_aggregate?: ValueTypes["CategoryField_aggregate_order_by"] | undefined | null,
+	ProductCategories_aggregate?: ValueTypes["ProductCategory_aggregate_order_by"] | undefined | null,
 	createdAt?: ValueTypes["order_by"] | undefined | null,
 	id?: ValueTypes["order_by"] | undefined | null,
 	name?: ValueTypes["order_by"] | undefined | null,
@@ -2395,6 +2425,597 @@ count?: [{	columns?: Array<ValueTypes["City_select_column"]> | undefined | null,
 	_lte?: number | undefined | null,
 	_neq?: number | undefined | null,
 	_nin?: Array<number> | undefined | null
+};
+	/** columns and relationships of "Product" */
+["Product"]: AliasType<{
+	/** An object relationship */
+	Business?:ValueTypes["Business"],
+	ImagesUrls?:boolean | `@${string}`,
+ProductCategories?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory"]],
+ProductCategories_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory_aggregate"]],
+	businessId?:boolean | `@${string}`,
+	createdAt?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	mainImageUrl?:boolean | `@${string}`,
+	name?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+	updatedAt?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** columns and relationships of "ProductCategory" */
+["ProductCategory"]: AliasType<{
+	/** An object relationship */
+	Category?:ValueTypes["Category"],
+	/** An object relationship */
+	Product?:ValueTypes["Product"],
+	categoryId?:boolean | `@${string}`,
+	createdAt?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+	updatedAt?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregated selection of "ProductCategory" */
+["ProductCategory_aggregate"]: AliasType<{
+	aggregate?:ValueTypes["ProductCategory_aggregate_fields"],
+	nodes?:ValueTypes["ProductCategory"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate fields of "ProductCategory" */
+["ProductCategory_aggregate_fields"]: AliasType<{
+	avg?:ValueTypes["ProductCategory_avg_fields"],
+count?: [{	columns?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	distinct?: boolean | undefined | null},boolean | `@${string}`],
+	max?:ValueTypes["ProductCategory_max_fields"],
+	min?:ValueTypes["ProductCategory_min_fields"],
+	stddev?:ValueTypes["ProductCategory_stddev_fields"],
+	stddev_pop?:ValueTypes["ProductCategory_stddev_pop_fields"],
+	stddev_samp?:ValueTypes["ProductCategory_stddev_samp_fields"],
+	sum?:ValueTypes["ProductCategory_sum_fields"],
+	var_pop?:ValueTypes["ProductCategory_var_pop_fields"],
+	var_samp?:ValueTypes["ProductCategory_var_samp_fields"],
+	variance?:ValueTypes["ProductCategory_variance_fields"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by aggregate values of table "ProductCategory" */
+["ProductCategory_aggregate_order_by"]: {
+	avg?: ValueTypes["ProductCategory_avg_order_by"] | undefined | null,
+	count?: ValueTypes["order_by"] | undefined | null,
+	max?: ValueTypes["ProductCategory_max_order_by"] | undefined | null,
+	min?: ValueTypes["ProductCategory_min_order_by"] | undefined | null,
+	stddev?: ValueTypes["ProductCategory_stddev_order_by"] | undefined | null,
+	stddev_pop?: ValueTypes["ProductCategory_stddev_pop_order_by"] | undefined | null,
+	stddev_samp?: ValueTypes["ProductCategory_stddev_samp_order_by"] | undefined | null,
+	sum?: ValueTypes["ProductCategory_sum_order_by"] | undefined | null,
+	var_pop?: ValueTypes["ProductCategory_var_pop_order_by"] | undefined | null,
+	var_samp?: ValueTypes["ProductCategory_var_samp_order_by"] | undefined | null,
+	variance?: ValueTypes["ProductCategory_variance_order_by"] | undefined | null
+};
+	/** input type for inserting array relation for remote table "ProductCategory" */
+["ProductCategory_arr_rel_insert_input"]: {
+	data: Array<ValueTypes["ProductCategory_insert_input"]>,
+	/** upsert condition */
+	on_conflict?: ValueTypes["ProductCategory_on_conflict"] | undefined | null
+};
+	/** aggregate avg on columns */
+["ProductCategory_avg_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by avg() on columns of table "ProductCategory" */
+["ProductCategory_avg_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** Boolean expression to filter rows from the table "ProductCategory". All fields are combined with a logical 'AND'. */
+["ProductCategory_bool_exp"]: {
+	Category?: ValueTypes["Category_bool_exp"] | undefined | null,
+	Product?: ValueTypes["Product_bool_exp"] | undefined | null,
+	_and?: Array<ValueTypes["ProductCategory_bool_exp"]> | undefined | null,
+	_not?: ValueTypes["ProductCategory_bool_exp"] | undefined | null,
+	_or?: Array<ValueTypes["ProductCategory_bool_exp"]> | undefined | null,
+	categoryId?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	createdAt?: ValueTypes["timestamp_comparison_exp"] | undefined | null,
+	id?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	productId?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	updatedAt?: ValueTypes["timestamp_comparison_exp"] | undefined | null
+};
+	/** unique or primary key constraints on table "ProductCategory" */
+["ProductCategory_constraint"]:ProductCategory_constraint;
+	/** input type for incrementing numeric columns in table "ProductCategory" */
+["ProductCategory_inc_input"]: {
+	categoryId?: number | undefined | null,
+	id?: number | undefined | null,
+	productId?: number | undefined | null
+};
+	/** input type for inserting data into table "ProductCategory" */
+["ProductCategory_insert_input"]: {
+	Category?: ValueTypes["Category_obj_rel_insert_input"] | undefined | null,
+	Product?: ValueTypes["Product_obj_rel_insert_input"] | undefined | null,
+	categoryId?: number | undefined | null,
+	createdAt?: ValueTypes["timestamp"] | undefined | null,
+	id?: number | undefined | null,
+	productId?: number | undefined | null,
+	updatedAt?: ValueTypes["timestamp"] | undefined | null
+};
+	/** aggregate max on columns */
+["ProductCategory_max_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	createdAt?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+	updatedAt?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by max() on columns of table "ProductCategory" */
+["ProductCategory_max_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	createdAt?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null,
+	updatedAt?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate min on columns */
+["ProductCategory_min_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	createdAt?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+	updatedAt?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by min() on columns of table "ProductCategory" */
+["ProductCategory_min_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	createdAt?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null,
+	updatedAt?: ValueTypes["order_by"] | undefined | null
+};
+	/** response of any mutation on the table "ProductCategory" */
+["ProductCategory_mutation_response"]: AliasType<{
+	/** number of rows affected by the mutation */
+	affected_rows?:boolean | `@${string}`,
+	/** data from the rows affected by the mutation */
+	returning?:ValueTypes["ProductCategory"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** on_conflict condition type for table "ProductCategory" */
+["ProductCategory_on_conflict"]: {
+	constraint: ValueTypes["ProductCategory_constraint"],
+	update_columns: Array<ValueTypes["ProductCategory_update_column"]>,
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null
+};
+	/** Ordering options when selecting data from "ProductCategory". */
+["ProductCategory_order_by"]: {
+	Category?: ValueTypes["Category_order_by"] | undefined | null,
+	Product?: ValueTypes["Product_order_by"] | undefined | null,
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	createdAt?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null,
+	updatedAt?: ValueTypes["order_by"] | undefined | null
+};
+	/** primary key columns input for table: ProductCategory */
+["ProductCategory_pk_columns_input"]: {
+	id: number
+};
+	/** select columns of table "ProductCategory" */
+["ProductCategory_select_column"]:ProductCategory_select_column;
+	/** input type for updating data in table "ProductCategory" */
+["ProductCategory_set_input"]: {
+	categoryId?: number | undefined | null,
+	createdAt?: ValueTypes["timestamp"] | undefined | null,
+	id?: number | undefined | null,
+	productId?: number | undefined | null,
+	updatedAt?: ValueTypes["timestamp"] | undefined | null
+};
+	/** aggregate stddev on columns */
+["ProductCategory_stddev_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by stddev() on columns of table "ProductCategory" */
+["ProductCategory_stddev_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate stddev_pop on columns */
+["ProductCategory_stddev_pop_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by stddev_pop() on columns of table "ProductCategory" */
+["ProductCategory_stddev_pop_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate stddev_samp on columns */
+["ProductCategory_stddev_samp_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by stddev_samp() on columns of table "ProductCategory" */
+["ProductCategory_stddev_samp_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate sum on columns */
+["ProductCategory_sum_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by sum() on columns of table "ProductCategory" */
+["ProductCategory_sum_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** update columns of table "ProductCategory" */
+["ProductCategory_update_column"]:ProductCategory_update_column;
+	/** aggregate var_pop on columns */
+["ProductCategory_var_pop_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by var_pop() on columns of table "ProductCategory" */
+["ProductCategory_var_pop_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate var_samp on columns */
+["ProductCategory_var_samp_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by var_samp() on columns of table "ProductCategory" */
+["ProductCategory_var_samp_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate variance on columns */
+["ProductCategory_variance_fields"]: AliasType<{
+	categoryId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	productId?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by variance() on columns of table "ProductCategory" */
+["ProductCategory_variance_order_by"]: {
+	categoryId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	productId?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregated selection of "Product" */
+["Product_aggregate"]: AliasType<{
+	aggregate?:ValueTypes["Product_aggregate_fields"],
+	nodes?:ValueTypes["Product"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate fields of "Product" */
+["Product_aggregate_fields"]: AliasType<{
+	avg?:ValueTypes["Product_avg_fields"],
+count?: [{	columns?: Array<ValueTypes["Product_select_column"]> | undefined | null,	distinct?: boolean | undefined | null},boolean | `@${string}`],
+	max?:ValueTypes["Product_max_fields"],
+	min?:ValueTypes["Product_min_fields"],
+	stddev?:ValueTypes["Product_stddev_fields"],
+	stddev_pop?:ValueTypes["Product_stddev_pop_fields"],
+	stddev_samp?:ValueTypes["Product_stddev_samp_fields"],
+	sum?:ValueTypes["Product_sum_fields"],
+	var_pop?:ValueTypes["Product_var_pop_fields"],
+	var_samp?:ValueTypes["Product_var_samp_fields"],
+	variance?:ValueTypes["Product_variance_fields"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by aggregate values of table "Product" */
+["Product_aggregate_order_by"]: {
+	avg?: ValueTypes["Product_avg_order_by"] | undefined | null,
+	count?: ValueTypes["order_by"] | undefined | null,
+	max?: ValueTypes["Product_max_order_by"] | undefined | null,
+	min?: ValueTypes["Product_min_order_by"] | undefined | null,
+	stddev?: ValueTypes["Product_stddev_order_by"] | undefined | null,
+	stddev_pop?: ValueTypes["Product_stddev_pop_order_by"] | undefined | null,
+	stddev_samp?: ValueTypes["Product_stddev_samp_order_by"] | undefined | null,
+	sum?: ValueTypes["Product_sum_order_by"] | undefined | null,
+	var_pop?: ValueTypes["Product_var_pop_order_by"] | undefined | null,
+	var_samp?: ValueTypes["Product_var_samp_order_by"] | undefined | null,
+	variance?: ValueTypes["Product_variance_order_by"] | undefined | null
+};
+	/** input type for inserting array relation for remote table "Product" */
+["Product_arr_rel_insert_input"]: {
+	data: Array<ValueTypes["Product_insert_input"]>,
+	/** upsert condition */
+	on_conflict?: ValueTypes["Product_on_conflict"] | undefined | null
+};
+	/** aggregate avg on columns */
+["Product_avg_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by avg() on columns of table "Product" */
+["Product_avg_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
+};
+	/** Boolean expression to filter rows from the table "Product". All fields are combined with a logical 'AND'. */
+["Product_bool_exp"]: {
+	Business?: ValueTypes["Business_bool_exp"] | undefined | null,
+	ImagesUrls?: ValueTypes["_text_comparison_exp"] | undefined | null,
+	ProductCategories?: ValueTypes["ProductCategory_bool_exp"] | undefined | null,
+	_and?: Array<ValueTypes["Product_bool_exp"]> | undefined | null,
+	_not?: ValueTypes["Product_bool_exp"] | undefined | null,
+	_or?: Array<ValueTypes["Product_bool_exp"]> | undefined | null,
+	businessId?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	createdAt?: ValueTypes["timestamp_comparison_exp"] | undefined | null,
+	id?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	mainImageUrl?: ValueTypes["String_comparison_exp"] | undefined | null,
+	name?: ValueTypes["String_comparison_exp"] | undefined | null,
+	price?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	quota?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	updatedAt?: ValueTypes["timestamp_comparison_exp"] | undefined | null
+};
+	/** unique or primary key constraints on table "Product" */
+["Product_constraint"]:Product_constraint;
+	/** input type for incrementing numeric columns in table "Product" */
+["Product_inc_input"]: {
+	businessId?: number | undefined | null,
+	id?: number | undefined | null,
+	price?: number | undefined | null,
+	quota?: number | undefined | null
+};
+	/** input type for inserting data into table "Product" */
+["Product_insert_input"]: {
+	Business?: ValueTypes["Business_obj_rel_insert_input"] | undefined | null,
+	ImagesUrls?: ValueTypes["_text"] | undefined | null,
+	ProductCategories?: ValueTypes["ProductCategory_arr_rel_insert_input"] | undefined | null,
+	businessId?: number | undefined | null,
+	createdAt?: ValueTypes["timestamp"] | undefined | null,
+	id?: number | undefined | null,
+	mainImageUrl?: string | undefined | null,
+	name?: string | undefined | null,
+	price?: number | undefined | null,
+	quota?: number | undefined | null,
+	updatedAt?: ValueTypes["timestamp"] | undefined | null
+};
+	/** aggregate max on columns */
+["Product_max_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	createdAt?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	mainImageUrl?:boolean | `@${string}`,
+	name?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+	updatedAt?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by max() on columns of table "Product" */
+["Product_max_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	createdAt?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	mainImageUrl?: ValueTypes["order_by"] | undefined | null,
+	name?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null,
+	updatedAt?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate min on columns */
+["Product_min_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	createdAt?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	mainImageUrl?:boolean | `@${string}`,
+	name?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+	updatedAt?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by min() on columns of table "Product" */
+["Product_min_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	createdAt?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	mainImageUrl?: ValueTypes["order_by"] | undefined | null,
+	name?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null,
+	updatedAt?: ValueTypes["order_by"] | undefined | null
+};
+	/** response of any mutation on the table "Product" */
+["Product_mutation_response"]: AliasType<{
+	/** number of rows affected by the mutation */
+	affected_rows?:boolean | `@${string}`,
+	/** data from the rows affected by the mutation */
+	returning?:ValueTypes["Product"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** input type for inserting object relation for remote table "Product" */
+["Product_obj_rel_insert_input"]: {
+	data: ValueTypes["Product_insert_input"],
+	/** upsert condition */
+	on_conflict?: ValueTypes["Product_on_conflict"] | undefined | null
+};
+	/** on_conflict condition type for table "Product" */
+["Product_on_conflict"]: {
+	constraint: ValueTypes["Product_constraint"],
+	update_columns: Array<ValueTypes["Product_update_column"]>,
+	where?: ValueTypes["Product_bool_exp"] | undefined | null
+};
+	/** Ordering options when selecting data from "Product". */
+["Product_order_by"]: {
+	Business?: ValueTypes["Business_order_by"] | undefined | null,
+	ImagesUrls?: ValueTypes["order_by"] | undefined | null,
+	ProductCategories_aggregate?: ValueTypes["ProductCategory_aggregate_order_by"] | undefined | null,
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	createdAt?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	mainImageUrl?: ValueTypes["order_by"] | undefined | null,
+	name?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null,
+	updatedAt?: ValueTypes["order_by"] | undefined | null
+};
+	/** primary key columns input for table: Product */
+["Product_pk_columns_input"]: {
+	id: number
+};
+	/** select columns of table "Product" */
+["Product_select_column"]:Product_select_column;
+	/** input type for updating data in table "Product" */
+["Product_set_input"]: {
+	ImagesUrls?: ValueTypes["_text"] | undefined | null,
+	businessId?: number | undefined | null,
+	createdAt?: ValueTypes["timestamp"] | undefined | null,
+	id?: number | undefined | null,
+	mainImageUrl?: string | undefined | null,
+	name?: string | undefined | null,
+	price?: number | undefined | null,
+	quota?: number | undefined | null,
+	updatedAt?: ValueTypes["timestamp"] | undefined | null
+};
+	/** aggregate stddev on columns */
+["Product_stddev_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by stddev() on columns of table "Product" */
+["Product_stddev_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate stddev_pop on columns */
+["Product_stddev_pop_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by stddev_pop() on columns of table "Product" */
+["Product_stddev_pop_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate stddev_samp on columns */
+["Product_stddev_samp_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by stddev_samp() on columns of table "Product" */
+["Product_stddev_samp_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate sum on columns */
+["Product_sum_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by sum() on columns of table "Product" */
+["Product_sum_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
+};
+	/** update columns of table "Product" */
+["Product_update_column"]:Product_update_column;
+	/** aggregate var_pop on columns */
+["Product_var_pop_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by var_pop() on columns of table "Product" */
+["Product_var_pop_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate var_samp on columns */
+["Product_var_samp_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by var_samp() on columns of table "Product" */
+["Product_var_samp_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
+};
+	/** aggregate variance on columns */
+["Product_variance_fields"]: AliasType<{
+	businessId?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	price?:boolean | `@${string}`,
+	quota?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** order by variance() on columns of table "Product" */
+["Product_variance_order_by"]: {
+	businessId?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	price?: ValueTypes["order_by"] | undefined | null,
+	quota?: ValueTypes["order_by"] | undefined | null
 };
 	/** columns and relationships of "Profile" */
 ["Profile"]: AliasType<{
@@ -3043,6 +3664,178 @@ count?: [{	columns?: Array<ValueTypes["RolesOfProfile_select_column"]> | undefin
 	/** does the column match the given SQL regular expression */
 	_similar?: string | undefined | null
 };
+	/** columns and relationships of "_prisma_migrations" */
+["_prisma_migrations"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+	checksum?:boolean | `@${string}`,
+	finished_at?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	logs?:boolean | `@${string}`,
+	migration_name?:boolean | `@${string}`,
+	rolled_back_at?:boolean | `@${string}`,
+	started_at?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregated selection of "_prisma_migrations" */
+["_prisma_migrations_aggregate"]: AliasType<{
+	aggregate?:ValueTypes["_prisma_migrations_aggregate_fields"],
+	nodes?:ValueTypes["_prisma_migrations"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate fields of "_prisma_migrations" */
+["_prisma_migrations_aggregate_fields"]: AliasType<{
+	avg?:ValueTypes["_prisma_migrations_avg_fields"],
+count?: [{	columns?: Array<ValueTypes["_prisma_migrations_select_column"]> | undefined | null,	distinct?: boolean | undefined | null},boolean | `@${string}`],
+	max?:ValueTypes["_prisma_migrations_max_fields"],
+	min?:ValueTypes["_prisma_migrations_min_fields"],
+	stddev?:ValueTypes["_prisma_migrations_stddev_fields"],
+	stddev_pop?:ValueTypes["_prisma_migrations_stddev_pop_fields"],
+	stddev_samp?:ValueTypes["_prisma_migrations_stddev_samp_fields"],
+	sum?:ValueTypes["_prisma_migrations_sum_fields"],
+	var_pop?:ValueTypes["_prisma_migrations_var_pop_fields"],
+	var_samp?:ValueTypes["_prisma_migrations_var_samp_fields"],
+	variance?:ValueTypes["_prisma_migrations_variance_fields"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate avg on columns */
+["_prisma_migrations_avg_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** Boolean expression to filter rows from the table "_prisma_migrations". All fields are combined with a logical 'AND'. */
+["_prisma_migrations_bool_exp"]: {
+	_and?: Array<ValueTypes["_prisma_migrations_bool_exp"]> | undefined | null,
+	_not?: ValueTypes["_prisma_migrations_bool_exp"] | undefined | null,
+	_or?: Array<ValueTypes["_prisma_migrations_bool_exp"]> | undefined | null,
+	applied_steps_count?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	checksum?: ValueTypes["String_comparison_exp"] | undefined | null,
+	finished_at?: ValueTypes["timestamptz_comparison_exp"] | undefined | null,
+	id?: ValueTypes["String_comparison_exp"] | undefined | null,
+	logs?: ValueTypes["String_comparison_exp"] | undefined | null,
+	migration_name?: ValueTypes["String_comparison_exp"] | undefined | null,
+	rolled_back_at?: ValueTypes["timestamptz_comparison_exp"] | undefined | null,
+	started_at?: ValueTypes["timestamptz_comparison_exp"] | undefined | null
+};
+	/** unique or primary key constraints on table "_prisma_migrations" */
+["_prisma_migrations_constraint"]:_prisma_migrations_constraint;
+	/** input type for incrementing numeric columns in table "_prisma_migrations" */
+["_prisma_migrations_inc_input"]: {
+	applied_steps_count?: number | undefined | null
+};
+	/** input type for inserting data into table "_prisma_migrations" */
+["_prisma_migrations_insert_input"]: {
+	applied_steps_count?: number | undefined | null,
+	checksum?: string | undefined | null,
+	finished_at?: ValueTypes["timestamptz"] | undefined | null,
+	id?: string | undefined | null,
+	logs?: string | undefined | null,
+	migration_name?: string | undefined | null,
+	rolled_back_at?: ValueTypes["timestamptz"] | undefined | null,
+	started_at?: ValueTypes["timestamptz"] | undefined | null
+};
+	/** aggregate max on columns */
+["_prisma_migrations_max_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+	checksum?:boolean | `@${string}`,
+	finished_at?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	logs?:boolean | `@${string}`,
+	migration_name?:boolean | `@${string}`,
+	rolled_back_at?:boolean | `@${string}`,
+	started_at?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate min on columns */
+["_prisma_migrations_min_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+	checksum?:boolean | `@${string}`,
+	finished_at?:boolean | `@${string}`,
+	id?:boolean | `@${string}`,
+	logs?:boolean | `@${string}`,
+	migration_name?:boolean | `@${string}`,
+	rolled_back_at?:boolean | `@${string}`,
+	started_at?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** response of any mutation on the table "_prisma_migrations" */
+["_prisma_migrations_mutation_response"]: AliasType<{
+	/** number of rows affected by the mutation */
+	affected_rows?:boolean | `@${string}`,
+	/** data from the rows affected by the mutation */
+	returning?:ValueTypes["_prisma_migrations"],
+		__typename?: boolean | `@${string}`
+}>;
+	/** on_conflict condition type for table "_prisma_migrations" */
+["_prisma_migrations_on_conflict"]: {
+	constraint: ValueTypes["_prisma_migrations_constraint"],
+	update_columns: Array<ValueTypes["_prisma_migrations_update_column"]>,
+	where?: ValueTypes["_prisma_migrations_bool_exp"] | undefined | null
+};
+	/** Ordering options when selecting data from "_prisma_migrations". */
+["_prisma_migrations_order_by"]: {
+	applied_steps_count?: ValueTypes["order_by"] | undefined | null,
+	checksum?: ValueTypes["order_by"] | undefined | null,
+	finished_at?: ValueTypes["order_by"] | undefined | null,
+	id?: ValueTypes["order_by"] | undefined | null,
+	logs?: ValueTypes["order_by"] | undefined | null,
+	migration_name?: ValueTypes["order_by"] | undefined | null,
+	rolled_back_at?: ValueTypes["order_by"] | undefined | null,
+	started_at?: ValueTypes["order_by"] | undefined | null
+};
+	/** primary key columns input for table: _prisma_migrations */
+["_prisma_migrations_pk_columns_input"]: {
+	id: string
+};
+	/** select columns of table "_prisma_migrations" */
+["_prisma_migrations_select_column"]:_prisma_migrations_select_column;
+	/** input type for updating data in table "_prisma_migrations" */
+["_prisma_migrations_set_input"]: {
+	applied_steps_count?: number | undefined | null,
+	checksum?: string | undefined | null,
+	finished_at?: ValueTypes["timestamptz"] | undefined | null,
+	id?: string | undefined | null,
+	logs?: string | undefined | null,
+	migration_name?: string | undefined | null,
+	rolled_back_at?: ValueTypes["timestamptz"] | undefined | null,
+	started_at?: ValueTypes["timestamptz"] | undefined | null
+};
+	/** aggregate stddev on columns */
+["_prisma_migrations_stddev_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate stddev_pop on columns */
+["_prisma_migrations_stddev_pop_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate stddev_samp on columns */
+["_prisma_migrations_stddev_samp_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate sum on columns */
+["_prisma_migrations_sum_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** update columns of table "_prisma_migrations" */
+["_prisma_migrations_update_column"]:_prisma_migrations_update_column;
+	/** aggregate var_pop on columns */
+["_prisma_migrations_var_pop_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate var_samp on columns */
+["_prisma_migrations_var_samp_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
+	/** aggregate variance on columns */
+["_prisma_migrations_variance_fields"]: AliasType<{
+	applied_steps_count?:boolean | `@${string}`,
+		__typename?: boolean | `@${string}`
+}>;
 	["_text"]:unknown;
 	/** Boolean expression to compare columns of type "_text". All fields are combined with logical 'AND'. */
 ["_text_comparison_exp"]: {
@@ -3079,6 +3872,12 @@ delete_Category_by_pk?: [{	id: number},ValueTypes["Category"]],
 delete_City?: [{	/** filter the rows which have to be deleted */
 	where: ValueTypes["City_bool_exp"]},ValueTypes["City_mutation_response"]],
 delete_City_by_pk?: [{	id: number},ValueTypes["City"]],
+delete_Product?: [{	/** filter the rows which have to be deleted */
+	where: ValueTypes["Product_bool_exp"]},ValueTypes["Product_mutation_response"]],
+delete_ProductCategory?: [{	/** filter the rows which have to be deleted */
+	where: ValueTypes["ProductCategory_bool_exp"]},ValueTypes["ProductCategory_mutation_response"]],
+delete_ProductCategory_by_pk?: [{	id: number},ValueTypes["ProductCategory"]],
+delete_Product_by_pk?: [{	id: number},ValueTypes["Product"]],
 delete_Profile?: [{	/** filter the rows which have to be deleted */
 	where: ValueTypes["Profile_bool_exp"]},ValueTypes["Profile_mutation_response"]],
 delete_Profile_by_pk?: [{	id: number},ValueTypes["Profile"]],
@@ -3088,6 +3887,9 @@ delete_Role_by_pk?: [{	id: number},ValueTypes["Role"]],
 delete_RolesOfProfile?: [{	/** filter the rows which have to be deleted */
 	where: ValueTypes["RolesOfProfile_bool_exp"]},ValueTypes["RolesOfProfile_mutation_response"]],
 delete_RolesOfProfile_by_pk?: [{	id: number},ValueTypes["RolesOfProfile"]],
+delete__prisma_migrations?: [{	/** filter the rows which have to be deleted */
+	where: ValueTypes["_prisma_migrations_bool_exp"]},ValueTypes["_prisma_migrations_mutation_response"]],
+delete__prisma_migrations_by_pk?: [{	id: string},ValueTypes["_prisma_migrations"]],
 insert_Business?: [{	/** the rows to be inserted */
 	objects: Array<ValueTypes["Business_insert_input"]>,	/** upsert condition */
 	on_conflict?: ValueTypes["Business_on_conflict"] | undefined | null},ValueTypes["Business_mutation_response"]],
@@ -3130,6 +3932,18 @@ insert_City?: [{	/** the rows to be inserted */
 insert_City_one?: [{	/** the row to be inserted */
 	object: ValueTypes["City_insert_input"],	/** upsert condition */
 	on_conflict?: ValueTypes["City_on_conflict"] | undefined | null},ValueTypes["City"]],
+insert_Product?: [{	/** the rows to be inserted */
+	objects: Array<ValueTypes["Product_insert_input"]>,	/** upsert condition */
+	on_conflict?: ValueTypes["Product_on_conflict"] | undefined | null},ValueTypes["Product_mutation_response"]],
+insert_ProductCategory?: [{	/** the rows to be inserted */
+	objects: Array<ValueTypes["ProductCategory_insert_input"]>,	/** upsert condition */
+	on_conflict?: ValueTypes["ProductCategory_on_conflict"] | undefined | null},ValueTypes["ProductCategory_mutation_response"]],
+insert_ProductCategory_one?: [{	/** the row to be inserted */
+	object: ValueTypes["ProductCategory_insert_input"],	/** upsert condition */
+	on_conflict?: ValueTypes["ProductCategory_on_conflict"] | undefined | null},ValueTypes["ProductCategory"]],
+insert_Product_one?: [{	/** the row to be inserted */
+	object: ValueTypes["Product_insert_input"],	/** upsert condition */
+	on_conflict?: ValueTypes["Product_on_conflict"] | undefined | null},ValueTypes["Product"]],
 insert_Profile?: [{	/** the rows to be inserted */
 	objects: Array<ValueTypes["Profile_insert_input"]>,	/** upsert condition */
 	on_conflict?: ValueTypes["Profile_on_conflict"] | undefined | null},ValueTypes["Profile_mutation_response"]],
@@ -3148,6 +3962,12 @@ insert_RolesOfProfile?: [{	/** the rows to be inserted */
 insert_RolesOfProfile_one?: [{	/** the row to be inserted */
 	object: ValueTypes["RolesOfProfile_insert_input"],	/** upsert condition */
 	on_conflict?: ValueTypes["RolesOfProfile_on_conflict"] | undefined | null},ValueTypes["RolesOfProfile"]],
+insert__prisma_migrations?: [{	/** the rows to be inserted */
+	objects: Array<ValueTypes["_prisma_migrations_insert_input"]>,	/** upsert condition */
+	on_conflict?: ValueTypes["_prisma_migrations_on_conflict"] | undefined | null},ValueTypes["_prisma_migrations_mutation_response"]],
+insert__prisma_migrations_one?: [{	/** the row to be inserted */
+	object: ValueTypes["_prisma_migrations_insert_input"],	/** upsert condition */
+	on_conflict?: ValueTypes["_prisma_migrations_on_conflict"] | undefined | null},ValueTypes["_prisma_migrations"]],
 update_Business?: [{	/** increments the numeric columns with given value of the filtered values */
 	_inc?: ValueTypes["Business_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
 	_set?: ValueTypes["Business_set_input"] | undefined | null,	/** filter the rows which have to be updated */
@@ -3197,6 +4017,20 @@ update_City?: [{	/** increments the numeric columns with given value of the filt
 update_City_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
 	_inc?: ValueTypes["City_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
 	_set?: ValueTypes["City_set_input"] | undefined | null,	pk_columns: ValueTypes["City_pk_columns_input"]},ValueTypes["City"]],
+update_Product?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?: ValueTypes["Product_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
+	_set?: ValueTypes["Product_set_input"] | undefined | null,	/** filter the rows which have to be updated */
+	where: ValueTypes["Product_bool_exp"]},ValueTypes["Product_mutation_response"]],
+update_ProductCategory?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?: ValueTypes["ProductCategory_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
+	_set?: ValueTypes["ProductCategory_set_input"] | undefined | null,	/** filter the rows which have to be updated */
+	where: ValueTypes["ProductCategory_bool_exp"]},ValueTypes["ProductCategory_mutation_response"]],
+update_ProductCategory_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?: ValueTypes["ProductCategory_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
+	_set?: ValueTypes["ProductCategory_set_input"] | undefined | null,	pk_columns: ValueTypes["ProductCategory_pk_columns_input"]},ValueTypes["ProductCategory"]],
+update_Product_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?: ValueTypes["Product_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
+	_set?: ValueTypes["Product_set_input"] | undefined | null,	pk_columns: ValueTypes["Product_pk_columns_input"]},ValueTypes["Product"]],
 update_Profile?: [{	/** increments the numeric columns with given value of the filtered values */
 	_inc?: ValueTypes["Profile_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
 	_set?: ValueTypes["Profile_set_input"] | undefined | null,	/** filter the rows which have to be updated */
@@ -3218,6 +4052,13 @@ update_RolesOfProfile?: [{	/** increments the numeric columns with given value o
 update_RolesOfProfile_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
 	_inc?: ValueTypes["RolesOfProfile_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
 	_set?: ValueTypes["RolesOfProfile_set_input"] | undefined | null,	pk_columns: ValueTypes["RolesOfProfile_pk_columns_input"]},ValueTypes["RolesOfProfile"]],
+update__prisma_migrations?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?: ValueTypes["_prisma_migrations_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
+	_set?: ValueTypes["_prisma_migrations_set_input"] | undefined | null,	/** filter the rows which have to be updated */
+	where: ValueTypes["_prisma_migrations_bool_exp"]},ValueTypes["_prisma_migrations_mutation_response"]],
+update__prisma_migrations_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?: ValueTypes["_prisma_migrations_inc_input"] | undefined | null,	/** sets the columns of the filtered rows to the given values */
+	_set?: ValueTypes["_prisma_migrations_set_input"] | undefined | null,	pk_columns: ValueTypes["_prisma_migrations_pk_columns_input"]},ValueTypes["_prisma_migrations"]],
 		__typename?: boolean | `@${string}`
 }>;
 	["numeric"]:unknown;
@@ -3327,6 +4168,32 @@ City_aggregate?: [{	/** distinct select on columns */
 	order_by?: Array<ValueTypes["City_order_by"]> | undefined | null,	/** filter the rows returned */
 	where?: ValueTypes["City_bool_exp"] | undefined | null},ValueTypes["City_aggregate"]],
 City_by_pk?: [{	id: number},ValueTypes["City"]],
+Product?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["Product_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["Product_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["Product_bool_exp"] | undefined | null},ValueTypes["Product"]],
+ProductCategory?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory"]],
+ProductCategory_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory_aggregate"]],
+ProductCategory_by_pk?: [{	id: number},ValueTypes["ProductCategory"]],
+Product_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["Product_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["Product_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["Product_bool_exp"] | undefined | null},ValueTypes["Product_aggregate"]],
+Product_by_pk?: [{	id: number},ValueTypes["Product"]],
 Profile?: [{	/** distinct select on columns */
 	distinct_on?: Array<ValueTypes["Profile_select_column"]> | undefined | null,	/** limit the number of rows returned */
 	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
@@ -3366,6 +4233,19 @@ RolesOfProfile_aggregate?: [{	/** distinct select on columns */
 	order_by?: Array<ValueTypes["RolesOfProfile_order_by"]> | undefined | null,	/** filter the rows returned */
 	where?: ValueTypes["RolesOfProfile_bool_exp"] | undefined | null},ValueTypes["RolesOfProfile_aggregate"]],
 RolesOfProfile_by_pk?: [{	id: number},ValueTypes["RolesOfProfile"]],
+_prisma_migrations?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["_prisma_migrations_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["_prisma_migrations_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["_prisma_migrations_bool_exp"] | undefined | null},ValueTypes["_prisma_migrations"]],
+_prisma_migrations_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["_prisma_migrations_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["_prisma_migrations_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["_prisma_migrations_bool_exp"] | undefined | null},ValueTypes["_prisma_migrations_aggregate"]],
+_prisma_migrations_by_pk?: [{	id: string},ValueTypes["_prisma_migrations"]],
 		__typename?: boolean | `@${string}`
 }>;
 	["subscription_root"]: AliasType<{
@@ -3460,6 +4340,32 @@ City_aggregate?: [{	/** distinct select on columns */
 	order_by?: Array<ValueTypes["City_order_by"]> | undefined | null,	/** filter the rows returned */
 	where?: ValueTypes["City_bool_exp"] | undefined | null},ValueTypes["City_aggregate"]],
 City_by_pk?: [{	id: number},ValueTypes["City"]],
+Product?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["Product_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["Product_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["Product_bool_exp"] | undefined | null},ValueTypes["Product"]],
+ProductCategory?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory"]],
+ProductCategory_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["ProductCategory_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["ProductCategory_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["ProductCategory_bool_exp"] | undefined | null},ValueTypes["ProductCategory_aggregate"]],
+ProductCategory_by_pk?: [{	id: number},ValueTypes["ProductCategory"]],
+Product_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["Product_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["Product_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["Product_bool_exp"] | undefined | null},ValueTypes["Product_aggregate"]],
+Product_by_pk?: [{	id: number},ValueTypes["Product"]],
 Profile?: [{	/** distinct select on columns */
 	distinct_on?: Array<ValueTypes["Profile_select_column"]> | undefined | null,	/** limit the number of rows returned */
 	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
@@ -3499,6 +4405,19 @@ RolesOfProfile_aggregate?: [{	/** distinct select on columns */
 	order_by?: Array<ValueTypes["RolesOfProfile_order_by"]> | undefined | null,	/** filter the rows returned */
 	where?: ValueTypes["RolesOfProfile_bool_exp"] | undefined | null},ValueTypes["RolesOfProfile_aggregate"]],
 RolesOfProfile_by_pk?: [{	id: number},ValueTypes["RolesOfProfile"]],
+_prisma_migrations?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["_prisma_migrations_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["_prisma_migrations_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["_prisma_migrations_bool_exp"] | undefined | null},ValueTypes["_prisma_migrations"]],
+_prisma_migrations_aggregate?: [{	/** distinct select on columns */
+	distinct_on?: Array<ValueTypes["_prisma_migrations_select_column"]> | undefined | null,	/** limit the number of rows returned */
+	limit?: number | undefined | null,	/** skip the first n rows. Use only with order_by */
+	offset?: number | undefined | null,	/** sort the rows by one or more columns */
+	order_by?: Array<ValueTypes["_prisma_migrations_order_by"]> | undefined | null,	/** filter the rows returned */
+	where?: ValueTypes["_prisma_migrations_bool_exp"] | undefined | null},ValueTypes["_prisma_migrations_aggregate"]],
+_prisma_migrations_by_pk?: [{	id: string},ValueTypes["_prisma_migrations"]],
 		__typename?: boolean | `@${string}`
 }>;
 	["timestamp"]:unknown;
@@ -3513,6 +4432,19 @@ RolesOfProfile_by_pk?: [{	id: number},ValueTypes["RolesOfProfile"]],
 	_lte?: ValueTypes["timestamp"] | undefined | null,
 	_neq?: ValueTypes["timestamp"] | undefined | null,
 	_nin?: Array<ValueTypes["timestamp"]> | undefined | null
+};
+	["timestamptz"]:unknown;
+	/** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
+["timestamptz_comparison_exp"]: {
+	_eq?: ValueTypes["timestamptz"] | undefined | null,
+	_gt?: ValueTypes["timestamptz"] | undefined | null,
+	_gte?: ValueTypes["timestamptz"] | undefined | null,
+	_in?: Array<ValueTypes["timestamptz"]> | undefined | null,
+	_is_null?: boolean | undefined | null,
+	_lt?: ValueTypes["timestamptz"] | undefined | null,
+	_lte?: ValueTypes["timestamptz"] | undefined | null,
+	_neq?: ValueTypes["timestamptz"] | undefined | null,
+	_nin?: Array<ValueTypes["timestamptz"]> | undefined | null
 }
   }
 
@@ -3535,6 +4467,10 @@ export type ModelTypes = {
 	CategoryFieldValues_aggregate: GraphQLTypes["CategoryFieldValue_aggregate"],
 	/** An object relationship */
 	City: GraphQLTypes["City"],
+	/** An array relationship */
+	Products: Array<GraphQLTypes["Product"]>,
+	/** An aggregate relationship */
+	Products_aggregate: GraphQLTypes["Product_aggregate"],
 	cityId: number,
 	createdAt: GraphQLTypes["timestamp"],
 	email?: string | undefined,
@@ -3977,6 +4913,10 @@ export type ModelTypes = {
 	CategoryFields: Array<GraphQLTypes["CategoryField"]>,
 	/** An aggregate relationship */
 	CategoryFields_aggregate: GraphQLTypes["CategoryField_aggregate"],
+	/** An array relationship */
+	ProductCategories: Array<GraphQLTypes["ProductCategory"]>,
+	/** An aggregate relationship */
+	ProductCategories_aggregate: GraphQLTypes["ProductCategory_aggregate"],
 	createdAt: GraphQLTypes["timestamp"],
 	id: number,
 	name: string,
@@ -4546,6 +5486,320 @@ export type ModelTypes = {
 ["FieldType_comparison_exp"]: GraphQLTypes["FieldType_comparison_exp"];
 	/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 ["Int_comparison_exp"]: GraphQLTypes["Int_comparison_exp"];
+	/** columns and relationships of "Product" */
+["Product"]: {
+		/** An object relationship */
+	Business: GraphQLTypes["Business"],
+	ImagesUrls?: GraphQLTypes["_text"] | undefined,
+	/** An array relationship */
+	ProductCategories: Array<GraphQLTypes["ProductCategory"]>,
+	/** An aggregate relationship */
+	ProductCategories_aggregate: GraphQLTypes["ProductCategory_aggregate"],
+	businessId: number,
+	createdAt: GraphQLTypes["timestamp"],
+	id: number,
+	mainImageUrl: string,
+	name: string,
+	price: number,
+	quota: number,
+	updatedAt: GraphQLTypes["timestamp"]
+};
+	/** columns and relationships of "ProductCategory" */
+["ProductCategory"]: {
+		/** An object relationship */
+	Category?: GraphQLTypes["Category"] | undefined,
+	/** An object relationship */
+	Product?: GraphQLTypes["Product"] | undefined,
+	categoryId?: number | undefined,
+	createdAt: GraphQLTypes["timestamp"],
+	id: number,
+	productId?: number | undefined,
+	updatedAt: GraphQLTypes["timestamp"]
+};
+	/** aggregated selection of "ProductCategory" */
+["ProductCategory_aggregate"]: {
+		aggregate?: GraphQLTypes["ProductCategory_aggregate_fields"] | undefined,
+	nodes: Array<GraphQLTypes["ProductCategory"]>
+};
+	/** aggregate fields of "ProductCategory" */
+["ProductCategory_aggregate_fields"]: {
+		avg?: GraphQLTypes["ProductCategory_avg_fields"] | undefined,
+	count: number,
+	max?: GraphQLTypes["ProductCategory_max_fields"] | undefined,
+	min?: GraphQLTypes["ProductCategory_min_fields"] | undefined,
+	stddev?: GraphQLTypes["ProductCategory_stddev_fields"] | undefined,
+	stddev_pop?: GraphQLTypes["ProductCategory_stddev_pop_fields"] | undefined,
+	stddev_samp?: GraphQLTypes["ProductCategory_stddev_samp_fields"] | undefined,
+	sum?: GraphQLTypes["ProductCategory_sum_fields"] | undefined,
+	var_pop?: GraphQLTypes["ProductCategory_var_pop_fields"] | undefined,
+	var_samp?: GraphQLTypes["ProductCategory_var_samp_fields"] | undefined,
+	variance?: GraphQLTypes["ProductCategory_variance_fields"] | undefined
+};
+	/** order by aggregate values of table "ProductCategory" */
+["ProductCategory_aggregate_order_by"]: GraphQLTypes["ProductCategory_aggregate_order_by"];
+	/** input type for inserting array relation for remote table "ProductCategory" */
+["ProductCategory_arr_rel_insert_input"]: GraphQLTypes["ProductCategory_arr_rel_insert_input"];
+	/** aggregate avg on columns */
+["ProductCategory_avg_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by avg() on columns of table "ProductCategory" */
+["ProductCategory_avg_order_by"]: GraphQLTypes["ProductCategory_avg_order_by"];
+	/** Boolean expression to filter rows from the table "ProductCategory". All fields are combined with a logical 'AND'. */
+["ProductCategory_bool_exp"]: GraphQLTypes["ProductCategory_bool_exp"];
+	/** unique or primary key constraints on table "ProductCategory" */
+["ProductCategory_constraint"]: GraphQLTypes["ProductCategory_constraint"];
+	/** input type for incrementing numeric columns in table "ProductCategory" */
+["ProductCategory_inc_input"]: GraphQLTypes["ProductCategory_inc_input"];
+	/** input type for inserting data into table "ProductCategory" */
+["ProductCategory_insert_input"]: GraphQLTypes["ProductCategory_insert_input"];
+	/** aggregate max on columns */
+["ProductCategory_max_fields"]: {
+		categoryId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	productId?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by max() on columns of table "ProductCategory" */
+["ProductCategory_max_order_by"]: GraphQLTypes["ProductCategory_max_order_by"];
+	/** aggregate min on columns */
+["ProductCategory_min_fields"]: {
+		categoryId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	productId?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by min() on columns of table "ProductCategory" */
+["ProductCategory_min_order_by"]: GraphQLTypes["ProductCategory_min_order_by"];
+	/** response of any mutation on the table "ProductCategory" */
+["ProductCategory_mutation_response"]: {
+		/** number of rows affected by the mutation */
+	affected_rows: number,
+	/** data from the rows affected by the mutation */
+	returning: Array<GraphQLTypes["ProductCategory"]>
+};
+	/** on_conflict condition type for table "ProductCategory" */
+["ProductCategory_on_conflict"]: GraphQLTypes["ProductCategory_on_conflict"];
+	/** Ordering options when selecting data from "ProductCategory". */
+["ProductCategory_order_by"]: GraphQLTypes["ProductCategory_order_by"];
+	/** primary key columns input for table: ProductCategory */
+["ProductCategory_pk_columns_input"]: GraphQLTypes["ProductCategory_pk_columns_input"];
+	/** select columns of table "ProductCategory" */
+["ProductCategory_select_column"]: GraphQLTypes["ProductCategory_select_column"];
+	/** input type for updating data in table "ProductCategory" */
+["ProductCategory_set_input"]: GraphQLTypes["ProductCategory_set_input"];
+	/** aggregate stddev on columns */
+["ProductCategory_stddev_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by stddev() on columns of table "ProductCategory" */
+["ProductCategory_stddev_order_by"]: GraphQLTypes["ProductCategory_stddev_order_by"];
+	/** aggregate stddev_pop on columns */
+["ProductCategory_stddev_pop_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by stddev_pop() on columns of table "ProductCategory" */
+["ProductCategory_stddev_pop_order_by"]: GraphQLTypes["ProductCategory_stddev_pop_order_by"];
+	/** aggregate stddev_samp on columns */
+["ProductCategory_stddev_samp_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by stddev_samp() on columns of table "ProductCategory" */
+["ProductCategory_stddev_samp_order_by"]: GraphQLTypes["ProductCategory_stddev_samp_order_by"];
+	/** aggregate sum on columns */
+["ProductCategory_sum_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by sum() on columns of table "ProductCategory" */
+["ProductCategory_sum_order_by"]: GraphQLTypes["ProductCategory_sum_order_by"];
+	/** update columns of table "ProductCategory" */
+["ProductCategory_update_column"]: GraphQLTypes["ProductCategory_update_column"];
+	/** aggregate var_pop on columns */
+["ProductCategory_var_pop_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by var_pop() on columns of table "ProductCategory" */
+["ProductCategory_var_pop_order_by"]: GraphQLTypes["ProductCategory_var_pop_order_by"];
+	/** aggregate var_samp on columns */
+["ProductCategory_var_samp_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by var_samp() on columns of table "ProductCategory" */
+["ProductCategory_var_samp_order_by"]: GraphQLTypes["ProductCategory_var_samp_order_by"];
+	/** aggregate variance on columns */
+["ProductCategory_variance_fields"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by variance() on columns of table "ProductCategory" */
+["ProductCategory_variance_order_by"]: GraphQLTypes["ProductCategory_variance_order_by"];
+	/** aggregated selection of "Product" */
+["Product_aggregate"]: {
+		aggregate?: GraphQLTypes["Product_aggregate_fields"] | undefined,
+	nodes: Array<GraphQLTypes["Product"]>
+};
+	/** aggregate fields of "Product" */
+["Product_aggregate_fields"]: {
+		avg?: GraphQLTypes["Product_avg_fields"] | undefined,
+	count: number,
+	max?: GraphQLTypes["Product_max_fields"] | undefined,
+	min?: GraphQLTypes["Product_min_fields"] | undefined,
+	stddev?: GraphQLTypes["Product_stddev_fields"] | undefined,
+	stddev_pop?: GraphQLTypes["Product_stddev_pop_fields"] | undefined,
+	stddev_samp?: GraphQLTypes["Product_stddev_samp_fields"] | undefined,
+	sum?: GraphQLTypes["Product_sum_fields"] | undefined,
+	var_pop?: GraphQLTypes["Product_var_pop_fields"] | undefined,
+	var_samp?: GraphQLTypes["Product_var_samp_fields"] | undefined,
+	variance?: GraphQLTypes["Product_variance_fields"] | undefined
+};
+	/** order by aggregate values of table "Product" */
+["Product_aggregate_order_by"]: GraphQLTypes["Product_aggregate_order_by"];
+	/** input type for inserting array relation for remote table "Product" */
+["Product_arr_rel_insert_input"]: GraphQLTypes["Product_arr_rel_insert_input"];
+	/** aggregate avg on columns */
+["Product_avg_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by avg() on columns of table "Product" */
+["Product_avg_order_by"]: GraphQLTypes["Product_avg_order_by"];
+	/** Boolean expression to filter rows from the table "Product". All fields are combined with a logical 'AND'. */
+["Product_bool_exp"]: GraphQLTypes["Product_bool_exp"];
+	/** unique or primary key constraints on table "Product" */
+["Product_constraint"]: GraphQLTypes["Product_constraint"];
+	/** input type for incrementing numeric columns in table "Product" */
+["Product_inc_input"]: GraphQLTypes["Product_inc_input"];
+	/** input type for inserting data into table "Product" */
+["Product_insert_input"]: GraphQLTypes["Product_insert_input"];
+	/** aggregate max on columns */
+["Product_max_fields"]: {
+		businessId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	mainImageUrl?: string | undefined,
+	name?: string | undefined,
+	price?: number | undefined,
+	quota?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by max() on columns of table "Product" */
+["Product_max_order_by"]: GraphQLTypes["Product_max_order_by"];
+	/** aggregate min on columns */
+["Product_min_fields"]: {
+		businessId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	mainImageUrl?: string | undefined,
+	name?: string | undefined,
+	price?: number | undefined,
+	quota?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by min() on columns of table "Product" */
+["Product_min_order_by"]: GraphQLTypes["Product_min_order_by"];
+	/** response of any mutation on the table "Product" */
+["Product_mutation_response"]: {
+		/** number of rows affected by the mutation */
+	affected_rows: number,
+	/** data from the rows affected by the mutation */
+	returning: Array<GraphQLTypes["Product"]>
+};
+	/** input type for inserting object relation for remote table "Product" */
+["Product_obj_rel_insert_input"]: GraphQLTypes["Product_obj_rel_insert_input"];
+	/** on_conflict condition type for table "Product" */
+["Product_on_conflict"]: GraphQLTypes["Product_on_conflict"];
+	/** Ordering options when selecting data from "Product". */
+["Product_order_by"]: GraphQLTypes["Product_order_by"];
+	/** primary key columns input for table: Product */
+["Product_pk_columns_input"]: GraphQLTypes["Product_pk_columns_input"];
+	/** select columns of table "Product" */
+["Product_select_column"]: GraphQLTypes["Product_select_column"];
+	/** input type for updating data in table "Product" */
+["Product_set_input"]: GraphQLTypes["Product_set_input"];
+	/** aggregate stddev on columns */
+["Product_stddev_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by stddev() on columns of table "Product" */
+["Product_stddev_order_by"]: GraphQLTypes["Product_stddev_order_by"];
+	/** aggregate stddev_pop on columns */
+["Product_stddev_pop_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by stddev_pop() on columns of table "Product" */
+["Product_stddev_pop_order_by"]: GraphQLTypes["Product_stddev_pop_order_by"];
+	/** aggregate stddev_samp on columns */
+["Product_stddev_samp_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by stddev_samp() on columns of table "Product" */
+["Product_stddev_samp_order_by"]: GraphQLTypes["Product_stddev_samp_order_by"];
+	/** aggregate sum on columns */
+["Product_sum_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by sum() on columns of table "Product" */
+["Product_sum_order_by"]: GraphQLTypes["Product_sum_order_by"];
+	/** update columns of table "Product" */
+["Product_update_column"]: GraphQLTypes["Product_update_column"];
+	/** aggregate var_pop on columns */
+["Product_var_pop_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by var_pop() on columns of table "Product" */
+["Product_var_pop_order_by"]: GraphQLTypes["Product_var_pop_order_by"];
+	/** aggregate var_samp on columns */
+["Product_var_samp_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by var_samp() on columns of table "Product" */
+["Product_var_samp_order_by"]: GraphQLTypes["Product_var_samp_order_by"];
+	/** aggregate variance on columns */
+["Product_variance_fields"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by variance() on columns of table "Product" */
+["Product_variance_order_by"]: GraphQLTypes["Product_variance_order_by"];
 	/** columns and relationships of "Profile" */
 ["Profile"]: {
 		/** An array relationship */
@@ -4911,6 +6165,117 @@ export type ModelTypes = {
 ["RolesOfProfile_variance_order_by"]: GraphQLTypes["RolesOfProfile_variance_order_by"];
 	/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 ["String_comparison_exp"]: GraphQLTypes["String_comparison_exp"];
+	/** columns and relationships of "_prisma_migrations" */
+["_prisma_migrations"]: {
+		applied_steps_count: number,
+	checksum: string,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id: string,
+	logs?: string | undefined,
+	migration_name: string,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at: GraphQLTypes["timestamptz"]
+};
+	/** aggregated selection of "_prisma_migrations" */
+["_prisma_migrations_aggregate"]: {
+		aggregate?: GraphQLTypes["_prisma_migrations_aggregate_fields"] | undefined,
+	nodes: Array<GraphQLTypes["_prisma_migrations"]>
+};
+	/** aggregate fields of "_prisma_migrations" */
+["_prisma_migrations_aggregate_fields"]: {
+		avg?: GraphQLTypes["_prisma_migrations_avg_fields"] | undefined,
+	count: number,
+	max?: GraphQLTypes["_prisma_migrations_max_fields"] | undefined,
+	min?: GraphQLTypes["_prisma_migrations_min_fields"] | undefined,
+	stddev?: GraphQLTypes["_prisma_migrations_stddev_fields"] | undefined,
+	stddev_pop?: GraphQLTypes["_prisma_migrations_stddev_pop_fields"] | undefined,
+	stddev_samp?: GraphQLTypes["_prisma_migrations_stddev_samp_fields"] | undefined,
+	sum?: GraphQLTypes["_prisma_migrations_sum_fields"] | undefined,
+	var_pop?: GraphQLTypes["_prisma_migrations_var_pop_fields"] | undefined,
+	var_samp?: GraphQLTypes["_prisma_migrations_var_samp_fields"] | undefined,
+	variance?: GraphQLTypes["_prisma_migrations_variance_fields"] | undefined
+};
+	/** aggregate avg on columns */
+["_prisma_migrations_avg_fields"]: {
+		applied_steps_count?: number | undefined
+};
+	/** Boolean expression to filter rows from the table "_prisma_migrations". All fields are combined with a logical 'AND'. */
+["_prisma_migrations_bool_exp"]: GraphQLTypes["_prisma_migrations_bool_exp"];
+	/** unique or primary key constraints on table "_prisma_migrations" */
+["_prisma_migrations_constraint"]: GraphQLTypes["_prisma_migrations_constraint"];
+	/** input type for incrementing numeric columns in table "_prisma_migrations" */
+["_prisma_migrations_inc_input"]: GraphQLTypes["_prisma_migrations_inc_input"];
+	/** input type for inserting data into table "_prisma_migrations" */
+["_prisma_migrations_insert_input"]: GraphQLTypes["_prisma_migrations_insert_input"];
+	/** aggregate max on columns */
+["_prisma_migrations_max_fields"]: {
+		applied_steps_count?: number | undefined,
+	checksum?: string | undefined,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id?: string | undefined,
+	logs?: string | undefined,
+	migration_name?: string | undefined,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at?: GraphQLTypes["timestamptz"] | undefined
+};
+	/** aggregate min on columns */
+["_prisma_migrations_min_fields"]: {
+		applied_steps_count?: number | undefined,
+	checksum?: string | undefined,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id?: string | undefined,
+	logs?: string | undefined,
+	migration_name?: string | undefined,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at?: GraphQLTypes["timestamptz"] | undefined
+};
+	/** response of any mutation on the table "_prisma_migrations" */
+["_prisma_migrations_mutation_response"]: {
+		/** number of rows affected by the mutation */
+	affected_rows: number,
+	/** data from the rows affected by the mutation */
+	returning: Array<GraphQLTypes["_prisma_migrations"]>
+};
+	/** on_conflict condition type for table "_prisma_migrations" */
+["_prisma_migrations_on_conflict"]: GraphQLTypes["_prisma_migrations_on_conflict"];
+	/** Ordering options when selecting data from "_prisma_migrations". */
+["_prisma_migrations_order_by"]: GraphQLTypes["_prisma_migrations_order_by"];
+	/** primary key columns input for table: _prisma_migrations */
+["_prisma_migrations_pk_columns_input"]: GraphQLTypes["_prisma_migrations_pk_columns_input"];
+	/** select columns of table "_prisma_migrations" */
+["_prisma_migrations_select_column"]: GraphQLTypes["_prisma_migrations_select_column"];
+	/** input type for updating data in table "_prisma_migrations" */
+["_prisma_migrations_set_input"]: GraphQLTypes["_prisma_migrations_set_input"];
+	/** aggregate stddev on columns */
+["_prisma_migrations_stddev_fields"]: {
+		applied_steps_count?: number | undefined
+};
+	/** aggregate stddev_pop on columns */
+["_prisma_migrations_stddev_pop_fields"]: {
+		applied_steps_count?: number | undefined
+};
+	/** aggregate stddev_samp on columns */
+["_prisma_migrations_stddev_samp_fields"]: {
+		applied_steps_count?: number | undefined
+};
+	/** aggregate sum on columns */
+["_prisma_migrations_sum_fields"]: {
+		applied_steps_count?: number | undefined
+};
+	/** update columns of table "_prisma_migrations" */
+["_prisma_migrations_update_column"]: GraphQLTypes["_prisma_migrations_update_column"];
+	/** aggregate var_pop on columns */
+["_prisma_migrations_var_pop_fields"]: {
+		applied_steps_count?: number | undefined
+};
+	/** aggregate var_samp on columns */
+["_prisma_migrations_var_samp_fields"]: {
+		applied_steps_count?: number | undefined
+};
+	/** aggregate variance on columns */
+["_prisma_migrations_variance_fields"]: {
+		applied_steps_count?: number | undefined
+};
 	["_text"]:any;
 	/** Boolean expression to compare columns of type "_text". All fields are combined with logical 'AND'. */
 ["_text_comparison_exp"]: GraphQLTypes["_text_comparison_exp"];
@@ -4944,6 +6309,14 @@ export type ModelTypes = {
 	delete_City?: GraphQLTypes["City_mutation_response"] | undefined,
 	/** delete single row from the table: "City" */
 	delete_City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** delete data from the table: "Product" */
+	delete_Product?: GraphQLTypes["Product_mutation_response"] | undefined,
+	/** delete data from the table: "ProductCategory" */
+	delete_ProductCategory?: GraphQLTypes["ProductCategory_mutation_response"] | undefined,
+	/** delete single row from the table: "ProductCategory" */
+	delete_ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** delete single row from the table: "Product" */
+	delete_Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** delete data from the table: "Profile" */
 	delete_Profile?: GraphQLTypes["Profile_mutation_response"] | undefined,
 	/** delete single row from the table: "Profile" */
@@ -4956,6 +6329,10 @@ export type ModelTypes = {
 	delete_RolesOfProfile?: GraphQLTypes["RolesOfProfile_mutation_response"] | undefined,
 	/** delete single row from the table: "RolesOfProfile" */
 	delete_RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** delete data from the table: "_prisma_migrations" */
+	delete__prisma_migrations?: GraphQLTypes["_prisma_migrations_mutation_response"] | undefined,
+	/** delete single row from the table: "_prisma_migrations" */
+	delete__prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined,
 	/** insert data into the table: "Business" */
 	insert_Business?: GraphQLTypes["Business_mutation_response"] | undefined,
 	/** insert data into the table: "BusinessCategory" */
@@ -4984,6 +6361,14 @@ export type ModelTypes = {
 	insert_City?: GraphQLTypes["City_mutation_response"] | undefined,
 	/** insert a single row into the table: "City" */
 	insert_City_one?: GraphQLTypes["City"] | undefined,
+	/** insert data into the table: "Product" */
+	insert_Product?: GraphQLTypes["Product_mutation_response"] | undefined,
+	/** insert data into the table: "ProductCategory" */
+	insert_ProductCategory?: GraphQLTypes["ProductCategory_mutation_response"] | undefined,
+	/** insert a single row into the table: "ProductCategory" */
+	insert_ProductCategory_one?: GraphQLTypes["ProductCategory"] | undefined,
+	/** insert a single row into the table: "Product" */
+	insert_Product_one?: GraphQLTypes["Product"] | undefined,
 	/** insert data into the table: "Profile" */
 	insert_Profile?: GraphQLTypes["Profile_mutation_response"] | undefined,
 	/** insert a single row into the table: "Profile" */
@@ -4996,6 +6381,10 @@ export type ModelTypes = {
 	insert_RolesOfProfile?: GraphQLTypes["RolesOfProfile_mutation_response"] | undefined,
 	/** insert a single row into the table: "RolesOfProfile" */
 	insert_RolesOfProfile_one?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** insert data into the table: "_prisma_migrations" */
+	insert__prisma_migrations?: GraphQLTypes["_prisma_migrations_mutation_response"] | undefined,
+	/** insert a single row into the table: "_prisma_migrations" */
+	insert__prisma_migrations_one?: GraphQLTypes["_prisma_migrations"] | undefined,
 	/** update data of the table: "Business" */
 	update_Business?: GraphQLTypes["Business_mutation_response"] | undefined,
 	/** update data of the table: "BusinessCategory" */
@@ -5024,6 +6413,14 @@ export type ModelTypes = {
 	update_City?: GraphQLTypes["City_mutation_response"] | undefined,
 	/** update single row of the table: "City" */
 	update_City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** update data of the table: "Product" */
+	update_Product?: GraphQLTypes["Product_mutation_response"] | undefined,
+	/** update data of the table: "ProductCategory" */
+	update_ProductCategory?: GraphQLTypes["ProductCategory_mutation_response"] | undefined,
+	/** update single row of the table: "ProductCategory" */
+	update_ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** update single row of the table: "Product" */
+	update_Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** update data of the table: "Profile" */
 	update_Profile?: GraphQLTypes["Profile_mutation_response"] | undefined,
 	/** update single row of the table: "Profile" */
@@ -5035,7 +6432,11 @@ export type ModelTypes = {
 	/** update data of the table: "RolesOfProfile" */
 	update_RolesOfProfile?: GraphQLTypes["RolesOfProfile_mutation_response"] | undefined,
 	/** update single row of the table: "RolesOfProfile" */
-	update_RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined
+	update_RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** update data of the table: "_prisma_migrations" */
+	update__prisma_migrations?: GraphQLTypes["_prisma_migrations_mutation_response"] | undefined,
+	/** update single row of the table: "_prisma_migrations" */
+	update__prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined
 };
 	["numeric"]:any;
 	/** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
@@ -5085,6 +6486,18 @@ export type ModelTypes = {
 	City_aggregate: GraphQLTypes["City_aggregate"],
 	/** fetch data from the table: "City" using primary key columns */
 	City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** fetch data from the table: "Product" */
+	Product: Array<GraphQLTypes["Product"]>,
+	/** fetch data from the table: "ProductCategory" */
+	ProductCategory: Array<GraphQLTypes["ProductCategory"]>,
+	/** fetch aggregated fields from the table: "ProductCategory" */
+	ProductCategory_aggregate: GraphQLTypes["ProductCategory_aggregate"],
+	/** fetch data from the table: "ProductCategory" using primary key columns */
+	ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** fetch aggregated fields from the table: "Product" */
+	Product_aggregate: GraphQLTypes["Product_aggregate"],
+	/** fetch data from the table: "Product" using primary key columns */
+	Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** fetch data from the table: "Profile" */
 	Profile: Array<GraphQLTypes["Profile"]>,
 	/** fetch aggregated fields from the table: "Profile" */
@@ -5102,7 +6515,13 @@ export type ModelTypes = {
 	/** fetch aggregated fields from the table: "RolesOfProfile" */
 	RolesOfProfile_aggregate: GraphQLTypes["RolesOfProfile_aggregate"],
 	/** fetch data from the table: "RolesOfProfile" using primary key columns */
-	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined
+	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** fetch data from the table: "_prisma_migrations" */
+	_prisma_migrations: Array<GraphQLTypes["_prisma_migrations"]>,
+	/** fetch aggregated fields from the table: "_prisma_migrations" */
+	_prisma_migrations_aggregate: GraphQLTypes["_prisma_migrations_aggregate"],
+	/** fetch data from the table: "_prisma_migrations" using primary key columns */
+	_prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined
 };
 	["subscription_root"]: {
 		/** fetch data from the table: "Business" */
@@ -5147,6 +6566,18 @@ export type ModelTypes = {
 	City_aggregate: GraphQLTypes["City_aggregate"],
 	/** fetch data from the table: "City" using primary key columns */
 	City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** fetch data from the table: "Product" */
+	Product: Array<GraphQLTypes["Product"]>,
+	/** fetch data from the table: "ProductCategory" */
+	ProductCategory: Array<GraphQLTypes["ProductCategory"]>,
+	/** fetch aggregated fields from the table: "ProductCategory" */
+	ProductCategory_aggregate: GraphQLTypes["ProductCategory_aggregate"],
+	/** fetch data from the table: "ProductCategory" using primary key columns */
+	ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** fetch aggregated fields from the table: "Product" */
+	Product_aggregate: GraphQLTypes["Product_aggregate"],
+	/** fetch data from the table: "Product" using primary key columns */
+	Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** fetch data from the table: "Profile" */
 	Profile: Array<GraphQLTypes["Profile"]>,
 	/** fetch aggregated fields from the table: "Profile" */
@@ -5164,11 +6595,20 @@ export type ModelTypes = {
 	/** fetch aggregated fields from the table: "RolesOfProfile" */
 	RolesOfProfile_aggregate: GraphQLTypes["RolesOfProfile_aggregate"],
 	/** fetch data from the table: "RolesOfProfile" using primary key columns */
-	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined
+	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** fetch data from the table: "_prisma_migrations" */
+	_prisma_migrations: Array<GraphQLTypes["_prisma_migrations"]>,
+	/** fetch aggregated fields from the table: "_prisma_migrations" */
+	_prisma_migrations_aggregate: GraphQLTypes["_prisma_migrations_aggregate"],
+	/** fetch data from the table: "_prisma_migrations" using primary key columns */
+	_prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined
 };
 	["timestamp"]:any;
 	/** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
-["timestamp_comparison_exp"]: GraphQLTypes["timestamp_comparison_exp"]
+["timestamp_comparison_exp"]: GraphQLTypes["timestamp_comparison_exp"];
+	["timestamptz"]:any;
+	/** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
+["timestamptz_comparison_exp"]: GraphQLTypes["timestamptz_comparison_exp"]
     }
 
 export type GraphQLTypes = {
@@ -5201,6 +6641,10 @@ export type GraphQLTypes = {
 	CategoryFieldValues_aggregate: GraphQLTypes["CategoryFieldValue_aggregate"],
 	/** An object relationship */
 	City: GraphQLTypes["City"],
+	/** An array relationship */
+	Products: Array<GraphQLTypes["Product"]>,
+	/** An aggregate relationship */
+	Products_aggregate: GraphQLTypes["Product_aggregate"],
 	cityId: number,
 	createdAt: GraphQLTypes["timestamp"],
 	email?: string | undefined,
@@ -5793,6 +7237,7 @@ export type GraphQLTypes = {
 	BusinessWorkers?: GraphQLTypes["BusinessWorker_bool_exp"] | undefined,
 	CategoryFieldValues?: GraphQLTypes["CategoryFieldValue_bool_exp"] | undefined,
 	City?: GraphQLTypes["City_bool_exp"] | undefined,
+	Products?: GraphQLTypes["Product_bool_exp"] | undefined,
 	_and?: Array<GraphQLTypes["Business_bool_exp"]> | undefined,
 	_not?: GraphQLTypes["Business_bool_exp"] | undefined,
 	_or?: Array<GraphQLTypes["Business_bool_exp"]> | undefined,
@@ -5817,6 +7262,7 @@ export type GraphQLTypes = {
 	BusinessWorkers?: GraphQLTypes["BusinessWorker_arr_rel_insert_input"] | undefined,
 	CategoryFieldValues?: GraphQLTypes["CategoryFieldValue_arr_rel_insert_input"] | undefined,
 	City?: GraphQLTypes["City_obj_rel_insert_input"] | undefined,
+	Products?: GraphQLTypes["Product_arr_rel_insert_input"] | undefined,
 	cityId?: number | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	email?: string | undefined,
@@ -5893,6 +7339,7 @@ export type GraphQLTypes = {
 	BusinessWorkers_aggregate?: GraphQLTypes["BusinessWorker_aggregate_order_by"] | undefined,
 	CategoryFieldValues_aggregate?: GraphQLTypes["CategoryFieldValue_aggregate_order_by"] | undefined,
 	City?: GraphQLTypes["City_order_by"] | undefined,
+	Products_aggregate?: GraphQLTypes["Product_aggregate_order_by"] | undefined,
 	cityId?: GraphQLTypes["order_by"] | undefined,
 	createdAt?: GraphQLTypes["order_by"] | undefined,
 	email?: GraphQLTypes["order_by"] | undefined,
@@ -6007,6 +7454,10 @@ export type GraphQLTypes = {
 	CategoryFields: Array<GraphQLTypes["CategoryField"]>,
 	/** An aggregate relationship */
 	CategoryFields_aggregate: GraphQLTypes["CategoryField_aggregate"],
+	/** An array relationship */
+	ProductCategories: Array<GraphQLTypes["ProductCategory"]>,
+	/** An aggregate relationship */
+	ProductCategories_aggregate: GraphQLTypes["ProductCategory_aggregate"],
 	createdAt: GraphQLTypes["timestamp"],
 	id: number,
 	name: string,
@@ -6578,6 +8029,7 @@ export type GraphQLTypes = {
 ["Category_bool_exp"]: {
 		BusinessCategories?: GraphQLTypes["BusinessCategory_bool_exp"] | undefined,
 	CategoryFields?: GraphQLTypes["CategoryField_bool_exp"] | undefined,
+	ProductCategories?: GraphQLTypes["ProductCategory_bool_exp"] | undefined,
 	_and?: Array<GraphQLTypes["Category_bool_exp"]> | undefined,
 	_not?: GraphQLTypes["Category_bool_exp"] | undefined,
 	_or?: Array<GraphQLTypes["Category_bool_exp"]> | undefined,
@@ -6596,6 +8048,7 @@ export type GraphQLTypes = {
 ["Category_insert_input"]: {
 		BusinessCategories?: GraphQLTypes["BusinessCategory_arr_rel_insert_input"] | undefined,
 	CategoryFields?: GraphQLTypes["CategoryField_arr_rel_insert_input"] | undefined,
+	ProductCategories?: GraphQLTypes["ProductCategory_arr_rel_insert_input"] | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	id?: number | undefined,
 	name?: string | undefined,
@@ -6641,6 +8094,7 @@ export type GraphQLTypes = {
 ["Category_order_by"]: {
 		BusinessCategories_aggregate?: GraphQLTypes["BusinessCategory_aggregate_order_by"] | undefined,
 	CategoryFields_aggregate?: GraphQLTypes["CategoryField_aggregate_order_by"] | undefined,
+	ProductCategories_aggregate?: GraphQLTypes["ProductCategory_aggregate_order_by"] | undefined,
 	createdAt?: GraphQLTypes["order_by"] | undefined,
 	id?: GraphQLTypes["order_by"] | undefined,
 	name?: GraphQLTypes["order_by"] | undefined,
@@ -6991,6 +8445,589 @@ export type GraphQLTypes = {
 	_lte?: number | undefined,
 	_neq?: number | undefined,
 	_nin?: Array<number> | undefined
+};
+	/** columns and relationships of "Product" */
+["Product"]: {
+	__typename: "Product",
+	/** An object relationship */
+	Business: GraphQLTypes["Business"],
+	ImagesUrls?: GraphQLTypes["_text"] | undefined,
+	/** An array relationship */
+	ProductCategories: Array<GraphQLTypes["ProductCategory"]>,
+	/** An aggregate relationship */
+	ProductCategories_aggregate: GraphQLTypes["ProductCategory_aggregate"],
+	businessId: number,
+	createdAt: GraphQLTypes["timestamp"],
+	id: number,
+	mainImageUrl: string,
+	name: string,
+	price: number,
+	quota: number,
+	updatedAt: GraphQLTypes["timestamp"]
+};
+	/** columns and relationships of "ProductCategory" */
+["ProductCategory"]: {
+	__typename: "ProductCategory",
+	/** An object relationship */
+	Category?: GraphQLTypes["Category"] | undefined,
+	/** An object relationship */
+	Product?: GraphQLTypes["Product"] | undefined,
+	categoryId?: number | undefined,
+	createdAt: GraphQLTypes["timestamp"],
+	id: number,
+	productId?: number | undefined,
+	updatedAt: GraphQLTypes["timestamp"]
+};
+	/** aggregated selection of "ProductCategory" */
+["ProductCategory_aggregate"]: {
+	__typename: "ProductCategory_aggregate",
+	aggregate?: GraphQLTypes["ProductCategory_aggregate_fields"] | undefined,
+	nodes: Array<GraphQLTypes["ProductCategory"]>
+};
+	/** aggregate fields of "ProductCategory" */
+["ProductCategory_aggregate_fields"]: {
+	__typename: "ProductCategory_aggregate_fields",
+	avg?: GraphQLTypes["ProductCategory_avg_fields"] | undefined,
+	count: number,
+	max?: GraphQLTypes["ProductCategory_max_fields"] | undefined,
+	min?: GraphQLTypes["ProductCategory_min_fields"] | undefined,
+	stddev?: GraphQLTypes["ProductCategory_stddev_fields"] | undefined,
+	stddev_pop?: GraphQLTypes["ProductCategory_stddev_pop_fields"] | undefined,
+	stddev_samp?: GraphQLTypes["ProductCategory_stddev_samp_fields"] | undefined,
+	sum?: GraphQLTypes["ProductCategory_sum_fields"] | undefined,
+	var_pop?: GraphQLTypes["ProductCategory_var_pop_fields"] | undefined,
+	var_samp?: GraphQLTypes["ProductCategory_var_samp_fields"] | undefined,
+	variance?: GraphQLTypes["ProductCategory_variance_fields"] | undefined
+};
+	/** order by aggregate values of table "ProductCategory" */
+["ProductCategory_aggregate_order_by"]: {
+		avg?: GraphQLTypes["ProductCategory_avg_order_by"] | undefined,
+	count?: GraphQLTypes["order_by"] | undefined,
+	max?: GraphQLTypes["ProductCategory_max_order_by"] | undefined,
+	min?: GraphQLTypes["ProductCategory_min_order_by"] | undefined,
+	stddev?: GraphQLTypes["ProductCategory_stddev_order_by"] | undefined,
+	stddev_pop?: GraphQLTypes["ProductCategory_stddev_pop_order_by"] | undefined,
+	stddev_samp?: GraphQLTypes["ProductCategory_stddev_samp_order_by"] | undefined,
+	sum?: GraphQLTypes["ProductCategory_sum_order_by"] | undefined,
+	var_pop?: GraphQLTypes["ProductCategory_var_pop_order_by"] | undefined,
+	var_samp?: GraphQLTypes["ProductCategory_var_samp_order_by"] | undefined,
+	variance?: GraphQLTypes["ProductCategory_variance_order_by"] | undefined
+};
+	/** input type for inserting array relation for remote table "ProductCategory" */
+["ProductCategory_arr_rel_insert_input"]: {
+		data: Array<GraphQLTypes["ProductCategory_insert_input"]>,
+	/** upsert condition */
+	on_conflict?: GraphQLTypes["ProductCategory_on_conflict"] | undefined
+};
+	/** aggregate avg on columns */
+["ProductCategory_avg_fields"]: {
+	__typename: "ProductCategory_avg_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by avg() on columns of table "ProductCategory" */
+["ProductCategory_avg_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** Boolean expression to filter rows from the table "ProductCategory". All fields are combined with a logical 'AND'. */
+["ProductCategory_bool_exp"]: {
+		Category?: GraphQLTypes["Category_bool_exp"] | undefined,
+	Product?: GraphQLTypes["Product_bool_exp"] | undefined,
+	_and?: Array<GraphQLTypes["ProductCategory_bool_exp"]> | undefined,
+	_not?: GraphQLTypes["ProductCategory_bool_exp"] | undefined,
+	_or?: Array<GraphQLTypes["ProductCategory_bool_exp"]> | undefined,
+	categoryId?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	createdAt?: GraphQLTypes["timestamp_comparison_exp"] | undefined,
+	id?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	productId?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	updatedAt?: GraphQLTypes["timestamp_comparison_exp"] | undefined
+};
+	/** unique or primary key constraints on table "ProductCategory" */
+["ProductCategory_constraint"]: ProductCategory_constraint;
+	/** input type for incrementing numeric columns in table "ProductCategory" */
+["ProductCategory_inc_input"]: {
+		categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** input type for inserting data into table "ProductCategory" */
+["ProductCategory_insert_input"]: {
+		Category?: GraphQLTypes["Category_obj_rel_insert_input"] | undefined,
+	Product?: GraphQLTypes["Product_obj_rel_insert_input"] | undefined,
+	categoryId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	productId?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** aggregate max on columns */
+["ProductCategory_max_fields"]: {
+	__typename: "ProductCategory_max_fields",
+	categoryId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	productId?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by max() on columns of table "ProductCategory" */
+["ProductCategory_max_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	createdAt?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined,
+	updatedAt?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate min on columns */
+["ProductCategory_min_fields"]: {
+	__typename: "ProductCategory_min_fields",
+	categoryId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	productId?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by min() on columns of table "ProductCategory" */
+["ProductCategory_min_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	createdAt?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined,
+	updatedAt?: GraphQLTypes["order_by"] | undefined
+};
+	/** response of any mutation on the table "ProductCategory" */
+["ProductCategory_mutation_response"]: {
+	__typename: "ProductCategory_mutation_response",
+	/** number of rows affected by the mutation */
+	affected_rows: number,
+	/** data from the rows affected by the mutation */
+	returning: Array<GraphQLTypes["ProductCategory"]>
+};
+	/** on_conflict condition type for table "ProductCategory" */
+["ProductCategory_on_conflict"]: {
+		constraint: GraphQLTypes["ProductCategory_constraint"],
+	update_columns: Array<GraphQLTypes["ProductCategory_update_column"]>,
+	where?: GraphQLTypes["ProductCategory_bool_exp"] | undefined
+};
+	/** Ordering options when selecting data from "ProductCategory". */
+["ProductCategory_order_by"]: {
+		Category?: GraphQLTypes["Category_order_by"] | undefined,
+	Product?: GraphQLTypes["Product_order_by"] | undefined,
+	categoryId?: GraphQLTypes["order_by"] | undefined,
+	createdAt?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined,
+	updatedAt?: GraphQLTypes["order_by"] | undefined
+};
+	/** primary key columns input for table: ProductCategory */
+["ProductCategory_pk_columns_input"]: {
+		id: number
+};
+	/** select columns of table "ProductCategory" */
+["ProductCategory_select_column"]: ProductCategory_select_column;
+	/** input type for updating data in table "ProductCategory" */
+["ProductCategory_set_input"]: {
+		categoryId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	productId?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** aggregate stddev on columns */
+["ProductCategory_stddev_fields"]: {
+	__typename: "ProductCategory_stddev_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by stddev() on columns of table "ProductCategory" */
+["ProductCategory_stddev_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate stddev_pop on columns */
+["ProductCategory_stddev_pop_fields"]: {
+	__typename: "ProductCategory_stddev_pop_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by stddev_pop() on columns of table "ProductCategory" */
+["ProductCategory_stddev_pop_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate stddev_samp on columns */
+["ProductCategory_stddev_samp_fields"]: {
+	__typename: "ProductCategory_stddev_samp_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by stddev_samp() on columns of table "ProductCategory" */
+["ProductCategory_stddev_samp_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate sum on columns */
+["ProductCategory_sum_fields"]: {
+	__typename: "ProductCategory_sum_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by sum() on columns of table "ProductCategory" */
+["ProductCategory_sum_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** update columns of table "ProductCategory" */
+["ProductCategory_update_column"]: ProductCategory_update_column;
+	/** aggregate var_pop on columns */
+["ProductCategory_var_pop_fields"]: {
+	__typename: "ProductCategory_var_pop_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by var_pop() on columns of table "ProductCategory" */
+["ProductCategory_var_pop_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate var_samp on columns */
+["ProductCategory_var_samp_fields"]: {
+	__typename: "ProductCategory_var_samp_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by var_samp() on columns of table "ProductCategory" */
+["ProductCategory_var_samp_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate variance on columns */
+["ProductCategory_variance_fields"]: {
+	__typename: "ProductCategory_variance_fields",
+	categoryId?: number | undefined,
+	id?: number | undefined,
+	productId?: number | undefined
+};
+	/** order by variance() on columns of table "ProductCategory" */
+["ProductCategory_variance_order_by"]: {
+		categoryId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	productId?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregated selection of "Product" */
+["Product_aggregate"]: {
+	__typename: "Product_aggregate",
+	aggregate?: GraphQLTypes["Product_aggregate_fields"] | undefined,
+	nodes: Array<GraphQLTypes["Product"]>
+};
+	/** aggregate fields of "Product" */
+["Product_aggregate_fields"]: {
+	__typename: "Product_aggregate_fields",
+	avg?: GraphQLTypes["Product_avg_fields"] | undefined,
+	count: number,
+	max?: GraphQLTypes["Product_max_fields"] | undefined,
+	min?: GraphQLTypes["Product_min_fields"] | undefined,
+	stddev?: GraphQLTypes["Product_stddev_fields"] | undefined,
+	stddev_pop?: GraphQLTypes["Product_stddev_pop_fields"] | undefined,
+	stddev_samp?: GraphQLTypes["Product_stddev_samp_fields"] | undefined,
+	sum?: GraphQLTypes["Product_sum_fields"] | undefined,
+	var_pop?: GraphQLTypes["Product_var_pop_fields"] | undefined,
+	var_samp?: GraphQLTypes["Product_var_samp_fields"] | undefined,
+	variance?: GraphQLTypes["Product_variance_fields"] | undefined
+};
+	/** order by aggregate values of table "Product" */
+["Product_aggregate_order_by"]: {
+		avg?: GraphQLTypes["Product_avg_order_by"] | undefined,
+	count?: GraphQLTypes["order_by"] | undefined,
+	max?: GraphQLTypes["Product_max_order_by"] | undefined,
+	min?: GraphQLTypes["Product_min_order_by"] | undefined,
+	stddev?: GraphQLTypes["Product_stddev_order_by"] | undefined,
+	stddev_pop?: GraphQLTypes["Product_stddev_pop_order_by"] | undefined,
+	stddev_samp?: GraphQLTypes["Product_stddev_samp_order_by"] | undefined,
+	sum?: GraphQLTypes["Product_sum_order_by"] | undefined,
+	var_pop?: GraphQLTypes["Product_var_pop_order_by"] | undefined,
+	var_samp?: GraphQLTypes["Product_var_samp_order_by"] | undefined,
+	variance?: GraphQLTypes["Product_variance_order_by"] | undefined
+};
+	/** input type for inserting array relation for remote table "Product" */
+["Product_arr_rel_insert_input"]: {
+		data: Array<GraphQLTypes["Product_insert_input"]>,
+	/** upsert condition */
+	on_conflict?: GraphQLTypes["Product_on_conflict"] | undefined
+};
+	/** aggregate avg on columns */
+["Product_avg_fields"]: {
+	__typename: "Product_avg_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by avg() on columns of table "Product" */
+["Product_avg_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
+};
+	/** Boolean expression to filter rows from the table "Product". All fields are combined with a logical 'AND'. */
+["Product_bool_exp"]: {
+		Business?: GraphQLTypes["Business_bool_exp"] | undefined,
+	ImagesUrls?: GraphQLTypes["_text_comparison_exp"] | undefined,
+	ProductCategories?: GraphQLTypes["ProductCategory_bool_exp"] | undefined,
+	_and?: Array<GraphQLTypes["Product_bool_exp"]> | undefined,
+	_not?: GraphQLTypes["Product_bool_exp"] | undefined,
+	_or?: Array<GraphQLTypes["Product_bool_exp"]> | undefined,
+	businessId?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	createdAt?: GraphQLTypes["timestamp_comparison_exp"] | undefined,
+	id?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	mainImageUrl?: GraphQLTypes["String_comparison_exp"] | undefined,
+	name?: GraphQLTypes["String_comparison_exp"] | undefined,
+	price?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	quota?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	updatedAt?: GraphQLTypes["timestamp_comparison_exp"] | undefined
+};
+	/** unique or primary key constraints on table "Product" */
+["Product_constraint"]: Product_constraint;
+	/** input type for incrementing numeric columns in table "Product" */
+["Product_inc_input"]: {
+		businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** input type for inserting data into table "Product" */
+["Product_insert_input"]: {
+		Business?: GraphQLTypes["Business_obj_rel_insert_input"] | undefined,
+	ImagesUrls?: GraphQLTypes["_text"] | undefined,
+	ProductCategories?: GraphQLTypes["ProductCategory_arr_rel_insert_input"] | undefined,
+	businessId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	mainImageUrl?: string | undefined,
+	name?: string | undefined,
+	price?: number | undefined,
+	quota?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** aggregate max on columns */
+["Product_max_fields"]: {
+	__typename: "Product_max_fields",
+	businessId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	mainImageUrl?: string | undefined,
+	name?: string | undefined,
+	price?: number | undefined,
+	quota?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by max() on columns of table "Product" */
+["Product_max_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	createdAt?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	mainImageUrl?: GraphQLTypes["order_by"] | undefined,
+	name?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined,
+	updatedAt?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate min on columns */
+["Product_min_fields"]: {
+	__typename: "Product_min_fields",
+	businessId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	mainImageUrl?: string | undefined,
+	name?: string | undefined,
+	price?: number | undefined,
+	quota?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** order by min() on columns of table "Product" */
+["Product_min_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	createdAt?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	mainImageUrl?: GraphQLTypes["order_by"] | undefined,
+	name?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined,
+	updatedAt?: GraphQLTypes["order_by"] | undefined
+};
+	/** response of any mutation on the table "Product" */
+["Product_mutation_response"]: {
+	__typename: "Product_mutation_response",
+	/** number of rows affected by the mutation */
+	affected_rows: number,
+	/** data from the rows affected by the mutation */
+	returning: Array<GraphQLTypes["Product"]>
+};
+	/** input type for inserting object relation for remote table "Product" */
+["Product_obj_rel_insert_input"]: {
+		data: GraphQLTypes["Product_insert_input"],
+	/** upsert condition */
+	on_conflict?: GraphQLTypes["Product_on_conflict"] | undefined
+};
+	/** on_conflict condition type for table "Product" */
+["Product_on_conflict"]: {
+		constraint: GraphQLTypes["Product_constraint"],
+	update_columns: Array<GraphQLTypes["Product_update_column"]>,
+	where?: GraphQLTypes["Product_bool_exp"] | undefined
+};
+	/** Ordering options when selecting data from "Product". */
+["Product_order_by"]: {
+		Business?: GraphQLTypes["Business_order_by"] | undefined,
+	ImagesUrls?: GraphQLTypes["order_by"] | undefined,
+	ProductCategories_aggregate?: GraphQLTypes["ProductCategory_aggregate_order_by"] | undefined,
+	businessId?: GraphQLTypes["order_by"] | undefined,
+	createdAt?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	mainImageUrl?: GraphQLTypes["order_by"] | undefined,
+	name?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined,
+	updatedAt?: GraphQLTypes["order_by"] | undefined
+};
+	/** primary key columns input for table: Product */
+["Product_pk_columns_input"]: {
+		id: number
+};
+	/** select columns of table "Product" */
+["Product_select_column"]: Product_select_column;
+	/** input type for updating data in table "Product" */
+["Product_set_input"]: {
+		ImagesUrls?: GraphQLTypes["_text"] | undefined,
+	businessId?: number | undefined,
+	createdAt?: GraphQLTypes["timestamp"] | undefined,
+	id?: number | undefined,
+	mainImageUrl?: string | undefined,
+	name?: string | undefined,
+	price?: number | undefined,
+	quota?: number | undefined,
+	updatedAt?: GraphQLTypes["timestamp"] | undefined
+};
+	/** aggregate stddev on columns */
+["Product_stddev_fields"]: {
+	__typename: "Product_stddev_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by stddev() on columns of table "Product" */
+["Product_stddev_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate stddev_pop on columns */
+["Product_stddev_pop_fields"]: {
+	__typename: "Product_stddev_pop_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by stddev_pop() on columns of table "Product" */
+["Product_stddev_pop_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate stddev_samp on columns */
+["Product_stddev_samp_fields"]: {
+	__typename: "Product_stddev_samp_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by stddev_samp() on columns of table "Product" */
+["Product_stddev_samp_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate sum on columns */
+["Product_sum_fields"]: {
+	__typename: "Product_sum_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by sum() on columns of table "Product" */
+["Product_sum_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
+};
+	/** update columns of table "Product" */
+["Product_update_column"]: Product_update_column;
+	/** aggregate var_pop on columns */
+["Product_var_pop_fields"]: {
+	__typename: "Product_var_pop_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by var_pop() on columns of table "Product" */
+["Product_var_pop_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate var_samp on columns */
+["Product_var_samp_fields"]: {
+	__typename: "Product_var_samp_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by var_samp() on columns of table "Product" */
+["Product_var_samp_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
+};
+	/** aggregate variance on columns */
+["Product_variance_fields"]: {
+	__typename: "Product_variance_fields",
+	businessId?: number | undefined,
+	id?: number | undefined,
+	price?: number | undefined,
+	quota?: number | undefined
+};
+	/** order by variance() on columns of table "Product" */
+["Product_variance_order_by"]: {
+		businessId?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	price?: GraphQLTypes["order_by"] | undefined,
+	quota?: GraphQLTypes["order_by"] | undefined
 };
 	/** columns and relationships of "Profile" */
 ["Profile"]: {
@@ -7615,6 +9652,178 @@ export type GraphQLTypes = {
 	/** does the column match the given SQL regular expression */
 	_similar?: string | undefined
 };
+	/** columns and relationships of "_prisma_migrations" */
+["_prisma_migrations"]: {
+	__typename: "_prisma_migrations",
+	applied_steps_count: number,
+	checksum: string,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id: string,
+	logs?: string | undefined,
+	migration_name: string,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at: GraphQLTypes["timestamptz"]
+};
+	/** aggregated selection of "_prisma_migrations" */
+["_prisma_migrations_aggregate"]: {
+	__typename: "_prisma_migrations_aggregate",
+	aggregate?: GraphQLTypes["_prisma_migrations_aggregate_fields"] | undefined,
+	nodes: Array<GraphQLTypes["_prisma_migrations"]>
+};
+	/** aggregate fields of "_prisma_migrations" */
+["_prisma_migrations_aggregate_fields"]: {
+	__typename: "_prisma_migrations_aggregate_fields",
+	avg?: GraphQLTypes["_prisma_migrations_avg_fields"] | undefined,
+	count: number,
+	max?: GraphQLTypes["_prisma_migrations_max_fields"] | undefined,
+	min?: GraphQLTypes["_prisma_migrations_min_fields"] | undefined,
+	stddev?: GraphQLTypes["_prisma_migrations_stddev_fields"] | undefined,
+	stddev_pop?: GraphQLTypes["_prisma_migrations_stddev_pop_fields"] | undefined,
+	stddev_samp?: GraphQLTypes["_prisma_migrations_stddev_samp_fields"] | undefined,
+	sum?: GraphQLTypes["_prisma_migrations_sum_fields"] | undefined,
+	var_pop?: GraphQLTypes["_prisma_migrations_var_pop_fields"] | undefined,
+	var_samp?: GraphQLTypes["_prisma_migrations_var_samp_fields"] | undefined,
+	variance?: GraphQLTypes["_prisma_migrations_variance_fields"] | undefined
+};
+	/** aggregate avg on columns */
+["_prisma_migrations_avg_fields"]: {
+	__typename: "_prisma_migrations_avg_fields",
+	applied_steps_count?: number | undefined
+};
+	/** Boolean expression to filter rows from the table "_prisma_migrations". All fields are combined with a logical 'AND'. */
+["_prisma_migrations_bool_exp"]: {
+		_and?: Array<GraphQLTypes["_prisma_migrations_bool_exp"]> | undefined,
+	_not?: GraphQLTypes["_prisma_migrations_bool_exp"] | undefined,
+	_or?: Array<GraphQLTypes["_prisma_migrations_bool_exp"]> | undefined,
+	applied_steps_count?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	checksum?: GraphQLTypes["String_comparison_exp"] | undefined,
+	finished_at?: GraphQLTypes["timestamptz_comparison_exp"] | undefined,
+	id?: GraphQLTypes["String_comparison_exp"] | undefined,
+	logs?: GraphQLTypes["String_comparison_exp"] | undefined,
+	migration_name?: GraphQLTypes["String_comparison_exp"] | undefined,
+	rolled_back_at?: GraphQLTypes["timestamptz_comparison_exp"] | undefined,
+	started_at?: GraphQLTypes["timestamptz_comparison_exp"] | undefined
+};
+	/** unique or primary key constraints on table "_prisma_migrations" */
+["_prisma_migrations_constraint"]: _prisma_migrations_constraint;
+	/** input type for incrementing numeric columns in table "_prisma_migrations" */
+["_prisma_migrations_inc_input"]: {
+		applied_steps_count?: number | undefined
+};
+	/** input type for inserting data into table "_prisma_migrations" */
+["_prisma_migrations_insert_input"]: {
+		applied_steps_count?: number | undefined,
+	checksum?: string | undefined,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id?: string | undefined,
+	logs?: string | undefined,
+	migration_name?: string | undefined,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at?: GraphQLTypes["timestamptz"] | undefined
+};
+	/** aggregate max on columns */
+["_prisma_migrations_max_fields"]: {
+	__typename: "_prisma_migrations_max_fields",
+	applied_steps_count?: number | undefined,
+	checksum?: string | undefined,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id?: string | undefined,
+	logs?: string | undefined,
+	migration_name?: string | undefined,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at?: GraphQLTypes["timestamptz"] | undefined
+};
+	/** aggregate min on columns */
+["_prisma_migrations_min_fields"]: {
+	__typename: "_prisma_migrations_min_fields",
+	applied_steps_count?: number | undefined,
+	checksum?: string | undefined,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id?: string | undefined,
+	logs?: string | undefined,
+	migration_name?: string | undefined,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at?: GraphQLTypes["timestamptz"] | undefined
+};
+	/** response of any mutation on the table "_prisma_migrations" */
+["_prisma_migrations_mutation_response"]: {
+	__typename: "_prisma_migrations_mutation_response",
+	/** number of rows affected by the mutation */
+	affected_rows: number,
+	/** data from the rows affected by the mutation */
+	returning: Array<GraphQLTypes["_prisma_migrations"]>
+};
+	/** on_conflict condition type for table "_prisma_migrations" */
+["_prisma_migrations_on_conflict"]: {
+		constraint: GraphQLTypes["_prisma_migrations_constraint"],
+	update_columns: Array<GraphQLTypes["_prisma_migrations_update_column"]>,
+	where?: GraphQLTypes["_prisma_migrations_bool_exp"] | undefined
+};
+	/** Ordering options when selecting data from "_prisma_migrations". */
+["_prisma_migrations_order_by"]: {
+		applied_steps_count?: GraphQLTypes["order_by"] | undefined,
+	checksum?: GraphQLTypes["order_by"] | undefined,
+	finished_at?: GraphQLTypes["order_by"] | undefined,
+	id?: GraphQLTypes["order_by"] | undefined,
+	logs?: GraphQLTypes["order_by"] | undefined,
+	migration_name?: GraphQLTypes["order_by"] | undefined,
+	rolled_back_at?: GraphQLTypes["order_by"] | undefined,
+	started_at?: GraphQLTypes["order_by"] | undefined
+};
+	/** primary key columns input for table: _prisma_migrations */
+["_prisma_migrations_pk_columns_input"]: {
+		id: string
+};
+	/** select columns of table "_prisma_migrations" */
+["_prisma_migrations_select_column"]: _prisma_migrations_select_column;
+	/** input type for updating data in table "_prisma_migrations" */
+["_prisma_migrations_set_input"]: {
+		applied_steps_count?: number | undefined,
+	checksum?: string | undefined,
+	finished_at?: GraphQLTypes["timestamptz"] | undefined,
+	id?: string | undefined,
+	logs?: string | undefined,
+	migration_name?: string | undefined,
+	rolled_back_at?: GraphQLTypes["timestamptz"] | undefined,
+	started_at?: GraphQLTypes["timestamptz"] | undefined
+};
+	/** aggregate stddev on columns */
+["_prisma_migrations_stddev_fields"]: {
+	__typename: "_prisma_migrations_stddev_fields",
+	applied_steps_count?: number | undefined
+};
+	/** aggregate stddev_pop on columns */
+["_prisma_migrations_stddev_pop_fields"]: {
+	__typename: "_prisma_migrations_stddev_pop_fields",
+	applied_steps_count?: number | undefined
+};
+	/** aggregate stddev_samp on columns */
+["_prisma_migrations_stddev_samp_fields"]: {
+	__typename: "_prisma_migrations_stddev_samp_fields",
+	applied_steps_count?: number | undefined
+};
+	/** aggregate sum on columns */
+["_prisma_migrations_sum_fields"]: {
+	__typename: "_prisma_migrations_sum_fields",
+	applied_steps_count?: number | undefined
+};
+	/** update columns of table "_prisma_migrations" */
+["_prisma_migrations_update_column"]: _prisma_migrations_update_column;
+	/** aggregate var_pop on columns */
+["_prisma_migrations_var_pop_fields"]: {
+	__typename: "_prisma_migrations_var_pop_fields",
+	applied_steps_count?: number | undefined
+};
+	/** aggregate var_samp on columns */
+["_prisma_migrations_var_samp_fields"]: {
+	__typename: "_prisma_migrations_var_samp_fields",
+	applied_steps_count?: number | undefined
+};
+	/** aggregate variance on columns */
+["_prisma_migrations_variance_fields"]: {
+	__typename: "_prisma_migrations_variance_fields",
+	applied_steps_count?: number | undefined
+};
 	["_text"]: any;
 	/** Boolean expression to compare columns of type "_text". All fields are combined with logical 'AND'. */
 ["_text_comparison_exp"]: {
@@ -7659,6 +9868,14 @@ export type GraphQLTypes = {
 	delete_City?: GraphQLTypes["City_mutation_response"] | undefined,
 	/** delete single row from the table: "City" */
 	delete_City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** delete data from the table: "Product" */
+	delete_Product?: GraphQLTypes["Product_mutation_response"] | undefined,
+	/** delete data from the table: "ProductCategory" */
+	delete_ProductCategory?: GraphQLTypes["ProductCategory_mutation_response"] | undefined,
+	/** delete single row from the table: "ProductCategory" */
+	delete_ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** delete single row from the table: "Product" */
+	delete_Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** delete data from the table: "Profile" */
 	delete_Profile?: GraphQLTypes["Profile_mutation_response"] | undefined,
 	/** delete single row from the table: "Profile" */
@@ -7671,6 +9888,10 @@ export type GraphQLTypes = {
 	delete_RolesOfProfile?: GraphQLTypes["RolesOfProfile_mutation_response"] | undefined,
 	/** delete single row from the table: "RolesOfProfile" */
 	delete_RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** delete data from the table: "_prisma_migrations" */
+	delete__prisma_migrations?: GraphQLTypes["_prisma_migrations_mutation_response"] | undefined,
+	/** delete single row from the table: "_prisma_migrations" */
+	delete__prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined,
 	/** insert data into the table: "Business" */
 	insert_Business?: GraphQLTypes["Business_mutation_response"] | undefined,
 	/** insert data into the table: "BusinessCategory" */
@@ -7699,6 +9920,14 @@ export type GraphQLTypes = {
 	insert_City?: GraphQLTypes["City_mutation_response"] | undefined,
 	/** insert a single row into the table: "City" */
 	insert_City_one?: GraphQLTypes["City"] | undefined,
+	/** insert data into the table: "Product" */
+	insert_Product?: GraphQLTypes["Product_mutation_response"] | undefined,
+	/** insert data into the table: "ProductCategory" */
+	insert_ProductCategory?: GraphQLTypes["ProductCategory_mutation_response"] | undefined,
+	/** insert a single row into the table: "ProductCategory" */
+	insert_ProductCategory_one?: GraphQLTypes["ProductCategory"] | undefined,
+	/** insert a single row into the table: "Product" */
+	insert_Product_one?: GraphQLTypes["Product"] | undefined,
 	/** insert data into the table: "Profile" */
 	insert_Profile?: GraphQLTypes["Profile_mutation_response"] | undefined,
 	/** insert a single row into the table: "Profile" */
@@ -7711,6 +9940,10 @@ export type GraphQLTypes = {
 	insert_RolesOfProfile?: GraphQLTypes["RolesOfProfile_mutation_response"] | undefined,
 	/** insert a single row into the table: "RolesOfProfile" */
 	insert_RolesOfProfile_one?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** insert data into the table: "_prisma_migrations" */
+	insert__prisma_migrations?: GraphQLTypes["_prisma_migrations_mutation_response"] | undefined,
+	/** insert a single row into the table: "_prisma_migrations" */
+	insert__prisma_migrations_one?: GraphQLTypes["_prisma_migrations"] | undefined,
 	/** update data of the table: "Business" */
 	update_Business?: GraphQLTypes["Business_mutation_response"] | undefined,
 	/** update data of the table: "BusinessCategory" */
@@ -7739,6 +9972,14 @@ export type GraphQLTypes = {
 	update_City?: GraphQLTypes["City_mutation_response"] | undefined,
 	/** update single row of the table: "City" */
 	update_City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** update data of the table: "Product" */
+	update_Product?: GraphQLTypes["Product_mutation_response"] | undefined,
+	/** update data of the table: "ProductCategory" */
+	update_ProductCategory?: GraphQLTypes["ProductCategory_mutation_response"] | undefined,
+	/** update single row of the table: "ProductCategory" */
+	update_ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** update single row of the table: "Product" */
+	update_Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** update data of the table: "Profile" */
 	update_Profile?: GraphQLTypes["Profile_mutation_response"] | undefined,
 	/** update single row of the table: "Profile" */
@@ -7750,7 +9991,11 @@ export type GraphQLTypes = {
 	/** update data of the table: "RolesOfProfile" */
 	update_RolesOfProfile?: GraphQLTypes["RolesOfProfile_mutation_response"] | undefined,
 	/** update single row of the table: "RolesOfProfile" */
-	update_RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined
+	update_RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** update data of the table: "_prisma_migrations" */
+	update__prisma_migrations?: GraphQLTypes["_prisma_migrations_mutation_response"] | undefined,
+	/** update single row of the table: "_prisma_migrations" */
+	update__prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined
 };
 	["numeric"]: any;
 	/** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
@@ -7811,6 +10056,18 @@ export type GraphQLTypes = {
 	City_aggregate: GraphQLTypes["City_aggregate"],
 	/** fetch data from the table: "City" using primary key columns */
 	City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** fetch data from the table: "Product" */
+	Product: Array<GraphQLTypes["Product"]>,
+	/** fetch data from the table: "ProductCategory" */
+	ProductCategory: Array<GraphQLTypes["ProductCategory"]>,
+	/** fetch aggregated fields from the table: "ProductCategory" */
+	ProductCategory_aggregate: GraphQLTypes["ProductCategory_aggregate"],
+	/** fetch data from the table: "ProductCategory" using primary key columns */
+	ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** fetch aggregated fields from the table: "Product" */
+	Product_aggregate: GraphQLTypes["Product_aggregate"],
+	/** fetch data from the table: "Product" using primary key columns */
+	Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** fetch data from the table: "Profile" */
 	Profile: Array<GraphQLTypes["Profile"]>,
 	/** fetch aggregated fields from the table: "Profile" */
@@ -7828,7 +10085,13 @@ export type GraphQLTypes = {
 	/** fetch aggregated fields from the table: "RolesOfProfile" */
 	RolesOfProfile_aggregate: GraphQLTypes["RolesOfProfile_aggregate"],
 	/** fetch data from the table: "RolesOfProfile" using primary key columns */
-	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined
+	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** fetch data from the table: "_prisma_migrations" */
+	_prisma_migrations: Array<GraphQLTypes["_prisma_migrations"]>,
+	/** fetch aggregated fields from the table: "_prisma_migrations" */
+	_prisma_migrations_aggregate: GraphQLTypes["_prisma_migrations_aggregate"],
+	/** fetch data from the table: "_prisma_migrations" using primary key columns */
+	_prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined
 };
 	["subscription_root"]: {
 	__typename: "subscription_root",
@@ -7874,6 +10137,18 @@ export type GraphQLTypes = {
 	City_aggregate: GraphQLTypes["City_aggregate"],
 	/** fetch data from the table: "City" using primary key columns */
 	City_by_pk?: GraphQLTypes["City"] | undefined,
+	/** fetch data from the table: "Product" */
+	Product: Array<GraphQLTypes["Product"]>,
+	/** fetch data from the table: "ProductCategory" */
+	ProductCategory: Array<GraphQLTypes["ProductCategory"]>,
+	/** fetch aggregated fields from the table: "ProductCategory" */
+	ProductCategory_aggregate: GraphQLTypes["ProductCategory_aggregate"],
+	/** fetch data from the table: "ProductCategory" using primary key columns */
+	ProductCategory_by_pk?: GraphQLTypes["ProductCategory"] | undefined,
+	/** fetch aggregated fields from the table: "Product" */
+	Product_aggregate: GraphQLTypes["Product_aggregate"],
+	/** fetch data from the table: "Product" using primary key columns */
+	Product_by_pk?: GraphQLTypes["Product"] | undefined,
 	/** fetch data from the table: "Profile" */
 	Profile: Array<GraphQLTypes["Profile"]>,
 	/** fetch aggregated fields from the table: "Profile" */
@@ -7891,7 +10166,13 @@ export type GraphQLTypes = {
 	/** fetch aggregated fields from the table: "RolesOfProfile" */
 	RolesOfProfile_aggregate: GraphQLTypes["RolesOfProfile_aggregate"],
 	/** fetch data from the table: "RolesOfProfile" using primary key columns */
-	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined
+	RolesOfProfile_by_pk?: GraphQLTypes["RolesOfProfile"] | undefined,
+	/** fetch data from the table: "_prisma_migrations" */
+	_prisma_migrations: Array<GraphQLTypes["_prisma_migrations"]>,
+	/** fetch aggregated fields from the table: "_prisma_migrations" */
+	_prisma_migrations_aggregate: GraphQLTypes["_prisma_migrations_aggregate"],
+	/** fetch data from the table: "_prisma_migrations" using primary key columns */
+	_prisma_migrations_by_pk?: GraphQLTypes["_prisma_migrations"] | undefined
 };
 	["timestamp"]: any;
 	/** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
@@ -7905,6 +10186,19 @@ export type GraphQLTypes = {
 	_lte?: GraphQLTypes["timestamp"] | undefined,
 	_neq?: GraphQLTypes["timestamp"] | undefined,
 	_nin?: Array<GraphQLTypes["timestamp"]> | undefined
+};
+	["timestamptz"]: any;
+	/** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
+["timestamptz_comparison_exp"]: {
+		_eq?: GraphQLTypes["timestamptz"] | undefined,
+	_gt?: GraphQLTypes["timestamptz"] | undefined,
+	_gte?: GraphQLTypes["timestamptz"] | undefined,
+	_in?: Array<GraphQLTypes["timestamptz"]> | undefined,
+	_is_null?: boolean | undefined,
+	_lt?: GraphQLTypes["timestamptz"] | undefined,
+	_lte?: GraphQLTypes["timestamptz"] | undefined,
+	_neq?: GraphQLTypes["timestamptz"] | undefined,
+	_nin?: Array<GraphQLTypes["timestamptz"]> | undefined
 }
     }
 /** unique or primary key constraints on table "BusinessCategory" */
@@ -8069,6 +10363,54 @@ export const enum City_update_column {
 	updatedAt = "updatedAt",
 	wikiDataId = "wikiDataId"
 }
+/** unique or primary key constraints on table "ProductCategory" */
+export const enum ProductCategory_constraint {
+	ProductCategory_pkey = "ProductCategory_pkey"
+}
+/** select columns of table "ProductCategory" */
+export const enum ProductCategory_select_column {
+	categoryId = "categoryId",
+	createdAt = "createdAt",
+	id = "id",
+	productId = "productId",
+	updatedAt = "updatedAt"
+}
+/** update columns of table "ProductCategory" */
+export const enum ProductCategory_update_column {
+	categoryId = "categoryId",
+	createdAt = "createdAt",
+	id = "id",
+	productId = "productId",
+	updatedAt = "updatedAt"
+}
+/** unique or primary key constraints on table "Product" */
+export const enum Product_constraint {
+	Product_pkey = "Product_pkey"
+}
+/** select columns of table "Product" */
+export const enum Product_select_column {
+	ImagesUrls = "ImagesUrls",
+	businessId = "businessId",
+	createdAt = "createdAt",
+	id = "id",
+	mainImageUrl = "mainImageUrl",
+	name = "name",
+	price = "price",
+	quota = "quota",
+	updatedAt = "updatedAt"
+}
+/** update columns of table "Product" */
+export const enum Product_update_column {
+	ImagesUrls = "ImagesUrls",
+	businessId = "businessId",
+	createdAt = "createdAt",
+	id = "id",
+	mainImageUrl = "mainImageUrl",
+	name = "name",
+	price = "price",
+	quota = "quota",
+	updatedAt = "updatedAt"
+}
 /** unique or primary key constraints on table "Profile" */
 export const enum Profile_constraint {
 	Profile_auth_key = "Profile_auth_key",
@@ -8127,6 +10469,32 @@ export const enum RolesOfProfile_update_column {
 	profileId = "profileId",
 	roleId = "roleId",
 	updatedAt = "updatedAt"
+}
+/** unique or primary key constraints on table "_prisma_migrations" */
+export const enum _prisma_migrations_constraint {
+	_prisma_migrations_pkey = "_prisma_migrations_pkey"
+}
+/** select columns of table "_prisma_migrations" */
+export const enum _prisma_migrations_select_column {
+	applied_steps_count = "applied_steps_count",
+	checksum = "checksum",
+	finished_at = "finished_at",
+	id = "id",
+	logs = "logs",
+	migration_name = "migration_name",
+	rolled_back_at = "rolled_back_at",
+	started_at = "started_at"
+}
+/** update columns of table "_prisma_migrations" */
+export const enum _prisma_migrations_update_column {
+	applied_steps_count = "applied_steps_count",
+	checksum = "checksum",
+	finished_at = "finished_at",
+	id = "id",
+	logs = "logs",
+	migration_name = "migration_name",
+	rolled_back_at = "rolled_back_at",
+	started_at = "started_at"
 }
 /** column ordering options */
 export const enum order_by {

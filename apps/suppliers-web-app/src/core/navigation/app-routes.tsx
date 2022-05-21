@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Shell } from '../layout/shell';
-import { LoginPage } from '../auth/login-page';
-import { HomePage } from '../../features/home/home-page';
-import { EditBusinessPage } from '../../features/edit-business/edit-business-page';
+import { Shell } from '@core/layout/shell';
+import { LoginPage } from '@core/auth/login-page';
+import { HomePage } from '@features/home/home-page';
+import { EditBusinessPage } from '@features/edit-business/edit-business-page';
+import { EditProductsPage } from '@features/edit-products/edit-products-page';
 
 export function AppRoutes() {
     return (
@@ -13,6 +14,10 @@ export function AppRoutes() {
                     <Route
                         path="/edit-business"
                         element={<EditBusinessPage />}
+                    />
+                    <Route
+                        path="/edit-products"
+                        element={<EditProductsPage />}
                     />
                 </Route>
                 <Route path="login" element={<LoginPage />} />

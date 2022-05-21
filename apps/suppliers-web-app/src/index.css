@@ -35,11 +35,21 @@ i.me {
 
 html[dir='rtl'] .MuiInputLabel-formControl {
     right: 0;
-    width: min-content;
     transform-origin: right;
     transform: translate(-14px, 16px) scale(1);
     text-align: right;
 }
+
+html[dir='rtl'] .MuiFormControl-root [inputmode='numeric'] {
+    transform: translate(0px, 0px) scale(1) !important;
+    direction: rtl;
+}
+
+html[dir='rtl'] .MuiInputLabel-formControl input {
+    transform: translate(0px, 0px) scale(1) !important;
+    text-align: right;
+}
+
 html[dir='rtl'] .MuiOutlinedInput-notchedOutline {
     text-align: right;
 }
@@ -65,4 +75,32 @@ html[dir='rtl'] .MuiSelect-icon {
 html[dir='rtl'] .MuiSelect-select {
     padding-left: 32px !important;
     padding-right: 14px !important;
+}
+
+/* react-images-upload */
+.fileContainer {
+    box-shadow: none;
+    margin-block-start: 0;
+    margin-block-end: 20px;
+    border: solid 1px #c4c4c4;
+    border-radius: 5px;
+}
+
+.fileContainer .chooseFileButton {
+    background: #0052cc !important;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.fileContainer .uploadIcon {
+    opacity: 0.5;
+}
+
+.fileContainer .deleteImage {
+    font-size: 13px;
+}
+
+.fileContainer .uploadPictureContainer {
+    border-radius: 5px;
+    box-shadow: none;
 }

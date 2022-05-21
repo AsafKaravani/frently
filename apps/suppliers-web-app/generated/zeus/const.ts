@@ -34,6 +34,16 @@ export const AllTypesProps: Record<string,any> = {
 			distinct_on:"CategoryFieldValue_select_column",
 			order_by:"CategoryFieldValue_order_by",
 			where:"CategoryFieldValue_bool_exp"
+		},
+		Products:{
+			distinct_on:"Product_select_column",
+			order_by:"Product_order_by",
+			where:"Product_bool_exp"
+		},
+		Products_aggregate:{
+			distinct_on:"Product_select_column",
+			order_by:"Product_order_by",
+			where:"Product_bool_exp"
 		}
 	},
 	BusinessCategory_aggregate_fields:{
@@ -309,6 +319,7 @@ export const AllTypesProps: Record<string,any> = {
 		BusinessWorkers:"BusinessWorker_bool_exp",
 		CategoryFieldValues:"CategoryFieldValue_bool_exp",
 		City:"City_bool_exp",
+		Products:"Product_bool_exp",
 		_and:"Business_bool_exp",
 		_not:"Business_bool_exp",
 		_or:"Business_bool_exp",
@@ -329,6 +340,7 @@ export const AllTypesProps: Record<string,any> = {
 		BusinessWorkers:"BusinessWorker_arr_rel_insert_input",
 		CategoryFieldValues:"CategoryFieldValue_arr_rel_insert_input",
 		City:"City_obj_rel_insert_input",
+		Products:"Product_arr_rel_insert_input",
 		createdAt:"timestamp",
 		updatedAt:"timestamp"
 	},
@@ -364,6 +376,7 @@ export const AllTypesProps: Record<string,any> = {
 		BusinessWorkers_aggregate:"BusinessWorker_aggregate_order_by",
 		CategoryFieldValues_aggregate:"CategoryFieldValue_aggregate_order_by",
 		City:"City_order_by",
+		Products_aggregate:"Product_aggregate_order_by",
 		cityId:"order_by",
 		createdAt:"order_by",
 		email:"order_by",
@@ -429,6 +442,16 @@ export const AllTypesProps: Record<string,any> = {
 			distinct_on:"CategoryField_select_column",
 			order_by:"CategoryField_order_by",
 			where:"CategoryField_bool_exp"
+		},
+		ProductCategories:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
+		},
+		ProductCategories_aggregate:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
 		}
 	},
 	CategoryField:{
@@ -701,6 +724,7 @@ export const AllTypesProps: Record<string,any> = {
 	Category_bool_exp:{
 		BusinessCategories:"BusinessCategory_bool_exp",
 		CategoryFields:"CategoryField_bool_exp",
+		ProductCategories:"ProductCategory_bool_exp",
 		_and:"Category_bool_exp",
 		_not:"Category_bool_exp",
 		_or:"Category_bool_exp",
@@ -716,6 +740,7 @@ export const AllTypesProps: Record<string,any> = {
 	Category_insert_input:{
 		BusinessCategories:"BusinessCategory_arr_rel_insert_input",
 		CategoryFields:"CategoryField_arr_rel_insert_input",
+		ProductCategories:"ProductCategory_arr_rel_insert_input",
 		createdAt:"timestamp",
 		updatedAt:"timestamp"
 	},
@@ -731,6 +756,7 @@ export const AllTypesProps: Record<string,any> = {
 	Category_order_by:{
 		BusinessCategories_aggregate:"BusinessCategory_aggregate_order_by",
 		CategoryFields_aggregate:"CategoryField_aggregate_order_by",
+		ProductCategories_aggregate:"ProductCategory_aggregate_order_by",
 		createdAt:"order_by",
 		id:"order_by",
 		name:"order_by",
@@ -851,6 +877,288 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	Int_comparison_exp:{
 
+	},
+	Product:{
+		ProductCategories:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
+		},
+		ProductCategories_aggregate:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
+		}
+	},
+	ProductCategory_aggregate_fields:{
+		count:{
+			columns:"ProductCategory_select_column"
+		}
+	},
+	ProductCategory_aggregate_order_by:{
+		avg:"ProductCategory_avg_order_by",
+		count:"order_by",
+		max:"ProductCategory_max_order_by",
+		min:"ProductCategory_min_order_by",
+		stddev:"ProductCategory_stddev_order_by",
+		stddev_pop:"ProductCategory_stddev_pop_order_by",
+		stddev_samp:"ProductCategory_stddev_samp_order_by",
+		sum:"ProductCategory_sum_order_by",
+		var_pop:"ProductCategory_var_pop_order_by",
+		var_samp:"ProductCategory_var_samp_order_by",
+		variance:"ProductCategory_variance_order_by"
+	},
+	ProductCategory_arr_rel_insert_input:{
+		data:"ProductCategory_insert_input",
+		on_conflict:"ProductCategory_on_conflict"
+	},
+	ProductCategory_avg_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	ProductCategory_bool_exp:{
+		Category:"Category_bool_exp",
+		Product:"Product_bool_exp",
+		_and:"ProductCategory_bool_exp",
+		_not:"ProductCategory_bool_exp",
+		_or:"ProductCategory_bool_exp",
+		categoryId:"Int_comparison_exp",
+		createdAt:"timestamp_comparison_exp",
+		id:"Int_comparison_exp",
+		productId:"Int_comparison_exp",
+		updatedAt:"timestamp_comparison_exp"
+	},
+	ProductCategory_constraint: true,
+	ProductCategory_inc_input:{
+
+	},
+	ProductCategory_insert_input:{
+		Category:"Category_obj_rel_insert_input",
+		Product:"Product_obj_rel_insert_input",
+		createdAt:"timestamp",
+		updatedAt:"timestamp"
+	},
+	ProductCategory_max_order_by:{
+		categoryId:"order_by",
+		createdAt:"order_by",
+		id:"order_by",
+		productId:"order_by",
+		updatedAt:"order_by"
+	},
+	ProductCategory_min_order_by:{
+		categoryId:"order_by",
+		createdAt:"order_by",
+		id:"order_by",
+		productId:"order_by",
+		updatedAt:"order_by"
+	},
+	ProductCategory_on_conflict:{
+		constraint:"ProductCategory_constraint",
+		update_columns:"ProductCategory_update_column",
+		where:"ProductCategory_bool_exp"
+	},
+	ProductCategory_order_by:{
+		Category:"Category_order_by",
+		Product:"Product_order_by",
+		categoryId:"order_by",
+		createdAt:"order_by",
+		id:"order_by",
+		productId:"order_by",
+		updatedAt:"order_by"
+	},
+	ProductCategory_pk_columns_input:{
+
+	},
+	ProductCategory_select_column: true,
+	ProductCategory_set_input:{
+		createdAt:"timestamp",
+		updatedAt:"timestamp"
+	},
+	ProductCategory_stddev_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	ProductCategory_stddev_pop_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	ProductCategory_stddev_samp_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	ProductCategory_sum_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	ProductCategory_update_column: true,
+	ProductCategory_var_pop_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	ProductCategory_var_samp_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	ProductCategory_variance_order_by:{
+		categoryId:"order_by",
+		id:"order_by",
+		productId:"order_by"
+	},
+	Product_aggregate_fields:{
+		count:{
+			columns:"Product_select_column"
+		}
+	},
+	Product_aggregate_order_by:{
+		avg:"Product_avg_order_by",
+		count:"order_by",
+		max:"Product_max_order_by",
+		min:"Product_min_order_by",
+		stddev:"Product_stddev_order_by",
+		stddev_pop:"Product_stddev_pop_order_by",
+		stddev_samp:"Product_stddev_samp_order_by",
+		sum:"Product_sum_order_by",
+		var_pop:"Product_var_pop_order_by",
+		var_samp:"Product_var_samp_order_by",
+		variance:"Product_variance_order_by"
+	},
+	Product_arr_rel_insert_input:{
+		data:"Product_insert_input",
+		on_conflict:"Product_on_conflict"
+	},
+	Product_avg_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
+	},
+	Product_bool_exp:{
+		Business:"Business_bool_exp",
+		ImagesUrls:"_text_comparison_exp",
+		ProductCategories:"ProductCategory_bool_exp",
+		_and:"Product_bool_exp",
+		_not:"Product_bool_exp",
+		_or:"Product_bool_exp",
+		businessId:"Int_comparison_exp",
+		createdAt:"timestamp_comparison_exp",
+		id:"Int_comparison_exp",
+		mainImageUrl:"String_comparison_exp",
+		name:"String_comparison_exp",
+		price:"Int_comparison_exp",
+		quota:"Int_comparison_exp",
+		updatedAt:"timestamp_comparison_exp"
+	},
+	Product_constraint: true,
+	Product_inc_input:{
+
+	},
+	Product_insert_input:{
+		Business:"Business_obj_rel_insert_input",
+		ImagesUrls:"_text",
+		ProductCategories:"ProductCategory_arr_rel_insert_input",
+		createdAt:"timestamp",
+		updatedAt:"timestamp"
+	},
+	Product_max_order_by:{
+		businessId:"order_by",
+		createdAt:"order_by",
+		id:"order_by",
+		mainImageUrl:"order_by",
+		name:"order_by",
+		price:"order_by",
+		quota:"order_by",
+		updatedAt:"order_by"
+	},
+	Product_min_order_by:{
+		businessId:"order_by",
+		createdAt:"order_by",
+		id:"order_by",
+		mainImageUrl:"order_by",
+		name:"order_by",
+		price:"order_by",
+		quota:"order_by",
+		updatedAt:"order_by"
+	},
+	Product_obj_rel_insert_input:{
+		data:"Product_insert_input",
+		on_conflict:"Product_on_conflict"
+	},
+	Product_on_conflict:{
+		constraint:"Product_constraint",
+		update_columns:"Product_update_column",
+		where:"Product_bool_exp"
+	},
+	Product_order_by:{
+		Business:"Business_order_by",
+		ImagesUrls:"order_by",
+		ProductCategories_aggregate:"ProductCategory_aggregate_order_by",
+		businessId:"order_by",
+		createdAt:"order_by",
+		id:"order_by",
+		mainImageUrl:"order_by",
+		name:"order_by",
+		price:"order_by",
+		quota:"order_by",
+		updatedAt:"order_by"
+	},
+	Product_pk_columns_input:{
+
+	},
+	Product_select_column: true,
+	Product_set_input:{
+		ImagesUrls:"_text",
+		createdAt:"timestamp",
+		updatedAt:"timestamp"
+	},
+	Product_stddev_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
+	},
+	Product_stddev_pop_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
+	},
+	Product_stddev_samp_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
+	},
+	Product_sum_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
+	},
+	Product_update_column: true,
+	Product_var_pop_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
+	},
+	Product_var_samp_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
+	},
+	Product_variance_order_by:{
+		businessId:"order_by",
+		id:"order_by",
+		price:"order_by",
+		quota:"order_by"
 	},
 	Profile:{
 		BusinessWorkers:{
@@ -1113,6 +1421,58 @@ export const AllTypesProps: Record<string,any> = {
 	String_comparison_exp:{
 
 	},
+	_prisma_migrations_aggregate_fields:{
+		count:{
+			columns:"_prisma_migrations_select_column"
+		}
+	},
+	_prisma_migrations_bool_exp:{
+		_and:"_prisma_migrations_bool_exp",
+		_not:"_prisma_migrations_bool_exp",
+		_or:"_prisma_migrations_bool_exp",
+		applied_steps_count:"Int_comparison_exp",
+		checksum:"String_comparison_exp",
+		finished_at:"timestamptz_comparison_exp",
+		id:"String_comparison_exp",
+		logs:"String_comparison_exp",
+		migration_name:"String_comparison_exp",
+		rolled_back_at:"timestamptz_comparison_exp",
+		started_at:"timestamptz_comparison_exp"
+	},
+	_prisma_migrations_constraint: true,
+	_prisma_migrations_inc_input:{
+
+	},
+	_prisma_migrations_insert_input:{
+		finished_at:"timestamptz",
+		rolled_back_at:"timestamptz",
+		started_at:"timestamptz"
+	},
+	_prisma_migrations_on_conflict:{
+		constraint:"_prisma_migrations_constraint",
+		update_columns:"_prisma_migrations_update_column",
+		where:"_prisma_migrations_bool_exp"
+	},
+	_prisma_migrations_order_by:{
+		applied_steps_count:"order_by",
+		checksum:"order_by",
+		finished_at:"order_by",
+		id:"order_by",
+		logs:"order_by",
+		migration_name:"order_by",
+		rolled_back_at:"order_by",
+		started_at:"order_by"
+	},
+	_prisma_migrations_pk_columns_input:{
+
+	},
+	_prisma_migrations_select_column: true,
+	_prisma_migrations_set_input:{
+		finished_at:"timestamptz",
+		rolled_back_at:"timestamptz",
+		started_at:"timestamptz"
+	},
+	_prisma_migrations_update_column: true,
 	_text: "String",
 	_text_comparison_exp:{
 		_eq:"_text",
@@ -1167,6 +1527,18 @@ export const AllTypesProps: Record<string,any> = {
 		delete_City_by_pk:{
 
 		},
+		delete_Product:{
+			where:"Product_bool_exp"
+		},
+		delete_ProductCategory:{
+			where:"ProductCategory_bool_exp"
+		},
+		delete_ProductCategory_by_pk:{
+
+		},
+		delete_Product_by_pk:{
+
+		},
 		delete_Profile:{
 			where:"Profile_bool_exp"
 		},
@@ -1183,6 +1555,12 @@ export const AllTypesProps: Record<string,any> = {
 			where:"RolesOfProfile_bool_exp"
 		},
 		delete_RolesOfProfile_by_pk:{
+
+		},
+		delete__prisma_migrations:{
+			where:"_prisma_migrations_bool_exp"
+		},
+		delete__prisma_migrations_by_pk:{
 
 		},
 		insert_Business:{
@@ -1241,6 +1619,22 @@ export const AllTypesProps: Record<string,any> = {
 			object:"City_insert_input",
 			on_conflict:"City_on_conflict"
 		},
+		insert_Product:{
+			objects:"Product_insert_input",
+			on_conflict:"Product_on_conflict"
+		},
+		insert_ProductCategory:{
+			objects:"ProductCategory_insert_input",
+			on_conflict:"ProductCategory_on_conflict"
+		},
+		insert_ProductCategory_one:{
+			object:"ProductCategory_insert_input",
+			on_conflict:"ProductCategory_on_conflict"
+		},
+		insert_Product_one:{
+			object:"Product_insert_input",
+			on_conflict:"Product_on_conflict"
+		},
 		insert_Profile:{
 			objects:"Profile_insert_input",
 			on_conflict:"Profile_on_conflict"
@@ -1264,6 +1658,14 @@ export const AllTypesProps: Record<string,any> = {
 		insert_RolesOfProfile_one:{
 			object:"RolesOfProfile_insert_input",
 			on_conflict:"RolesOfProfile_on_conflict"
+		},
+		insert__prisma_migrations:{
+			objects:"_prisma_migrations_insert_input",
+			on_conflict:"_prisma_migrations_on_conflict"
+		},
+		insert__prisma_migrations_one:{
+			object:"_prisma_migrations_insert_input",
+			on_conflict:"_prisma_migrations_on_conflict"
 		},
 		update_Business:{
 			_inc:"Business_inc_input",
@@ -1335,6 +1737,26 @@ export const AllTypesProps: Record<string,any> = {
 			_set:"City_set_input",
 			pk_columns:"City_pk_columns_input"
 		},
+		update_Product:{
+			_inc:"Product_inc_input",
+			_set:"Product_set_input",
+			where:"Product_bool_exp"
+		},
+		update_ProductCategory:{
+			_inc:"ProductCategory_inc_input",
+			_set:"ProductCategory_set_input",
+			where:"ProductCategory_bool_exp"
+		},
+		update_ProductCategory_by_pk:{
+			_inc:"ProductCategory_inc_input",
+			_set:"ProductCategory_set_input",
+			pk_columns:"ProductCategory_pk_columns_input"
+		},
+		update_Product_by_pk:{
+			_inc:"Product_inc_input",
+			_set:"Product_set_input",
+			pk_columns:"Product_pk_columns_input"
+		},
 		update_Profile:{
 			_inc:"Profile_inc_input",
 			_set:"Profile_set_input",
@@ -1364,6 +1786,16 @@ export const AllTypesProps: Record<string,any> = {
 			_inc:"RolesOfProfile_inc_input",
 			_set:"RolesOfProfile_set_input",
 			pk_columns:"RolesOfProfile_pk_columns_input"
+		},
+		update__prisma_migrations:{
+			_inc:"_prisma_migrations_inc_input",
+			_set:"_prisma_migrations_set_input",
+			where:"_prisma_migrations_bool_exp"
+		},
+		update__prisma_migrations_by_pk:{
+			_inc:"_prisma_migrations_inc_input",
+			_set:"_prisma_migrations_set_input",
+			pk_columns:"_prisma_migrations_pk_columns_input"
 		}
 	},
 	numeric: "String",
@@ -1470,6 +1902,32 @@ export const AllTypesProps: Record<string,any> = {
 		City_by_pk:{
 
 		},
+		Product:{
+			distinct_on:"Product_select_column",
+			order_by:"Product_order_by",
+			where:"Product_bool_exp"
+		},
+		ProductCategory:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
+		},
+		ProductCategory_aggregate:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
+		},
+		ProductCategory_by_pk:{
+
+		},
+		Product_aggregate:{
+			distinct_on:"Product_select_column",
+			order_by:"Product_order_by",
+			where:"Product_bool_exp"
+		},
+		Product_by_pk:{
+
+		},
 		Profile:{
 			distinct_on:"Profile_select_column",
 			order_by:"Profile_order_by",
@@ -1507,6 +1965,19 @@ export const AllTypesProps: Record<string,any> = {
 			where:"RolesOfProfile_bool_exp"
 		},
 		RolesOfProfile_by_pk:{
+
+		},
+		_prisma_migrations:{
+			distinct_on:"_prisma_migrations_select_column",
+			order_by:"_prisma_migrations_order_by",
+			where:"_prisma_migrations_bool_exp"
+		},
+		_prisma_migrations_aggregate:{
+			distinct_on:"_prisma_migrations_select_column",
+			order_by:"_prisma_migrations_order_by",
+			where:"_prisma_migrations_bool_exp"
+		},
+		_prisma_migrations_by_pk:{
 
 		}
 	},
@@ -1602,6 +2073,32 @@ export const AllTypesProps: Record<string,any> = {
 		City_by_pk:{
 
 		},
+		Product:{
+			distinct_on:"Product_select_column",
+			order_by:"Product_order_by",
+			where:"Product_bool_exp"
+		},
+		ProductCategory:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
+		},
+		ProductCategory_aggregate:{
+			distinct_on:"ProductCategory_select_column",
+			order_by:"ProductCategory_order_by",
+			where:"ProductCategory_bool_exp"
+		},
+		ProductCategory_by_pk:{
+
+		},
+		Product_aggregate:{
+			distinct_on:"Product_select_column",
+			order_by:"Product_order_by",
+			where:"Product_bool_exp"
+		},
+		Product_by_pk:{
+
+		},
 		Profile:{
 			distinct_on:"Profile_select_column",
 			order_by:"Profile_order_by",
@@ -1640,6 +2137,19 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		RolesOfProfile_by_pk:{
 
+		},
+		_prisma_migrations:{
+			distinct_on:"_prisma_migrations_select_column",
+			order_by:"_prisma_migrations_order_by",
+			where:"_prisma_migrations_bool_exp"
+		},
+		_prisma_migrations_aggregate:{
+			distinct_on:"_prisma_migrations_select_column",
+			order_by:"_prisma_migrations_order_by",
+			where:"_prisma_migrations_bool_exp"
+		},
+		_prisma_migrations_by_pk:{
+
 		}
 	},
 	timestamp: "String",
@@ -1652,6 +2162,17 @@ export const AllTypesProps: Record<string,any> = {
 		_lte:"timestamp",
 		_neq:"timestamp",
 		_nin:"timestamp"
+	},
+	timestamptz: "String",
+	timestamptz_comparison_exp:{
+		_eq:"timestamptz",
+		_gt:"timestamptz",
+		_gte:"timestamptz",
+		_in:"timestamptz",
+		_lt:"timestamptz",
+		_lte:"timestamptz",
+		_neq:"timestamptz",
+		_nin:"timestamptz"
 	}
 }
 
@@ -1668,6 +2189,8 @@ export const ReturnTypes: Record<string,any> = {
 		CategoryFieldValues:"CategoryFieldValue",
 		CategoryFieldValues_aggregate:"CategoryFieldValue_aggregate",
 		City:"City",
+		Products:"Product",
+		Products_aggregate:"Product_aggregate",
 		cityId:"Int",
 		createdAt:"timestamp",
 		email:"String",
@@ -1920,6 +2443,8 @@ export const ReturnTypes: Record<string,any> = {
 		BusinessCategories_aggregate:"BusinessCategory_aggregate",
 		CategoryFields:"CategoryField",
 		CategoryFields_aggregate:"CategoryField_aggregate",
+		ProductCategories:"ProductCategory",
+		ProductCategories_aggregate:"ProductCategory_aggregate",
 		createdAt:"timestamp",
 		id:"Int",
 		name:"String",
@@ -2277,6 +2802,193 @@ export const ReturnTypes: Record<string,any> = {
 		longitude:"Float",
 		stateId:"Float"
 	},
+	Product:{
+		Business:"Business",
+		ImagesUrls:"_text",
+		ProductCategories:"ProductCategory",
+		ProductCategories_aggregate:"ProductCategory_aggregate",
+		businessId:"Int",
+		createdAt:"timestamp",
+		id:"Int",
+		mainImageUrl:"String",
+		name:"String",
+		price:"Int",
+		quota:"Int",
+		updatedAt:"timestamp"
+	},
+	ProductCategory:{
+		Category:"Category",
+		Product:"Product",
+		categoryId:"Int",
+		createdAt:"timestamp",
+		id:"Int",
+		productId:"Int",
+		updatedAt:"timestamp"
+	},
+	ProductCategory_aggregate:{
+		aggregate:"ProductCategory_aggregate_fields",
+		nodes:"ProductCategory"
+	},
+	ProductCategory_aggregate_fields:{
+		avg:"ProductCategory_avg_fields",
+		count:"Int",
+		max:"ProductCategory_max_fields",
+		min:"ProductCategory_min_fields",
+		stddev:"ProductCategory_stddev_fields",
+		stddev_pop:"ProductCategory_stddev_pop_fields",
+		stddev_samp:"ProductCategory_stddev_samp_fields",
+		sum:"ProductCategory_sum_fields",
+		var_pop:"ProductCategory_var_pop_fields",
+		var_samp:"ProductCategory_var_samp_fields",
+		variance:"ProductCategory_variance_fields"
+	},
+	ProductCategory_avg_fields:{
+		categoryId:"Float",
+		id:"Float",
+		productId:"Float"
+	},
+	ProductCategory_max_fields:{
+		categoryId:"Int",
+		createdAt:"timestamp",
+		id:"Int",
+		productId:"Int",
+		updatedAt:"timestamp"
+	},
+	ProductCategory_min_fields:{
+		categoryId:"Int",
+		createdAt:"timestamp",
+		id:"Int",
+		productId:"Int",
+		updatedAt:"timestamp"
+	},
+	ProductCategory_mutation_response:{
+		affected_rows:"Int",
+		returning:"ProductCategory"
+	},
+	ProductCategory_stddev_fields:{
+		categoryId:"Float",
+		id:"Float",
+		productId:"Float"
+	},
+	ProductCategory_stddev_pop_fields:{
+		categoryId:"Float",
+		id:"Float",
+		productId:"Float"
+	},
+	ProductCategory_stddev_samp_fields:{
+		categoryId:"Float",
+		id:"Float",
+		productId:"Float"
+	},
+	ProductCategory_sum_fields:{
+		categoryId:"Int",
+		id:"Int",
+		productId:"Int"
+	},
+	ProductCategory_var_pop_fields:{
+		categoryId:"Float",
+		id:"Float",
+		productId:"Float"
+	},
+	ProductCategory_var_samp_fields:{
+		categoryId:"Float",
+		id:"Float",
+		productId:"Float"
+	},
+	ProductCategory_variance_fields:{
+		categoryId:"Float",
+		id:"Float",
+		productId:"Float"
+	},
+	Product_aggregate:{
+		aggregate:"Product_aggregate_fields",
+		nodes:"Product"
+	},
+	Product_aggregate_fields:{
+		avg:"Product_avg_fields",
+		count:"Int",
+		max:"Product_max_fields",
+		min:"Product_min_fields",
+		stddev:"Product_stddev_fields",
+		stddev_pop:"Product_stddev_pop_fields",
+		stddev_samp:"Product_stddev_samp_fields",
+		sum:"Product_sum_fields",
+		var_pop:"Product_var_pop_fields",
+		var_samp:"Product_var_samp_fields",
+		variance:"Product_variance_fields"
+	},
+	Product_avg_fields:{
+		businessId:"Float",
+		id:"Float",
+		price:"Float",
+		quota:"Float"
+	},
+	Product_max_fields:{
+		businessId:"Int",
+		createdAt:"timestamp",
+		id:"Int",
+		mainImageUrl:"String",
+		name:"String",
+		price:"Int",
+		quota:"Int",
+		updatedAt:"timestamp"
+	},
+	Product_min_fields:{
+		businessId:"Int",
+		createdAt:"timestamp",
+		id:"Int",
+		mainImageUrl:"String",
+		name:"String",
+		price:"Int",
+		quota:"Int",
+		updatedAt:"timestamp"
+	},
+	Product_mutation_response:{
+		affected_rows:"Int",
+		returning:"Product"
+	},
+	Product_stddev_fields:{
+		businessId:"Float",
+		id:"Float",
+		price:"Float",
+		quota:"Float"
+	},
+	Product_stddev_pop_fields:{
+		businessId:"Float",
+		id:"Float",
+		price:"Float",
+		quota:"Float"
+	},
+	Product_stddev_samp_fields:{
+		businessId:"Float",
+		id:"Float",
+		price:"Float",
+		quota:"Float"
+	},
+	Product_sum_fields:{
+		businessId:"Int",
+		id:"Int",
+		price:"Int",
+		quota:"Int"
+	},
+	Product_var_pop_fields:{
+		businessId:"Float",
+		id:"Float",
+		price:"Float",
+		quota:"Float"
+	},
+	Product_var_samp_fields:{
+		businessId:"Float",
+		id:"Float",
+		price:"Float",
+		quota:"Float"
+	},
+	Product_variance_fields:{
+		businessId:"Float",
+		id:"Float",
+		price:"Float",
+		quota:"Float"
+	},
 	Profile:{
 		BusinessWorkers:"BusinessWorker",
 		BusinessWorkers_aggregate:"BusinessWorker_aggregate",
@@ -2496,6 +3208,81 @@ export const ReturnTypes: Record<string,any> = {
 		profileId:"Float",
 		roleId:"Float"
 	},
+	_prisma_migrations:{
+		applied_steps_count:"Int",
+		checksum:"String",
+		finished_at:"timestamptz",
+		id:"String",
+		logs:"String",
+		migration_name:"String",
+		rolled_back_at:"timestamptz",
+		started_at:"timestamptz"
+	},
+	_prisma_migrations_aggregate:{
+		aggregate:"_prisma_migrations_aggregate_fields",
+		nodes:"_prisma_migrations"
+	},
+	_prisma_migrations_aggregate_fields:{
+		avg:"_prisma_migrations_avg_fields",
+		count:"Int",
+		max:"_prisma_migrations_max_fields",
+		min:"_prisma_migrations_min_fields",
+		stddev:"_prisma_migrations_stddev_fields",
+		stddev_pop:"_prisma_migrations_stddev_pop_fields",
+		stddev_samp:"_prisma_migrations_stddev_samp_fields",
+		sum:"_prisma_migrations_sum_fields",
+		var_pop:"_prisma_migrations_var_pop_fields",
+		var_samp:"_prisma_migrations_var_samp_fields",
+		variance:"_prisma_migrations_variance_fields"
+	},
+	_prisma_migrations_avg_fields:{
+		applied_steps_count:"Float"
+	},
+	_prisma_migrations_max_fields:{
+		applied_steps_count:"Int",
+		checksum:"String",
+		finished_at:"timestamptz",
+		id:"String",
+		logs:"String",
+		migration_name:"String",
+		rolled_back_at:"timestamptz",
+		started_at:"timestamptz"
+	},
+	_prisma_migrations_min_fields:{
+		applied_steps_count:"Int",
+		checksum:"String",
+		finished_at:"timestamptz",
+		id:"String",
+		logs:"String",
+		migration_name:"String",
+		rolled_back_at:"timestamptz",
+		started_at:"timestamptz"
+	},
+	_prisma_migrations_mutation_response:{
+		affected_rows:"Int",
+		returning:"_prisma_migrations"
+	},
+	_prisma_migrations_stddev_fields:{
+		applied_steps_count:"Float"
+	},
+	_prisma_migrations_stddev_pop_fields:{
+		applied_steps_count:"Float"
+	},
+	_prisma_migrations_stddev_samp_fields:{
+		applied_steps_count:"Float"
+	},
+	_prisma_migrations_sum_fields:{
+		applied_steps_count:"Int"
+	},
+	_prisma_migrations_var_pop_fields:{
+		applied_steps_count:"Float"
+	},
+	_prisma_migrations_var_samp_fields:{
+		applied_steps_count:"Float"
+	},
+	_prisma_migrations_variance_fields:{
+		applied_steps_count:"Float"
+	},
 	mutation_root:{
 		delete_Business:"Business_mutation_response",
 		delete_BusinessCategory:"BusinessCategory_mutation_response",
@@ -2511,12 +3298,18 @@ export const ReturnTypes: Record<string,any> = {
 		delete_Category_by_pk:"Category",
 		delete_City:"City_mutation_response",
 		delete_City_by_pk:"City",
+		delete_Product:"Product_mutation_response",
+		delete_ProductCategory:"ProductCategory_mutation_response",
+		delete_ProductCategory_by_pk:"ProductCategory",
+		delete_Product_by_pk:"Product",
 		delete_Profile:"Profile_mutation_response",
 		delete_Profile_by_pk:"Profile",
 		delete_Role:"Role_mutation_response",
 		delete_Role_by_pk:"Role",
 		delete_RolesOfProfile:"RolesOfProfile_mutation_response",
 		delete_RolesOfProfile_by_pk:"RolesOfProfile",
+		delete__prisma_migrations:"_prisma_migrations_mutation_response",
+		delete__prisma_migrations_by_pk:"_prisma_migrations",
 		insert_Business:"Business_mutation_response",
 		insert_BusinessCategory:"BusinessCategory_mutation_response",
 		insert_BusinessCategory_one:"BusinessCategory",
@@ -2531,12 +3324,18 @@ export const ReturnTypes: Record<string,any> = {
 		insert_Category_one:"Category",
 		insert_City:"City_mutation_response",
 		insert_City_one:"City",
+		insert_Product:"Product_mutation_response",
+		insert_ProductCategory:"ProductCategory_mutation_response",
+		insert_ProductCategory_one:"ProductCategory",
+		insert_Product_one:"Product",
 		insert_Profile:"Profile_mutation_response",
 		insert_Profile_one:"Profile",
 		insert_Role:"Role_mutation_response",
 		insert_Role_one:"Role",
 		insert_RolesOfProfile:"RolesOfProfile_mutation_response",
 		insert_RolesOfProfile_one:"RolesOfProfile",
+		insert__prisma_migrations:"_prisma_migrations_mutation_response",
+		insert__prisma_migrations_one:"_prisma_migrations",
 		update_Business:"Business_mutation_response",
 		update_BusinessCategory:"BusinessCategory_mutation_response",
 		update_BusinessCategory_by_pk:"BusinessCategory",
@@ -2551,12 +3350,18 @@ export const ReturnTypes: Record<string,any> = {
 		update_Category_by_pk:"Category",
 		update_City:"City_mutation_response",
 		update_City_by_pk:"City",
+		update_Product:"Product_mutation_response",
+		update_ProductCategory:"ProductCategory_mutation_response",
+		update_ProductCategory_by_pk:"ProductCategory",
+		update_Product_by_pk:"Product",
 		update_Profile:"Profile_mutation_response",
 		update_Profile_by_pk:"Profile",
 		update_Role:"Role_mutation_response",
 		update_Role_by_pk:"Role",
 		update_RolesOfProfile:"RolesOfProfile_mutation_response",
-		update_RolesOfProfile_by_pk:"RolesOfProfile"
+		update_RolesOfProfile_by_pk:"RolesOfProfile",
+		update__prisma_migrations:"_prisma_migrations_mutation_response",
+		update__prisma_migrations_by_pk:"_prisma_migrations"
 	},
 	query_root:{
 		Business:"Business",
@@ -2580,6 +3385,12 @@ export const ReturnTypes: Record<string,any> = {
 		City:"City",
 		City_aggregate:"City_aggregate",
 		City_by_pk:"City",
+		Product:"Product",
+		ProductCategory:"ProductCategory",
+		ProductCategory_aggregate:"ProductCategory_aggregate",
+		ProductCategory_by_pk:"ProductCategory",
+		Product_aggregate:"Product_aggregate",
+		Product_by_pk:"Product",
 		Profile:"Profile",
 		Profile_aggregate:"Profile_aggregate",
 		Profile_by_pk:"Profile",
@@ -2588,7 +3399,10 @@ export const ReturnTypes: Record<string,any> = {
 		Role_by_pk:"Role",
 		RolesOfProfile:"RolesOfProfile",
 		RolesOfProfile_aggregate:"RolesOfProfile_aggregate",
-		RolesOfProfile_by_pk:"RolesOfProfile"
+		RolesOfProfile_by_pk:"RolesOfProfile",
+		_prisma_migrations:"_prisma_migrations",
+		_prisma_migrations_aggregate:"_prisma_migrations_aggregate",
+		_prisma_migrations_by_pk:"_prisma_migrations"
 	},
 	subscription_root:{
 		Business:"Business",
@@ -2612,6 +3426,12 @@ export const ReturnTypes: Record<string,any> = {
 		City:"City",
 		City_aggregate:"City_aggregate",
 		City_by_pk:"City",
+		Product:"Product",
+		ProductCategory:"ProductCategory",
+		ProductCategory_aggregate:"ProductCategory_aggregate",
+		ProductCategory_by_pk:"ProductCategory",
+		Product_aggregate:"Product_aggregate",
+		Product_by_pk:"Product",
 		Profile:"Profile",
 		Profile_aggregate:"Profile_aggregate",
 		Profile_by_pk:"Profile",
@@ -2620,7 +3440,10 @@ export const ReturnTypes: Record<string,any> = {
 		Role_by_pk:"Role",
 		RolesOfProfile:"RolesOfProfile",
 		RolesOfProfile_aggregate:"RolesOfProfile_aggregate",
-		RolesOfProfile_by_pk:"RolesOfProfile"
+		RolesOfProfile_by_pk:"RolesOfProfile",
+		_prisma_migrations:"_prisma_migrations",
+		_prisma_migrations_aggregate:"_prisma_migrations_aggregate",
+		_prisma_migrations_by_pk:"_prisma_migrations"
 	}
 }
 

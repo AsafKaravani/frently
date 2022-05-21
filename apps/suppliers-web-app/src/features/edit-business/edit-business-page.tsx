@@ -18,6 +18,7 @@ import {
     Select,
     MenuItem,
     CircularProgress,
+    Divider,
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { VariantType, useSnackbar } from 'notistack';
@@ -28,6 +29,8 @@ import {
     useTypedQuery_getCities,
 } from './gql-hooks';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import { useTypedQuery_getBusinessProducts } from './gql-hooks';
 import {
     useTypedQuery_getBusiness,
     useTypedMutation_updateBusiness,
@@ -45,24 +48,33 @@ export function EditBusinessPage() {
         s_setPageName('עמוד עסק');
     });
 
+    const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
-    const businessIdToEdit = searchParams.get('businessId');
+    const businessIdToEdit = Number.parseInt(
+        searchParams.get('businessId') || '-1'
+    );
+
     const isEditMode = !!businessIdToEdit;
     const {
         loading: loadingBusiness,
         error: errorBusiness,
         data: dataBusiness,
-    } = useTypedQuery_getBusiness(Number.parseInt(businessIdToEdit || '-1'));
-    console.log('dataBusiness', dataBusiness);
+    } = useTypedQuery_getBusiness(businessIdToEdit);
+
+    const {
+        loading: products_loading,
+        error: products_error,
+        data: products_data,
+    } = useTypedQuery_getBusinessProducts(businessIdToEdit);
 
     const { enqueueSnackbar } = useSnackbar();
 
-    const [
-        businessForm,
-        setBusinessFormField,
-        handleBusinessFormFieldChange,
-        setFormValues,
-    ] = useFormHandler<GraphQLTypes['Business_insert_input']>(
+    const {
+        state: businessForm,
+        setState: setFormValues,
+        setStateKey: setBusinessFormField,
+        handleFieldChange: handleBusinessFormFieldChange,
+    } = useFormHandler<GraphQLTypes['Business_insert_input']>(
         dataBusiness?.Business_by_pk || {}
     );
 
@@ -132,8 +144,8 @@ export function EditBusinessPage() {
                 <FormGroup>
                     <FormControl>
                         <TextField
-                            id="name"
                             label="שם העסק"
+                            id="name"
                             {...formControlStyle}
                             defaultValue={isEditMode ? ' ' : ''}
                             value={businessForm.name}
@@ -143,8 +155,8 @@ export function EditBusinessPage() {
                     </FormControl>
                     <FormControl>
                         <TextField
-                            id="outlined-basic"
                             label="אימייל"
+                            id="outlined-basic"
                             {...formControlStyle}
                             defaultValue={isEditMode ? ' ' : ''}
                             value={businessForm.email}
@@ -152,11 +164,11 @@ export function EditBusinessPage() {
                             name="email"
                         />
                     </FormControl>
-                    <FormControl variant="standard">
+                    <FormControl>
                         <TextField
+                            label="מספר טלפון"
                             {...formControlStyle}
                             id="formatted-numberformat-input"
-                            label="מספר טלפון"
                             value={businessForm.phone}
                             onChange={handleBusinessFormFieldChange}
                             name="phone"
@@ -165,8 +177,8 @@ export function EditBusinessPage() {
                             }}
                         />
                     </FormControl>
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">
+                    <FormControl>
+                        <InputLabel>
                             {loadingCities ? (
                                 <CircularProgress
                                     sx={{
@@ -179,9 +191,9 @@ export function EditBusinessPage() {
                             )}
                         </InputLabel>
                         <Select
+                            label="עיר"
                             {...formControlStyle}
                             value={businessForm.cityId || ''}
-                            label="עיר"
                             name="cityId"
                             onChange={handleBusinessFormFieldChange as any}
                         >
@@ -196,12 +208,49 @@ export function EditBusinessPage() {
                         variant="contained"
                         type="submit"
                         disableElevation
+                        sx={{ marginBlockEnd: 3 }}
                         loading={loadingInsertBusiness}
                     >
                         {businessIdToEdit ? 'עדכן' : 'שמור'}
                     </LoadingButton>
                 </FormGroup>
             </form>
+
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    gap: 1,
+                }}
+            >
+                <Typography variant="h6" sx={{ marginBlockEnd: 2, margin: 0 }}>
+                    מוצרים
+                </Typography>
+                <Divider sx={{ flex: 1 }} />
+                <Button
+                    sx={{ paddingLeft: 4, paddingRight: 4 }}
+                    className="frently__action-btn"
+                    onClick={() =>
+                        navigate(
+                            `/edit-products?businessId=${businessIdToEdit}`
+                        )
+                    }
+                >
+                    <i className="fa-solid fa-boxes me" />
+                    הוספת מוצר
+                </Button>
+            </Box>
+            <Box>
+                {products_data?.Business_by_pk?.Products.length === 0 && (
+                    <Typography variant="caption" sx={{ marginBlockEnd: 2 }}>
+                        לא הוזנו מוצרים בעסק
+                    </Typography>
+                )}
+                {products_data?.Business_by_pk?.Products.map((product) => (
+                    <>{product.name}</>
+                ))}
+            </Box>
         </Root>
     );
 }
