@@ -16,30 +16,79 @@ import ImageUploader from 'react-images-upload';
 import { useFormHandler } from '@utils/hooks/index';
 import { PriceFormatInput } from '@utils/components/price-input';
 import { uploadImageToS3 } from '@services/s3';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSnackbar } from 'notistack';
+import {
+    useTypedMutation_insertProduct,
+    useTypedMutation_updateProduct,
+} from './gql-hooks';
+import { useSearchParams } from 'react-router-dom';
+import { useTypedQuery_getProductByPk } from './gql-hooks';
 
 type ProductFormProps = {
-    productId: string;
+    productId?: number;
+    businessId: number;
 };
 
 export function ProductForm(props: ProductFormProps) {
-    const productForm = useFormHandler<GraphQLTypes['Product_insert_input']>(
-        {}
-    );
-    const upsertProduct: React.FormEventHandler<HTMLFormElement> = (event) => {
-        console.log('====================================');
-        console.log(productForm.state);
-        console.log('====================================');
-        event.preventDefault();
-    };
+    const { enqueueSnackbar } = useSnackbar();
+    const [search, setSearch] = useSearchParams();
+    const productId = Number.parseInt(search.get('productId') || '');
+    const businessId = Number.parseInt(search.get('businessId') || '');
+    const isEditMode = !!productId;
+    console.log(search);
+
+    const { loading: product_loading, data: product_data } =
+        useTypedQuery_getProductByPk(productId);
+
+    const productForm = useFormHandler<GraphQLTypes['Product_insert_input']>({
+        businessId: businessId,
+    });
+    useEffect(() => {
+        if (product_data) productForm.setState(product_data?.Product_by_pk);
+    }, [product_data]);
+
     const onMainImageDrop = async (pictureFiles: File[]) => {
         seMainImageUrl_loading(true);
         const upload = await uploadImageToS3(pictureFiles[0]);
         seMainImageUrl_loading(false);
         productForm.setStateKey('mainImageUrl', upload.Location);
     };
+
+    const [updateProduct, { loading: updateProduct_loading }] =
+        useTypedMutation_updateProduct(productForm.state, {
+            onCompleted: (data) => {
+                setSearch({
+                    ...Object.fromEntries([...search]),
+                    productId: data?.insert_Product_one?.id,
+                } as any);
+                enqueueSnackbar(`מוצר נוצר בהצלחה.`, { variant: 'success' });
+            },
+            onError: (data) =>
+                enqueueSnackbar(`יצירת מוצר נכשלה.`, { variant: 'error' }),
+        });
+
+    const [insertProduct, { loading: insertProduct_loading }] =
+        useTypedMutation_insertProduct(productForm.state, {
+            onCompleted: (data) => {
+                setSearch({
+                    ...Object.fromEntries([...search]),
+                    productId: data?.insert_Product_one?.id,
+                } as any);
+                enqueueSnackbar(`מוצר נוצר בהצלחה.`, { variant: 'success' });
+            },
+            onError: (data) =>
+                enqueueSnackbar(`יצירת מוצר נכשלה.`, { variant: 'error' }),
+        });
+
+    const upsertProduct: React.FormEventHandler<HTMLFormElement> = (event) => {
+        if (isEditMode) updateProduct();
+        else insertProduct();
+        event.preventDefault();
+    };
+
     const [mainImageUrl_loading, seMainImageUrl_loading] = useState(false);
-    const isEditMode = false;
+
     return (
         <Root className={classes.root}>
             <form dir="rtl" onSubmit={upsertProduct} autoComplete="off">
@@ -47,6 +96,7 @@ export function ProductForm(props: ProductFormProps) {
                     <ImageUploader
                         withIcon={true}
                         buttonText="העלה תמונה ראשית"
+                        defaultImage={productForm.state.mainImageUrl}
                         withLabel={false}
                         onChange={onMainImageDrop}
                         imgExtension={['.jpg', '.gif', '.png', '.gif']}
@@ -89,9 +139,13 @@ export function ProductForm(props: ProductFormProps) {
                         type="submit"
                         disableElevation
                         sx={{ marginBlockEnd: 3 }}
-                        loading={mainImageUrl_loading}
+                        loading={
+                            mainImageUrl_loading ||
+                            insertProduct_loading ||
+                            product_loading
+                        }
                     >
-                        {props.productId ? 'עדכן' : 'שמור'}
+                        {isEditMode ? 'עדכן' : 'שמור'}
                     </LoadingButton>
                 </FormGroup>
             </form>

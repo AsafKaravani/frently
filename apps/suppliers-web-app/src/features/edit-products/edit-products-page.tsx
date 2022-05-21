@@ -33,7 +33,7 @@ export function EditProductsPage() {
             <Typography variant="caption" sx={{ marginBlockEnd: 2 }}>
                 כאן אפשר לערוך את המוצרים המוצעים בעסק.
             </Typography>
-            <ProductForm />
+            <ProductForm businessId={businessId} />
         </Root>
     );
 }

@@ -9,10 +9,11 @@ import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { atom_pageName } from '../navigation/page-name.state';
 import { StyleSheetMap } from '@utils/types/index';
+import { useNavigate } from 'react-router-dom';
 
 export function Header() {
     const s_pageName = useRecoilValue(atom_pageName);
-
+    const naviagte = useNavigate();
     return (
         <Root className={classes.root}>
             <Box sx={{ flexGrow: 1 }}>
@@ -33,7 +34,7 @@ export function Header() {
                         >
                             {s_pageName}
                         </Typography>
-                        Frently
+                        <span onClick={() => naviagte('/')}>Frently</span>
                     </Toolbar>
                 </AppBar>
             </Box>
