@@ -19,6 +19,7 @@ import {
     MenuItem,
     CircularProgress,
     Divider,
+    Avatar,
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { VariantType, useSnackbar } from 'notistack';
@@ -28,7 +29,11 @@ import {
     useTypedMutation_insertBusiness,
     useTypedQuery_getCities,
 } from './gql-hooks';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import {
+    createSearchParams,
+    useNavigate,
+    useSearchParams,
+} from 'react-router-dom';
 import Box from '@mui/material/Box';
 import { useTypedQuery_getBusinessProducts } from './gql-hooks';
 import {
@@ -218,6 +223,7 @@ export function EditBusinessPage() {
 
             <Box
                 sx={{
+                    marginBlockEnd: '20px',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
@@ -241,14 +247,58 @@ export function EditBusinessPage() {
                     הוספת מוצר
                 </Button>
             </Box>
-            <Box>
+            <Box
+                sx={{
+                    gap: '10px',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                }}
+            >
                 {products_data?.Business_by_pk?.Products.length === 0 && (
                     <Typography variant="caption" sx={{ marginBlockEnd: 2 }}>
                         לא הוזנו מוצרים בעסק
                     </Typography>
                 )}
                 {products_data?.Business_by_pk?.Products.map((product) => (
-                    <>{product.name}</>
+                    <Button
+                        variant="outlined"
+                        fullWidth
+                        sx={{
+                            background: 'white',
+                            justifyContent: 'flex-start',
+                        }}
+                        onClick={() =>
+                            navigate({
+                                pathname: '/edit-products',
+                                search: createSearchParams({
+                                    businessId: businessIdToEdit.toString(),
+                                    productId: product.id.toString(),
+                                }).toString(),
+                            })
+                        }
+                    >
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <Avatar
+                                alt="Remy Sharp"
+                                src={product.mainImageUrl}
+                                sx={{ marginInlineEnd: 2 }}
+                            />
+
+                            <Box
+                                sx={{
+                                    flex: 1,
+                                    display: 'flex',
+                                    alignItems: 'flex-start',
+                                    flexDirection: 'column',
+                                }}
+                            >
+                                <Typography sx={{ fontWeight: 600 }}>
+                                    {product.name}
+                                </Typography>
+                                <Typography>{product.price}₪</Typography>
+                            </Box>
+                        </Box>
+                    </Button>
                 ))}
             </Box>
         </Root>

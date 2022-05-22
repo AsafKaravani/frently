@@ -60,12 +60,12 @@ export function ProductForm(props: ProductFormProps) {
             onCompleted: (data) => {
                 setSearch({
                     ...Object.fromEntries([...search]),
-                    productId: data?.insert_Product_one?.id,
+                    productId: data?.update_Product_by_pk?.id,
                 } as any);
-                enqueueSnackbar(`מוצר נוצר בהצלחה.`, { variant: 'success' });
+                enqueueSnackbar(`מוצר עודכן בהצלחה.`, { variant: 'success' });
             },
             onError: (data) =>
-                enqueueSnackbar(`יצירת מוצר נכשלה.`, { variant: 'error' }),
+                enqueueSnackbar(`עדכון מוצר נכשלה.`, { variant: 'error' }),
         });
 
     const [insertProduct, { loading: insertProduct_loading }] =

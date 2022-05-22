@@ -23,9 +23,10 @@ export function Header() {
                             size="large"
                             edge="end"
                             color="inherit"
-                            aria-label="menu"
+                            aria-label="back"
+                            onClick={() => naviagte(-1)}
                         >
-                            <MenuIcon />
+                            <i class="fa-light fa-angle-right"></i>
                         </IconButton>
                         <Typography
                             variant="h6"
