@@ -42,7 +42,6 @@ html[dir='rtl'] .MuiInputLabel-formControl {
 
 html[dir='rtl'] .MuiFormControl-root [inputmode='numeric'] {
     transform: translate(0px, 0px) scale(1) !important;
-    direction: rtl;
 }
 
 html[dir='rtl'] .MuiInputLabel-formControl input {

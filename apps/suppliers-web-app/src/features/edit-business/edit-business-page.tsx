@@ -55,9 +55,7 @@ export function EditBusinessPage() {
 
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
-    const businessIdToEdit = Number.parseInt(
-        searchParams.get('businessId') || '-1'
-    );
+    const businessIdToEdit = Number.parseInt(searchParams.get('businessId'));
 
     const isEditMode = !!businessIdToEdit;
     const {
