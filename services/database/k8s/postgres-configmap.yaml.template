@@ -6,5 +6,5 @@ metadata:
     app: postgres
 data:
   POSTGRES_DB: postgresdb
-  POSTGRES_USER: postgresadmin
+  POSTGRES_USER: frentlyadmin
   POSTGRES_PASSWORD: ${FRENTLY_DATABASE_PASSWORD}
