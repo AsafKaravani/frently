@@ -626,6 +626,7 @@ export const AllTypesProps: Record<string,any> = {
 		categoryId:"Int_comparison_exp",
 		createdAt:"timestamp_comparison_exp",
 		id:"Int_comparison_exp",
+		name:"String_comparison_exp",
 		options:"_text_comparison_exp",
 		required:"Boolean_comparison_exp",
 		type:"FieldType_comparison_exp",
@@ -647,6 +648,7 @@ export const AllTypesProps: Record<string,any> = {
 		categoryId:"order_by",
 		createdAt:"order_by",
 		id:"order_by",
+		name:"order_by",
 		type:"order_by",
 		updatedAt:"order_by"
 	},
@@ -654,6 +656,7 @@ export const AllTypesProps: Record<string,any> = {
 		categoryId:"order_by",
 		createdAt:"order_by",
 		id:"order_by",
+		name:"order_by",
 		type:"order_by",
 		updatedAt:"order_by"
 	},
@@ -672,6 +675,7 @@ export const AllTypesProps: Record<string,any> = {
 		categoryId:"order_by",
 		createdAt:"order_by",
 		id:"order_by",
+		name:"order_by",
 		options:"order_by",
 		required:"order_by",
 		type:"order_by",
@@ -2457,6 +2461,7 @@ export const ReturnTypes: Record<string,any> = {
 		categoryId:"Int",
 		createdAt:"timestamp",
 		id:"Int",
+		name:"String",
 		options:"_text",
 		required:"Boolean",
 		type:"FieldType",
@@ -2574,6 +2579,7 @@ export const ReturnTypes: Record<string,any> = {
 		categoryId:"Int",
 		createdAt:"timestamp",
 		id:"Int",
+		name:"String",
 		type:"FieldType",
 		updatedAt:"timestamp"
 	},
@@ -2581,6 +2587,7 @@ export const ReturnTypes: Record<string,any> = {
 		categoryId:"Int",
 		createdAt:"timestamp",
 		id:"Int",
+		name:"String",
 		type:"FieldType",
 		updatedAt:"timestamp"
 	},

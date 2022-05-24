@@ -145,6 +145,7 @@ model Category {
 
 model CategoryField {
   // Fields
+  name     String
   type     FieldType
   required Boolean
   options  String[]

@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import { AllTypesProps, ReturnTypes, Ops } from './const';
-export const HOST = "http://34.134.43.92/v1/graphql"
+export const HOST = "http://34.135.86.23/v1/graphql"
 
 
 
@@ -1446,6 +1446,7 @@ CategoryFieldValues_aggregate?: [{	/** distinct select on columns */
 	categoryId?:boolean | `@${string}`,
 	createdAt?:boolean | `@${string}`,
 	id?:boolean | `@${string}`,
+	name?:boolean | `@${string}`,
 	options?:boolean | `@${string}`,
 	required?:boolean | `@${string}`,
 	type?:boolean | `@${string}`,
@@ -1786,6 +1787,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?: ValueTypes["Int_comparison_exp"] | undefined | null,
 	createdAt?: ValueTypes["timestamp_comparison_exp"] | undefined | null,
 	id?: ValueTypes["Int_comparison_exp"] | undefined | null,
+	name?: ValueTypes["String_comparison_exp"] | undefined | null,
 	options?: ValueTypes["_text_comparison_exp"] | undefined | null,
 	required?: ValueTypes["Boolean_comparison_exp"] | undefined | null,
 	type?: ValueTypes["FieldType_comparison_exp"] | undefined | null,
@@ -1805,6 +1807,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?: number | undefined | null,
 	createdAt?: ValueTypes["timestamp"] | undefined | null,
 	id?: number | undefined | null,
+	name?: string | undefined | null,
 	options?: ValueTypes["_text"] | undefined | null,
 	required?: boolean | undefined | null,
 	type?: ValueTypes["FieldType"] | undefined | null,
@@ -1815,6 +1818,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?:boolean | `@${string}`,
 	createdAt?:boolean | `@${string}`,
 	id?:boolean | `@${string}`,
+	name?:boolean | `@${string}`,
 	type?:boolean | `@${string}`,
 	updatedAt?:boolean | `@${string}`,
 		__typename?: boolean | `@${string}`
@@ -1824,6 +1828,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?: ValueTypes["order_by"] | undefined | null,
 	createdAt?: ValueTypes["order_by"] | undefined | null,
 	id?: ValueTypes["order_by"] | undefined | null,
+	name?: ValueTypes["order_by"] | undefined | null,
 	type?: ValueTypes["order_by"] | undefined | null,
 	updatedAt?: ValueTypes["order_by"] | undefined | null
 };
@@ -1832,6 +1837,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?:boolean | `@${string}`,
 	createdAt?:boolean | `@${string}`,
 	id?:boolean | `@${string}`,
+	name?:boolean | `@${string}`,
 	type?:boolean | `@${string}`,
 	updatedAt?:boolean | `@${string}`,
 		__typename?: boolean | `@${string}`
@@ -1841,6 +1847,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?: ValueTypes["order_by"] | undefined | null,
 	createdAt?: ValueTypes["order_by"] | undefined | null,
 	id?: ValueTypes["order_by"] | undefined | null,
+	name?: ValueTypes["order_by"] | undefined | null,
 	type?: ValueTypes["order_by"] | undefined | null,
 	updatedAt?: ValueTypes["order_by"] | undefined | null
 };
@@ -1871,6 +1878,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?: ValueTypes["order_by"] | undefined | null,
 	createdAt?: ValueTypes["order_by"] | undefined | null,
 	id?: ValueTypes["order_by"] | undefined | null,
+	name?: ValueTypes["order_by"] | undefined | null,
 	options?: ValueTypes["order_by"] | undefined | null,
 	required?: ValueTypes["order_by"] | undefined | null,
 	type?: ValueTypes["order_by"] | undefined | null,
@@ -1887,6 +1895,7 @@ count?: [{	columns?: Array<ValueTypes["CategoryField_select_column"]> | undefine
 	categoryId?: number | undefined | null,
 	createdAt?: ValueTypes["timestamp"] | undefined | null,
 	id?: number | undefined | null,
+	name?: string | undefined | null,
 	options?: ValueTypes["_text"] | undefined | null,
 	required?: boolean | undefined | null,
 	type?: ValueTypes["FieldType"] | undefined | null,
@@ -4933,6 +4942,7 @@ export type ModelTypes = {
 	categoryId?: number | undefined,
 	createdAt: GraphQLTypes["timestamp"],
 	id: number,
+	name: string,
 	options?: GraphQLTypes["_text"] | undefined,
 	required: boolean,
 	type: GraphQLTypes["FieldType"],
@@ -5130,6 +5140,7 @@ export type ModelTypes = {
 		categoryId?: number | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	id?: number | undefined,
+	name?: string | undefined,
 	type?: GraphQLTypes["FieldType"] | undefined,
 	updatedAt?: GraphQLTypes["timestamp"] | undefined
 };
@@ -5140,6 +5151,7 @@ export type ModelTypes = {
 		categoryId?: number | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	id?: number | undefined,
+	name?: string | undefined,
 	type?: GraphQLTypes["FieldType"] | undefined,
 	updatedAt?: GraphQLTypes["timestamp"] | undefined
 };
@@ -7475,6 +7487,7 @@ export type GraphQLTypes = {
 	categoryId?: number | undefined,
 	createdAt: GraphQLTypes["timestamp"],
 	id: number,
+	name: string,
 	options?: GraphQLTypes["_text"] | undefined,
 	required: boolean,
 	type: GraphQLTypes["FieldType"],
@@ -7814,6 +7827,7 @@ export type GraphQLTypes = {
 	categoryId?: GraphQLTypes["Int_comparison_exp"] | undefined,
 	createdAt?: GraphQLTypes["timestamp_comparison_exp"] | undefined,
 	id?: GraphQLTypes["Int_comparison_exp"] | undefined,
+	name?: GraphQLTypes["String_comparison_exp"] | undefined,
 	options?: GraphQLTypes["_text_comparison_exp"] | undefined,
 	required?: GraphQLTypes["Boolean_comparison_exp"] | undefined,
 	type?: GraphQLTypes["FieldType_comparison_exp"] | undefined,
@@ -7833,6 +7847,7 @@ export type GraphQLTypes = {
 	categoryId?: number | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	id?: number | undefined,
+	name?: string | undefined,
 	options?: GraphQLTypes["_text"] | undefined,
 	required?: boolean | undefined,
 	type?: GraphQLTypes["FieldType"] | undefined,
@@ -7844,6 +7859,7 @@ export type GraphQLTypes = {
 	categoryId?: number | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	id?: number | undefined,
+	name?: string | undefined,
 	type?: GraphQLTypes["FieldType"] | undefined,
 	updatedAt?: GraphQLTypes["timestamp"] | undefined
 };
@@ -7852,6 +7868,7 @@ export type GraphQLTypes = {
 		categoryId?: GraphQLTypes["order_by"] | undefined,
 	createdAt?: GraphQLTypes["order_by"] | undefined,
 	id?: GraphQLTypes["order_by"] | undefined,
+	name?: GraphQLTypes["order_by"] | undefined,
 	type?: GraphQLTypes["order_by"] | undefined,
 	updatedAt?: GraphQLTypes["order_by"] | undefined
 };
@@ -7861,6 +7878,7 @@ export type GraphQLTypes = {
 	categoryId?: number | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	id?: number | undefined,
+	name?: string | undefined,
 	type?: GraphQLTypes["FieldType"] | undefined,
 	updatedAt?: GraphQLTypes["timestamp"] | undefined
 };
@@ -7869,6 +7887,7 @@ export type GraphQLTypes = {
 		categoryId?: GraphQLTypes["order_by"] | undefined,
 	createdAt?: GraphQLTypes["order_by"] | undefined,
 	id?: GraphQLTypes["order_by"] | undefined,
+	name?: GraphQLTypes["order_by"] | undefined,
 	type?: GraphQLTypes["order_by"] | undefined,
 	updatedAt?: GraphQLTypes["order_by"] | undefined
 };
@@ -7899,6 +7918,7 @@ export type GraphQLTypes = {
 	categoryId?: GraphQLTypes["order_by"] | undefined,
 	createdAt?: GraphQLTypes["order_by"] | undefined,
 	id?: GraphQLTypes["order_by"] | undefined,
+	name?: GraphQLTypes["order_by"] | undefined,
 	options?: GraphQLTypes["order_by"] | undefined,
 	required?: GraphQLTypes["order_by"] | undefined,
 	type?: GraphQLTypes["order_by"] | undefined,
@@ -7915,6 +7935,7 @@ export type GraphQLTypes = {
 		categoryId?: number | undefined,
 	createdAt?: GraphQLTypes["timestamp"] | undefined,
 	id?: number | undefined,
+	name?: string | undefined,
 	options?: GraphQLTypes["_text"] | undefined,
 	required?: boolean | undefined,
 	type?: GraphQLTypes["FieldType"] | undefined,
@@ -10296,6 +10317,7 @@ export const enum CategoryField_select_column {
 	categoryId = "categoryId",
 	createdAt = "createdAt",
 	id = "id",
+	name = "name",
 	options = "options",
 	required = "required",
 	type = "type",
@@ -10306,6 +10328,7 @@ export const enum CategoryField_update_column {
 	categoryId = "categoryId",
 	createdAt = "createdAt",
 	id = "id",
+	name = "name",
 	options = "options",
 	required = "required",
 	type = "type",

@@ -40,7 +40,7 @@ import {
     useTypedQuery_getBusiness,
     useTypedMutation_updateBusiness,
 } from './gql-hooks';
-import { EditCategoriesComponent } from '@features/edit-category/edit-category';
+import { EditBusinessCategoriesComponent } from '@features/edit-business-category/edit-business-category';
 
 const formControlStyle: TextFieldProps = {
     variant: 'outlined',
@@ -195,7 +195,11 @@ export function EditBusinessPage() {
                         <Select
                             label="עיר"
                             {...formControlStyle}
-                            value={(!dataCities || !dataBusiness) ? '' : businessForm.cityId}
+                            value={
+                                !dataCities || !dataBusiness
+                                    ? ''
+                                    : businessForm.cityId
+                            }
                             name="cityId"
                             onChange={handleBusinessFormFieldChange as any}
                         >
@@ -218,34 +222,41 @@ export function EditBusinessPage() {
                 </FormGroup>
             </form>
 
-            <EditCategoriesComponent businessId={businessIdToEdit} />
+            <EditBusinessCategoriesComponent businessId={businessIdToEdit} />
 
-            {products_data?.Business_by_pk?.Products.length > 0 ? <Box
-                sx={{
-                    marginBlockEnd: '20px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    gap: 1,
-                }}
-            >
-                <Typography variant="h6" sx={{ marginBlockEnd: 2, margin: 0 }}>
-                    מוצרים
-                </Typography>
-                <Divider sx={{ flex: 1 }} />
-                <Button
-                    sx={{ paddingLeft: 4, paddingRight: 4 }}
-                    className="frently__action-btn"
-                    onClick={() =>
-                        navigate(
-                            `/edit-products?businessId=${businessIdToEdit}`
-                        )
-                    }
+            {products_data?.Business_by_pk?.Products.length > 0 ? (
+                <Box
+                    sx={{
+                        marginBlockEnd: '20px',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: 1,
+                    }}
                 >
-                    <i className="fa-solid fa-boxes me" />
-                    הוספת מוצר
-                </Button>
-            </Box> : <></>}
+                    <Typography
+                        variant="h6"
+                        sx={{ marginBlockEnd: 2, margin: 0 }}
+                    >
+                        מוצרים
+                    </Typography>
+                    <Divider sx={{ flex: 1 }} />
+                    <Button
+                        sx={{ paddingLeft: 4, paddingRight: 4 }}
+                        className="frently__action-btn"
+                        onClick={() =>
+                            navigate(
+                                `/edit-products?businessId=${businessIdToEdit}`
+                            )
+                        }
+                    >
+                        <i className="fa-solid fa-boxes me" />
+                        הוספת מוצר
+                    </Button>
+                </Box>
+            ) : (
+                <></>
+            )}
             <Box
                 sx={{
                     gap: '10px',
@@ -312,9 +323,9 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-    ({
-        [`&.${classes.root}`]: {
-            padding: 20,
-        },
-    } as StyleSheetMap)
+        ({
+            [`&.${classes.root}`]: {
+                padding: 20,
+            },
+        } as StyleSheetMap)
 );
