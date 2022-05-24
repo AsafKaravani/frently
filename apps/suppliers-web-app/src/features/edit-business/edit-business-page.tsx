@@ -219,7 +219,7 @@ export function EditBusinessPage() {
                 </FormGroup>
             </form>
 
-            {products_data?.Business_by_pk?.Products.length !== 0 ? <Box
+            {products_data?.Business_by_pk?.Products.length > 0 ? <Box
                 sx={{
                     marginBlockEnd: '20px',
                     display: 'flex',
