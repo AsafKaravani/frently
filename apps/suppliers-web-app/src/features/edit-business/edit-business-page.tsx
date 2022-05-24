@@ -218,7 +218,7 @@ export function EditBusinessPage() {
                 </FormGroup>
             </form>
 
-            <EditCategoriesComponent />
+            <EditCategoriesComponent businessId={businessIdToEdit} />
 
             {products_data?.Business_by_pk?.Products.length > 0 ? <Box
                 sx={{
