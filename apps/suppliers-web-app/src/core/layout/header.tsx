@@ -26,7 +26,7 @@ export function Header() {
                             aria-label="back"
                             onClick={() => naviagte(-1)}
                         >
-                            <i class="fa-light fa-angle-right"></i>
+                            <i className="fa-light fa-angle-right"></i>
                         </IconButton>
                         <Typography
                             variant="h6"

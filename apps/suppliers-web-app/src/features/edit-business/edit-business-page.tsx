@@ -219,7 +219,7 @@ export function EditBusinessPage() {
                 </FormGroup>
             </form>
 
-            <Box
+            {products_data?.Business_by_pk?.Products.length !== 0 ? <Box
                 sx={{
                     marginBlockEnd: '20px',
                     display: 'flex',
@@ -244,7 +244,7 @@ export function EditBusinessPage() {
                     <i className="fa-solid fa-boxes me" />
                     הוספת מוצר
                 </Button>
-            </Box>
+            </Box> : <></>}
             <Box
                 sx={{
                     gap: '10px',
