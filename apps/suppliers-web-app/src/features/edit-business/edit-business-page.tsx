@@ -40,6 +40,7 @@ import {
     useTypedQuery_getBusiness,
     useTypedMutation_updateBusiness,
 } from './gql-hooks';
+import { EditCategoriesComponent } from '@features/edit-category/edit-category';
 
 const formControlStyle: TextFieldProps = {
     variant: 'outlined',
@@ -150,8 +151,7 @@ export function EditBusinessPage() {
                             label="שם העסק"
                             id="name"
                             {...formControlStyle}
-                            defaultValue={isEditMode ? ' ' : ''}
-                            value={businessForm.name}
+                            value={businessForm.name || ''}
                             onChange={handleBusinessFormFieldChange}
                             name="name"
                         />
@@ -161,8 +161,7 @@ export function EditBusinessPage() {
                             label="אימייל"
                             id="outlined-basic"
                             {...formControlStyle}
-                            defaultValue={isEditMode ? ' ' : ''}
-                            value={businessForm.email}
+                            value={businessForm.email || ''}
                             onChange={handleBusinessFormFieldChange}
                             name="email"
                         />
@@ -172,7 +171,7 @@ export function EditBusinessPage() {
                             label="מספר טלפון"
                             {...formControlStyle}
                             id="formatted-numberformat-input"
-                            value={businessForm.phone}
+                            value={businessForm.phone || ''}
                             onChange={handleBusinessFormFieldChange}
                             name="phone"
                             InputProps={{
@@ -196,7 +195,7 @@ export function EditBusinessPage() {
                         <Select
                             label="עיר"
                             {...formControlStyle}
-                            value={businessForm.cityId || ''}
+                            value={(!dataCities || !dataBusiness) ? '' : businessForm.cityId}
                             name="cityId"
                             onChange={handleBusinessFormFieldChange as any}
                         >
@@ -218,6 +217,8 @@ export function EditBusinessPage() {
                     </LoadingButton>
                 </FormGroup>
             </form>
+
+            <EditCategoriesComponent />
 
             {products_data?.Business_by_pk?.Products.length > 0 ? <Box
                 sx={{
@@ -259,6 +260,7 @@ export function EditBusinessPage() {
                 )}
                 {products_data?.Business_by_pk?.Products.map((product) => (
                     <Button
+                        key={product.id}
                         variant="outlined"
                         fullWidth
                         sx={{
@@ -310,9 +312,9 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-        ({
-            [`&.${classes.root}`]: {
-                padding: 20,
-            },
-        } as StyleSheetMap)
+    ({
+        [`&.${classes.root}`]: {
+            padding: 20,
+        },
+    } as StyleSheetMap)
 );
