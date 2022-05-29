@@ -8,3 +8,4 @@ data:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: frentlyadmin
   POSTGRES_PASSWORD: ${FRENTLY_DATABASE_PASSWORD}
+  PGDATA: /data/k8s
