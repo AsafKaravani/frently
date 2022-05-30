@@ -50,6 +50,12 @@ export function EditBusinessCategoriesComponent(
                     marginBlockEnd: '20px',
                 }}
             >
+
+                {businessCategory.data?.BusinessCategory.length === 0 && (
+                    <Typography variant="caption" sx={{ marginBlockEnd: 2 }}>
+                        לא הוזנו קטגוריות לעסק
+                    </Typography>
+                )}
                 {businessCategory.data?.BusinessCategory.map(
                     (businessCategory) => (
                         <Box
@@ -75,7 +81,7 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-        ({
-            [`&.${classes.root}`]: {},
-        } as StyleSheetMap)
+    ({
+        [`&.${classes.root}`]: {},
+    } as StyleSheetMap)
 );

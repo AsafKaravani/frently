@@ -224,7 +224,7 @@ export function EditBusinessPage() {
 
             <EditBusinessCategoriesComponent businessId={businessIdToEdit} />
 
-            {products_data?.Business_by_pk?.Products.length > 0 ? (
+            {!!products_data?.Business_by_pk ? (
                 <Box
                     sx={{
                         marginBlockEnd: '20px',
@@ -323,9 +323,9 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-        ({
-            [`&.${classes.root}`]: {
-                padding: 20,
-            },
-        } as StyleSheetMap)
+    ({
+        [`&.${classes.root}`]: {
+            padding: 20,
+        },
+    } as StyleSheetMap)
 );
