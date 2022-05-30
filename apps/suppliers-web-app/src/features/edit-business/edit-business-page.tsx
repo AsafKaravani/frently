@@ -51,12 +51,13 @@ const formControlStyle: TextFieldProps = {
 export function EditBusinessPage() {
     const s_setPageName = useSetRecoilState(atom_pageName);
     useOnInit(() => {
+        businessIdToEdit
         s_setPageName('עמוד עסק');
     });
 
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
-    const businessIdToEdit = Number.parseInt(searchParams.get('businessId'));
+    const businessIdToEdit = Number.parseInt(searchParams.get('businessId')) || 0;
 
     const isEditMode = !!businessIdToEdit;
     const {
@@ -79,11 +80,11 @@ export function EditBusinessPage() {
         setStateKey: setBusinessFormField,
         handleFieldChange: handleBusinessFormFieldChange,
     } = useFormHandler<GraphQLTypes['Business_insert_input']>(
-        dataBusiness?.Business_by_pk || {}
+        dataBusiness?.Business_by_pk || { cityId: '' }
     );
 
     useEffect(
-        () => setFormValues(dataBusiness?.Business_by_pk || {}),
+        () => setFormValues(dataBusiness?.Business_by_pk || { cityId: '' }),
         [dataBusiness]
     );
 
@@ -137,6 +138,7 @@ export function EditBusinessPage() {
         }
         event.preventDefault();
     };
+
 
     return (
         <Root className={classes.root}>
@@ -195,11 +197,7 @@ export function EditBusinessPage() {
                         <Select
                             label="עיר"
                             {...formControlStyle}
-                            value={
-                                !dataCities || !dataBusiness
-                                    ? ''
-                                    : businessForm.cityId
-                            }
+                            value={businessForm.cityId}
                             name="cityId"
                             onChange={handleBusinessFormFieldChange as any}
                         >

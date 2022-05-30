@@ -181,62 +181,62 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-        ({
-            [`&.${classes.root}`]: {
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'column',
-                width: '100%',
-                height: '100%',
-                flex: 1,
-            },
+    ({
+        [`&.${classes.root}`]: {
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+            width: '100%',
+            height: '100%',
+            flex: 1,
+        },
 
-            [`& .${classes.newBusinessBtn}`]: {
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '200px',
-                height: '100px',
-                borderRadius: 10,
-                cursor: 'pointer',
-                background: 'white',
-                border: 'none',
-            },
+        [`& .${classes.newBusinessBtn}`]: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '200px',
+            height: '100px',
+            borderRadius: 10,
+            cursor: 'pointer',
+            background: 'white',
+            border: 'none',
+        },
 
-            [`& .${classes.searchForm}`]: {
-                display: 'flex',
-                background: 'white',
-                width: '100%',
-                padding: 10,
-                paddingInlineEnd: 5,
-                height: '100%',
-            },
+        [`& .${classes.searchForm}`]: {
+            display: 'flex',
+            background: 'white',
+            width: '100%',
+            padding: 10,
+            paddingInlineEnd: 5,
+            height: '100%',
+        },
 
-            [`& .${classes.searchInput}`]: {
-                width: '100%',
-                border: 'none',
-                background: theme.palette.background.default,
-                paddingInlineStart: 10,
-                borderRadius: 5,
-                outline: 'none',
-            },
+        [`& .${classes.searchInput}`]: {
+            width: '100%',
+            border: 'none',
+            background: theme.palette.background.default,
+            paddingInlineStart: 10,
+            borderRadius: 5,
+            outline: 'none',
+        },
 
-            [`& .${classes.businessBtn}`]: {
-                padding: 0,
-                borderRadius: 100,
-                marginInlineStart: 10,
-                flex: 'none',
-                scrollbarWidth: 'none',
-                scrollbarGutter: 0,
-            },
+        [`& .${classes.businessBtn}`]: {
+            padding: 0,
+            borderRadius: 100,
+            marginInlineStart: 10,
+            flex: 'none',
+            scrollbarWidth: 'none',
+            scrollbarGutter: 0,
+        },
 
-            [`& .${classes.businessBtn}::-webkit-scrollbar`]: {
-                display: 'none',
-            },
-            [`& .${classes.loading}`]: {
-                width: '20px !important',
-                height: '20px !important',
-                marginBlockEnd: '12px',
-            },
-        } as StyleSheetMap)
+        [`& .${classes.businessBtn}::-webkit-scrollbar`]: {
+            display: 'none',
+        },
+        [`& .${classes.loading}`]: {
+            width: '20px !important',
+            height: '20px !important',
+            marginBlockEnd: '12px',
+        },
+    } as StyleSheetMap)
 );

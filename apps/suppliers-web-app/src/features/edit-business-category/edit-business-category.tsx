@@ -15,7 +15,6 @@ export function EditBusinessCategoriesComponent(
     const businessCategory = useTypedQuery_getBusinessCategories(
         props.businessId
     );
-    console.log(businessCategory.data?.BusinessCategory);
 
     return (
         <Root className={classes.root}>

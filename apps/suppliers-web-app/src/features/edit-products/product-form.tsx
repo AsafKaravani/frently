@@ -36,7 +36,6 @@ export function ProductForm(props: ProductFormProps) {
     const productId = Number.parseInt(search.get('productId') || '');
     const businessId = Number.parseInt(search.get('businessId') || '');
     const isEditMode = !!productId;
-    console.log(search);
 
     const { loading: product_loading, data: product_data } =
         useTypedQuery_getProductByPk(productId);
@@ -160,11 +159,11 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-        ({
-            [`&.${classes.root}`]: {},
-            [`& .MuiInputBase-root`]: {
-                marginBlockEnd: '20px',
-                background: 'white',
-            },
-        } as StyleSheetMap)
+    ({
+        [`&.${classes.root}`]: {},
+        [`& .MuiInputBase-root`]: {
+            marginBlockEnd: '20px',
+            background: 'white',
+        },
+    } as StyleSheetMap)
 );
