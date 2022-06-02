@@ -1,11 +1,24 @@
 import { styled } from '@mui/material/styles';
-import { Box, Typography, Divider, Button } from '@mui/material';
+import {
+    Box,
+    Typography,
+    Divider,
+    Button,
+    TextField,
+    TextFieldProps,
+} from '@mui/material';
 import { StyleSheetMap } from '@utils/types/index';
 import { useTypedQuery_getBusinessCategories } from './gql-hooks';
 import { useNavigate } from 'react-router-dom';
 
 type EditBusinessCategoriesComponentProps = {
     businessId: number;
+};
+
+const formControlStyle: TextFieldProps = {
+    variant: 'outlined',
+    sx: { background: 'white', marginBlockEnd: 3, flex: 1 },
+    autoComplete: 'off',
 };
 
 export function EditBusinessCategoriesComponent(
@@ -20,7 +33,7 @@ export function EditBusinessCategoriesComponent(
         <Root className={classes.root}>
             <Box
                 sx={{
-                    marginBlockEnd: '20px',
+                    marginBlockEnd: '0px',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
@@ -49,7 +62,6 @@ export function EditBusinessCategoriesComponent(
                     marginBlockEnd: '20px',
                 }}
             >
-
                 {businessCategory.data?.BusinessCategory.length === 0 && (
                     <Typography variant="caption" sx={{ marginBlockEnd: 2 }}>
                         לא הוזנו קטגוריות לעסק
@@ -57,14 +69,28 @@ export function EditBusinessCategoriesComponent(
                 )}
                 {businessCategory.data?.BusinessCategory.map(
                     (businessCategory) => (
-                        <Box
-                            onClick={() =>
-                                navigate(
-                                    `/edit-category?businessId=${props.businessId}&categoryId=${businessCategory?.Category?.id}`
-                                )
-                            }
-                        >
-                            {businessCategory.Category?.name}
+                        <Box key={businessCategory.id}>
+                            <Box sx={{ marginBlockEnd: 1 }}>
+                                {businessCategory.Category?.name}
+                            </Box>
+                            <Box>
+                                {businessCategory.Category?.CategoryFields.map(
+                                    (field) => (
+                                        <Box sx={{ display: 'flex' }}>
+                                            <TextField
+                                                label={field.name}
+                                                id="name"
+                                                {...formControlStyle}
+                                                value={
+                                                    field.CategoryFieldValues[0]
+                                                        .value || ''
+                                                }
+                                                name="name"
+                                            />
+                                        </Box>
+                                    )
+                                )}
+                            </Box>
                         </Box>
                     )
                 )}
@@ -80,7 +106,7 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-    ({
-        [`&.${classes.root}`]: {},
-    } as StyleSheetMap)
+        ({
+            [`&.${classes.root}`]: {},
+        } as StyleSheetMap)
 );

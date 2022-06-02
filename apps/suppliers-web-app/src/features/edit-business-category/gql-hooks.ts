@@ -12,6 +12,16 @@ export const useTypedQuery_getBusinessCategories = (businessId: number) =>
                 Category: {
                     name: true,
                     id: true,
+                    CategoryFields: [
+                        {},
+                        {
+                            name: true,
+                            CategoryFieldValues: [
+                                { where: { businessId: { _eq: businessId } } },
+                                { value: true },
+                            ],
+                        },
+                    ],
                 },
             },
         ],
@@ -33,6 +43,7 @@ export const useTypedMutation_insertBusinessCategory = (
                 id: true,
                 Category: {
                     name: true,
+                    id: true,
                     CategoryFields: [
                         {},
                         {
