@@ -1,5 +1,5 @@
-import { useTypedSubscription } from '@generated/zeus/apollo';
-import { useTypedMutation } from '../../../generated/zeus/apollo';
+import { Gql } from '@generated/zeus/index';
+import { useTypedSubscription, useTypedMutation } from '@generated/zeus/apollo';
 
 export const useTypedQuery_getBusinessCategories = (businessId: number) =>
     useTypedSubscription({
@@ -73,3 +73,22 @@ export const useTypedMutation_insertCategory = (categoryName: string) =>
             },
         ],
     });
+
+
+const UPDATE_FIELD_VALUE = (id: number, value: string) => Gql('mutation')(
+    {
+        update_CategoryFieldValue: [
+            {
+                where: {
+                    id: { _eq: id }
+                },
+                _set: {
+                    value: value
+                }
+            },
+            {
+                affected_rows: true
+            }
+        ]
+    }
+);
