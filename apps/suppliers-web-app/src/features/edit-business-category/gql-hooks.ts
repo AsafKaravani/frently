@@ -18,7 +18,7 @@ export const useTypedQuery_getBusinessCategories = (businessId: number) =>
                             name: true,
                             CategoryFieldValues: [
                                 { where: { businessId: { _eq: businessId } } },
-                                { value: true },
+                                { value: true, id: true },
                             ],
                         },
                     ],
@@ -75,7 +75,7 @@ export const useTypedMutation_insertCategory = (categoryName: string) =>
     });
 
 
-const UPDATE_FIELD_VALUE = (id: number, value: string) => Gql('mutation')(
+export const UPDATE_FIELD_VALUE = (id: number, value: string) => Gql('mutation')(
     {
         update_CategoryFieldValue: [
             {
