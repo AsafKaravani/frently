@@ -9,12 +9,16 @@ export const useTypedQuery_getBusinessCategories = (businessId: number) =>
             },
             {
                 id: true,
+                Business: {
+                    id: true,
+                },
                 Category: {
                     name: true,
                     id: true,
                     CategoryFields: [
                         {},
                         {
+                            id: true,
                             name: true,
                             CategoryFieldValues: [
                                 { where: { businessId: { _eq: businessId } } },
@@ -74,21 +78,40 @@ export const useTypedMutation_insertCategory = (categoryName: string) =>
         ],
     });
 
-
-export const UPDATE_FIELD_VALUE = (id: number, value: string) => Gql('mutation')(
-    {
+export const UPDATE_FIELD_VALUE = (id: number, value: string) =>
+    Gql('mutation')({
         update_CategoryFieldValue: [
             {
                 where: {
-                    id: { _eq: id }
+                    id: { _eq: id },
                 },
                 _set: {
-                    value: value
-                }
+                    value: value,
+                },
             },
             {
-                affected_rows: true
-            }
-        ]
-    }
-);
+                affected_rows: true,
+            },
+        ],
+    });
+
+export const INSERT_FIELD_VALUE = (
+    businessId: number,
+    categoryFieldId: number,
+    value: string
+) =>
+    Gql('mutation')({
+        insert_CategoryFieldValue_one: [
+            {
+                object: {
+                    businessId: businessId,
+                    categoryFieldId: categoryFieldId,
+                    updatedAt: new Date().toISOString(),
+                    value: value,
+                },
+            },
+            {
+                id: true,
+            },
+        ],
+    });
