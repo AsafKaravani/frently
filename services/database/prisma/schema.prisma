@@ -135,12 +135,16 @@ model Category {
   fields             CategoryField[]
   BusinessCategories BusinessCategory[]
   ProductCategories  ProductCategory[]
+  parentId           Int?
+  Parent             Category?          @relation("Parent", fields: [parentId], references: [id])
+  Children           Category[]         @relation("Parent")
 
 
   // Auto Generated
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  categoryId Int?
 }
 
 model CategoryField {
