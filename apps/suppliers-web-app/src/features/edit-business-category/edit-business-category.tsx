@@ -90,16 +90,13 @@ export function EditBusinessCategoriesComponent(
             );
         });
 
-        const results = await Promise.all(updates);
-        let failedUpdate = false;
-        results.some((result, error) => {
-            failedUpdate = !!error;
-            return !!error;
-        });
-
-        if (failedUpdate)
+        try {
+            const results = await Promise.all(updates);
+            enqueueSnackbar('עסק עודכן בהצלחה.', { variant: 'success' });
+        } catch (error) {
             enqueueSnackbar('עדכון עסק נכשל.', { variant: 'error' });
-        else enqueueSnackbar('עסק עודכן בהצלחה.', { variant: 'success' });
+            console.log(error);
+        }
     };
 
     return (
