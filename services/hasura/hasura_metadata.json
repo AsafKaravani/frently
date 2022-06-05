@@ -1,0 +1,391 @@
+{
+  "resource_version": 8,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "default",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "schema": "public",
+              "name": "Business"
+            },
+            "object_relationships": [
+              {
+                "name": "City",
+                "using": {
+                  "foreign_key_constraint_on": "cityId"
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "BusinessCategories",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "businessId",
+                    "table": {
+                      "schema": "public",
+                      "name": "BusinessCategory"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "BusinessWorkers",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "businessId",
+                    "table": {
+                      "schema": "public",
+                      "name": "BusinessWorker"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "CategoryFieldValues",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "businessId",
+                    "table": {
+                      "schema": "public",
+                      "name": "CategoryFieldValue"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "Products",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "businessId",
+                    "table": {
+                      "schema": "public",
+                      "name": "Product"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "BusinessCategory"
+            },
+            "object_relationships": [
+              {
+                "name": "Business",
+                "using": {
+                  "foreign_key_constraint_on": "businessId"
+                }
+              },
+              {
+                "name": "Category",
+                "using": {
+                  "foreign_key_constraint_on": "categoryId"
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "BusinessWorker"
+            },
+            "object_relationships": [
+              {
+                "name": "Business",
+                "using": {
+                  "foreign_key_constraint_on": "businessId"
+                }
+              },
+              {
+                "name": "Profile",
+                "using": {
+                  "foreign_key_constraint_on": "profileId"
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "Category"
+            },
+            "object_relationships": [
+              {
+                "name": "Parent",
+                "using": {
+                  "foreign_key_constraint_on": "parentId"
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "BusinessCategories",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "categoryId",
+                    "table": {
+                      "schema": "public",
+                      "name": "BusinessCategory"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "CategoryFields",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "categoryId",
+                    "table": {
+                      "schema": "public",
+                      "name": "CategoryField"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "Children",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "parentId",
+                    "table": {
+                      "schema": "public",
+                      "name": "Category"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "ProductCategories",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "categoryId",
+                    "table": {
+                      "schema": "public",
+                      "name": "ProductCategory"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "CategoryField"
+            },
+            "object_relationships": [
+              {
+                "name": "Category",
+                "using": {
+                  "foreign_key_constraint_on": "categoryId"
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "CategoryFieldValues",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "categoryFieldId",
+                    "table": {
+                      "schema": "public",
+                      "name": "CategoryFieldValue"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "CategoryFieldValue"
+            },
+            "object_relationships": [
+              {
+                "name": "Business",
+                "using": {
+                  "foreign_key_constraint_on": "businessId"
+                }
+              },
+              {
+                "name": "CategoryField",
+                "using": {
+                  "foreign_key_constraint_on": "categoryFieldId"
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "City"
+            },
+            "array_relationships": [
+              {
+                "name": "Businesses",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "cityId",
+                    "table": {
+                      "schema": "public",
+                      "name": "Business"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "Product"
+            },
+            "object_relationships": [
+              {
+                "name": "Business",
+                "using": {
+                  "foreign_key_constraint_on": "businessId"
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "ProductCategories",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "productId",
+                    "table": {
+                      "schema": "public",
+                      "name": "ProductCategory"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "ProductCategory"
+            },
+            "object_relationships": [
+              {
+                "name": "Category",
+                "using": {
+                  "foreign_key_constraint_on": "categoryId"
+                }
+              },
+              {
+                "name": "Product",
+                "using": {
+                  "foreign_key_constraint_on": "productId"
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "Profile"
+            },
+            "array_relationships": [
+              {
+                "name": "BusinessWorkers",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "profileId",
+                    "table": {
+                      "schema": "public",
+                      "name": "BusinessWorker"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "RolesOfProfiles",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "profileId",
+                    "table": {
+                      "schema": "public",
+                      "name": "RolesOfProfile"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "Role"
+            },
+            "array_relationships": [
+              {
+                "name": "RolesOfProfiles",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "roleId",
+                    "table": {
+                      "schema": "public",
+                      "name": "RolesOfProfile"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "RolesOfProfile"
+            },
+            "object_relationships": [
+              {
+                "name": "Profile",
+                "using": {
+                  "foreign_key_constraint_on": "profileId"
+                }
+              },
+              {
+                "name": "Role",
+                "using": {
+                  "foreign_key_constraint_on": "roleId"
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "public",
+              "name": "_prisma_migrations"
+            }
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "use_prepared_statements": true,
+            "database_url": {
+              "from_env": "HASURA_GRAPHQL_DATABASE_URL"
+            },
+            "isolation_level": "read-committed",
+            "pool_settings": {
+              "connection_lifetime": 600,
+              "retries": 1,
+              "idle_timeout": 180,
+              "max_connections": 50
+            }
+          }
+        }
+      }
+    ]
+  }
+}
