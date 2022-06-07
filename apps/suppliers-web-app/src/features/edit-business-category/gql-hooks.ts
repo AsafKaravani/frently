@@ -115,3 +115,17 @@ export const INSERT_FIELD_VALUE = (
             },
         ],
     });
+
+export const REMOVE_CATEGORY_FROM_BUSINESS = (businessId: number, categoryId: number) => Gql('mutation')({
+    delete_BusinessCategory: [
+        {
+            where: {
+                businessId: { _eq: businessId },
+                categoryId: { _eq: categoryId }
+            }
+        },
+        {
+            affected_rows: true
+        }
+    ]
+})

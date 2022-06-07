@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { StyleSheetMap } from '@utils/types/index';
 import {
+    REMOVE_CATEGORY_FROM_BUSINESS,
     UPDATE_FIELD_VALUE,
     useTypedQuery_getBusinessCategories,
 } from './gql-hooks';
@@ -99,6 +100,16 @@ export function EditBusinessCategoriesComponent(
         }
     };
 
+    const deleteCategory = async (categoryId: number) => {
+        try {
+            await REMOVE_CATEGORY_FROM_BUSINESS(props.businessId, categoryId);
+            enqueueSnackbar('קטגוריה נמחקה.', { variant: 'success' });
+
+        } catch (error) {
+            enqueueSnackbar('מחיקה נכשלה.', { variant: 'error' });
+        }
+    };
+
     return (
         <Root className={classes.root}>
             <Box
@@ -140,8 +151,10 @@ export function EditBusinessCategoriesComponent(
                 {businessCategoryQuery.data?.BusinessCategory.map(
                     (businessCategory) => (
                         <Box key={businessCategory.id}>
-                            <Box sx={{ marginBlockEnd: 1 }}>
-                                {businessCategory.Category?.name}
+                            <Box sx={{ marginBlockEnd: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                                <span>{businessCategory.Category?.name}</span>
+                                <i className="fa-solid fa-trash delete-icon" onClick={() => deleteCategory(businessCategory.Category?.id)}></i>
+
                             </Box>
                             <Box>
                                 {businessCategory.Category?.CategoryFields.map(
@@ -156,7 +169,7 @@ export function EditBusinessCategoriesComponent(
                                                 {...formControlStyle}
                                                 value={
                                                     fieldValuesForm.state[
-                                                        field.CategoryFieldValues[0]?.id.toString()
+                                                    field.CategoryFieldValues[0]?.id.toString()
                                                     ] || ''
                                                 }
                                                 onChange={(event) =>
@@ -200,7 +213,11 @@ const classes = {
 
 const Root = styled('div')(
     ({ theme }) =>
-        ({
-            [`&.${classes.root}`]: {},
-        } as StyleSheetMap)
+    ({
+        [`&.${classes.root}`]: {},
+        [`&.${classes.root} .delete-icon`]: {
+            color: theme.palette.error.main,
+            fontSize: '0.8em'
+        },
+    } as StyleSheetMap)
 );
