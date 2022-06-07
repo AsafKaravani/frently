@@ -100,7 +100,8 @@ export function EditBusinessCategoriesComponent(
         }
     };
 
-    const deleteCategory = async (categoryId: number) => {
+    const deleteCategory = async (categoryId?: number) => {
+        if (!categoryId) return;
         try {
             await REMOVE_CATEGORY_FROM_BUSINESS(props.businessId, categoryId);
             enqueueSnackbar('קטגוריה נמחקה.', { variant: 'success' });
