@@ -10,6 +10,7 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ConfirmProvider } from 'material-ui-confirm';
 import { RecoilRoot } from 'recoil';
 import './App.css';
 import { AppRoutes } from './core/navigation/app-routes';
@@ -84,9 +85,11 @@ function App() {
                 <RecoilRoot>
                     {/* <StateDebugObserver /> */}
                     <SnackbarProvider>
-                        <ThemeProvider theme={theme}>
-                            <AppRoutes />
-                        </ThemeProvider>
+                        <ConfirmProvider>
+                            <ThemeProvider theme={theme}>
+                                <AppRoutes />
+                            </ThemeProvider>
+                        </ConfirmProvider>
                     </SnackbarProvider>
                 </RecoilRoot>
             </ApolloProvider>

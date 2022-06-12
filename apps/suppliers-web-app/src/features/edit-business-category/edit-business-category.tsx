@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useSnackbar } from 'notistack';
 import { INSERT_FIELD_VALUE } from './gql-hooks';
+import { useConfirm } from 'material-ui-confirm';
 
 type EditBusinessCategoriesComponentProps = {
     businessId: number;
@@ -34,6 +35,7 @@ export function EditBusinessCategoriesComponent(
     props: EditBusinessCategoriesComponentProps
 ) {
     const { enqueueSnackbar } = useSnackbar();
+    const confirm = useConfirm();
     const navigate = useNavigate();
     const fieldValuesForm = useFormHandler({} as any);
     const businessCategoryQuery = useTypedQuery_getBusinessCategories(
@@ -103,6 +105,7 @@ export function EditBusinessCategoriesComponent(
     const deleteCategory = async (categoryId?: number) => {
         if (!categoryId) return;
         try {
+            await confirm({ description: 'האם אתה בטוח?', title: 'אישור מחיקה', confirmationText: 'מחק', cancellationText: 'ביטול' })
             await REMOVE_CATEGORY_FROM_BUSINESS(props.businessId, categoryId);
             enqueueSnackbar('קטגוריה נמחקה.', { variant: 'success' });
 
